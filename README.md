@@ -1,5 +1,5 @@
 # TempusEdaxRerum 
-##MagnusDreams
+## MagnusDreams
 
 
 Game made using WPF. 
