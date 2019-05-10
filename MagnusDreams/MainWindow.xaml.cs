@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -22,7 +22,36 @@ namespace MagnusDreams
     {
         public MainWindow()
         {
+
             InitializeComponent();
+
+
+            changeVisibility(new Control[]{
+                btnBegin,
+                lbTextNamePlayer,
+                textDescription,
+                btnReturn,
+                textDescriptionEquip,
+                textDescriptionAudio,
+                textDescriptionDesigners,
+                textDescriptionProgrammers,
+                lbTextNamePlayer,
+                textNamesDesingners,
+                textNamesAudio,
+                textNamesProgrammers}, false);
+            
+
+        }
+
+        private void changeVisibility(Control[] sender,bool isVisible )
+        {
+            foreach (var obj in sender)
+            {
+                obj.Visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
+            }
+
+            
+
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -42,8 +71,57 @@ namespace MagnusDreams
         {
             Button btn = (Button)sender;
 
+            btnCredits.Visibility = Visibility.Hidden;
+            btnOptions.Visibility = Visibility.Hidden;
+            btn_Close.Visibility = Visibility.Hidden;
+            btnNewGame.Visibility = Visibility.Hidden;
+            btnBegin.Visibility = Visibility.Visible;
+            lbTextNamePlayer.Visibility = Visibility.Visible;
+            textDescription.Visibility = Visibility.Visible;
 
             Background.Source = new BitmapImage(new Uri("Sky.jpg", UriKind.Relative));
+        }
+
+        private void BtnOptions_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnCredits_Click(object sender, RoutedEventArgs e)
+        {
+            btnCredits.Visibility = Visibility.Hidden;
+            btnOptions.Visibility = Visibility.Hidden;
+            btn_Close.Visibility = Visibility.Hidden;
+            btnNewGame.Visibility = Visibility.Hidden;
+            btnReturn.Visibility = Visibility.Visible;
+            lbTextNamePlayer.Visibility = Visibility.Hidden;
+
+            textDescriptionEquip.Visibility = Visibility.Visible;
+            textDescriptionAudio.Visibility = Visibility.Visible;
+            textDescriptionDesigners.Visibility = Visibility.Visible;
+            textDescriptionProgrammers.Visibility = Visibility.Visible;
+            textNamesDesingners.Visibility = Visibility.Visible;
+            textNamesAudio.Visibility = Visibility.Visible;
+            textNamesProgrammers.Visibility = Visibility.Visible;
+
+        }
+
+        private void BtnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            btnCredits.Visibility = Visibility.Visible;
+            btnOptions.Visibility = Visibility.Visible;
+            btn_Close.Visibility = Visibility.Visible;
+            btnNewGame.Visibility = Visibility.Visible;
+            btnReturn.Visibility = Visibility.Hidden;
+
+            textDescriptionEquip.Visibility = Visibility.Hidden;
+            textDescriptionAudio.Visibility = Visibility.Hidden;
+            textDescriptionDesigners.Visibility = Visibility.Hidden;
+            textDescriptionProgrammers.Visibility = Visibility.Hidden;
+            lbTextNamePlayer.Visibility = Visibility.Hidden;
+            textNamesDesingners.Visibility = Visibility.Hidden;
+            textNamesAudio.Visibility = Visibility.Hidden;
+            textNamesProgrammers.Visibility = Visibility.Hidden;
         }
     }
 }
