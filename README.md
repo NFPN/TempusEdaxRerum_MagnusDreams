@@ -1,2 +1,8 @@
-# TempusEdaxRerum_MagnusDreams
-Game made using WPF under the Burning Sun Studio's name. College Project of a horizontal bullet hell game (Shoot'em up).
+# TempusEdaxRerum 
+##MagnusDreams
+
+
+Game made using WPF. 
+Its a College Project of a horizontal bullet hell game (Shoot'em up).
+
+by Burning Sun Studio.
