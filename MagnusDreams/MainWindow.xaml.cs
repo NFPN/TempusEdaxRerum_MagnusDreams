@@ -22,9 +22,7 @@ namespace MagnusDreams
     {
         public MainWindow()
         {
-
             InitializeComponent();
-
 
             changeVisibility(new Control[]{
                 btnBegin,
@@ -39,19 +37,14 @@ namespace MagnusDreams
                 textNamesDesingners,
                 textNamesAudio,
                 textNamesProgrammers}, false);
-            
-
         }
 
-        private void changeVisibility(Control[] sender,bool isVisible )
+        private void changeVisibility(Control[] sender, bool isVisible)
         {
             foreach (var obj in sender)
             {
                 obj.Visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
             }
-
-            
-
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -70,14 +63,8 @@ namespace MagnusDreams
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-
-            btnCredits.Visibility = Visibility.Hidden;
-            btnOptions.Visibility = Visibility.Hidden;
-            btn_Close.Visibility = Visibility.Hidden;
-            btnNewGame.Visibility = Visibility.Hidden;
-            btnBegin.Visibility = Visibility.Visible;
-            lbTextNamePlayer.Visibility = Visibility.Visible;
-            textDescription.Visibility = Visibility.Visible;
+            changeVisibility(new Control[] { btnCredits, btnOptions, btn_Close, btnNewGame }, false);
+            changeVisibility(new Control[] { btnBegin, lbTextNamePlayer, textDescription }, true);
 
             Background.Source = new BitmapImage(new Uri("Sky.jpg", UriKind.Relative));
         }
@@ -89,39 +76,24 @@ namespace MagnusDreams
 
         private void BtnCredits_Click(object sender, RoutedEventArgs e)
         {
-            btnCredits.Visibility = Visibility.Hidden;
-            btnOptions.Visibility = Visibility.Hidden;
-            btn_Close.Visibility = Visibility.Hidden;
-            btnNewGame.Visibility = Visibility.Hidden;
-            btnReturn.Visibility = Visibility.Visible;
-            lbTextNamePlayer.Visibility = Visibility.Hidden;
+            changeVisibility(new Control[] {
+            btnCredits, btnOptions, btn_Close,
+            btnNewGame, btnReturn, lbTextNamePlayer }, false);
 
-            textDescriptionEquip.Visibility = Visibility.Visible;
-            textDescriptionAudio.Visibility = Visibility.Visible;
-            textDescriptionDesigners.Visibility = Visibility.Visible;
-            textDescriptionProgrammers.Visibility = Visibility.Visible;
-            textNamesDesingners.Visibility = Visibility.Visible;
-            textNamesAudio.Visibility = Visibility.Visible;
-            textNamesProgrammers.Visibility = Visibility.Visible;
+            changeVisibility(new Control[] {
+            textDescriptionEquip, textDescriptionAudio,
+            textDescriptionDesigners, textDescriptionProgrammers,
+            textNamesDesingners, textNamesAudio, textNamesProgrammers }, true);
 
         }
 
         private void BtnReturn_Click(object sender, RoutedEventArgs e)
         {
-            btnCredits.Visibility = Visibility.Visible;
-            btnOptions.Visibility = Visibility.Visible;
-            btn_Close.Visibility = Visibility.Visible;
-            btnNewGame.Visibility = Visibility.Visible;
-            btnReturn.Visibility = Visibility.Hidden;
+            changeVisibility(new Control[] { btnCredits, btnOptions, btn_Close, btnNewGame, btnReturn }, false);
 
-            textDescriptionEquip.Visibility = Visibility.Hidden;
-            textDescriptionAudio.Visibility = Visibility.Hidden;
-            textDescriptionDesigners.Visibility = Visibility.Hidden;
-            textDescriptionProgrammers.Visibility = Visibility.Hidden;
-            lbTextNamePlayer.Visibility = Visibility.Hidden;
-            textNamesDesingners.Visibility = Visibility.Hidden;
-            textNamesAudio.Visibility = Visibility.Hidden;
-            textNamesProgrammers.Visibility = Visibility.Hidden;
+            changeVisibility(new Control[] {
+            textDescriptionEquip, textDescriptionAudio, textDescriptionDesigners, textDescriptionProgrammers,
+            lbTextNamePlayer, textNamesDesingners, textNamesAudio, textNamesProgrammers }, true);
         }
     }
 }
