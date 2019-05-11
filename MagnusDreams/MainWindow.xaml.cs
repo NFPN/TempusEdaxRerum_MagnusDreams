@@ -84,7 +84,6 @@ namespace MagnusDreams
             textDescriptionEquip, textDescriptionAudio,
             textDescriptionDesigners, textDescriptionProgrammers,
             textNamesDesingners, textNamesAudio, textNamesProgrammers }, true);
-
         }
 
         private void BtnReturn_Click(object sender, RoutedEventArgs e)
