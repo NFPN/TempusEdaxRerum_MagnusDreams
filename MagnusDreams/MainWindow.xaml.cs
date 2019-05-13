@@ -60,14 +60,14 @@ namespace MagnusDreams
             Environment.Exit(0);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Button btn = (Button)sender;
-            ChangeVisibility(new Control[] { btnCredits, btnOptions, btn_Close, btnNewGame }, false);
-            ChangeVisibility(new Control[] { btnBegin, lbTextNamePlayer, textDescription }, true);
-
-            Background.Source = new BitmapImage(new Uri("Sky.jpg", UriKind.Relative));
-        }
+        //private void Button_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    Button btn = (Button)sender;
+        //    ChangeVisibility(new Control[] { btnCredits, btnOptions, btn_Close, btnNewGame }, false);
+        //    ChangeVisibility(new Control[] { btnBegin, lbTextNamePlayer, textDescription }, true);
+        //
+        //    Background.Source = new BitmapImage(new Uri("Sky.jpg", UriKind.Relative));
+        //}
 
         private void BtnOptions_Click(object sender, RoutedEventArgs e)
         {
