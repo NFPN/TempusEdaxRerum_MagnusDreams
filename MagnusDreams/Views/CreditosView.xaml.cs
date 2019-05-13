@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MagnusDreams.SwitchButtons
+namespace MagnusDreams.Views
 {
     /// <summary>
-    /// Interaction logic for TesteCreditos.xaml
+    /// Interaction logic for CreditosView.xaml
     /// </summary>
-    public partial class TesteCreditos : UserControl
+    public partial class CreditosView : UserControl
     {
-        public TesteCreditos()
+        public CreditosView()
         {
             InitializeComponent();
         }
