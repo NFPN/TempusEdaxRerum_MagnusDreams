@@ -24,7 +24,19 @@ namespace MagnusDreams
         public MainWindow()
         {
             InitializeComponent();
+            MenuOptions();
+        }
 
+        private void ChangeVisibility(Control[] sender, bool isVisible)
+        {
+            foreach (var obj in sender)
+            {
+                obj.Visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
+            }
+        }
+
+        public void MenuOptions()
+        {
             ChangeVisibility(new Control[]{
                 btnBegin,
                 lbTextNamePlayer,
@@ -38,14 +50,8 @@ namespace MagnusDreams
                 textNamesDesingners,
                 textNamesAudio,
                 textNamesProgrammers}, false);
-        }
 
-        private void ChangeVisibility(Control[] sender, bool isVisible)
-        {
-            foreach (var obj in sender)
-            {
-                obj.Visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
-            }
+            ChangeVisibility(new Control[]{btnNewGame,btnOptions,btnCredits,btn_Close}, true);
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -68,12 +74,12 @@ namespace MagnusDreams
 
             ChangeVisibility(new Control[] {
             btnCredits, btnOptions, btn_Close,
-            btnNewGame, btnReturn, lbTextNamePlayer }, false);
+            btnNewGame, lbTextNamePlayer }, false);
 
             ChangeVisibility(new Control[] {
             textDescriptionEquip, textDescriptionAudio,
             textDescriptionDesigners, textDescriptionProgrammers,
-            textNamesDesingners, textNamesAudio, textNamesProgrammers }, true);
+            textNamesDesingners, textNamesAudio, textNamesProgrammers, btnReturn }, true);
         }
 
         private void ExitButton_Clicked(object sender, RoutedEventArgs e)
@@ -102,11 +108,7 @@ namespace MagnusDreams
 
         private void ReturnButton_Clicked(object sender, RoutedEventArgs e)
         {
-            ChangeVisibility(new Control[] { btnCredits, btnOptions, btn_Close, btnNewGame, btnReturn }, false);
-
-            ChangeVisibility(new Control[] {
-            textDescriptionEquip, textDescriptionAudio, textDescriptionDesigners, textDescriptionProgrammers,
-            lbTextNamePlayer, textNamesDesingners, textNamesAudio, textNamesProgrammers }, true);
+            MenuOptions();
         }
     }
 }

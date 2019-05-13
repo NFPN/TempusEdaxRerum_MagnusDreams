@@ -15,6 +15,7 @@
             <views:CreditosView DataContext="{Binding}"/>
         </DataTemplate>
     </Window.Resources>
+    
     <Grid x:Name="GridMenu">
         <Image x:Name="Background" HorizontalAlignment="Left" Height="728" VerticalAlignment="Top" Width="1280" Source="Images/Frame.png" Stretch="Fill" Margin="0,0,0,-8"/>
         <Button x:Name="btnNewGame" Content="NOVO JOGO" HorizontalAlignment="Left" Height="75" Margin="520,270,0,0" VerticalAlignment="Top" Width="250" FontSize="20" FontWeight="Bold" Click="NewGame_Clicked"/>
