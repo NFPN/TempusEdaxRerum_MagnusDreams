@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MagnusDreams.ViewModels;
 
 namespace MagnusDreams
 {
@@ -59,23 +60,12 @@ namespace MagnusDreams
         {
             Environment.Exit(0);
         }
+        
 
-        //private void Button_Click_1(object sender, RoutedEventArgs e)
-        //{
-        //    Button btn = (Button)sender;
-        //    ChangeVisibility(new Control[] { btnCredits, btnOptions, btn_Close, btnNewGame }, false);
-        //    ChangeVisibility(new Control[] { btnBegin, lbTextNamePlayer, textDescription }, true);
-        //
-        //    Background.Source = new BitmapImage(new Uri("Sky.jpg", UriKind.Relative));
-        //}
-
-        private void BtnOptions_Click(object sender, RoutedEventArgs e)
+        private void CreditsButton_Clicked(object sender, RoutedEventArgs e)
         {
+            DataContext = new CreditosViewModel();
 
-        }
-
-        private void BtnCredits_Click(object sender, RoutedEventArgs e)
-        {
             ChangeVisibility(new Control[] {
             btnCredits, btnOptions, btn_Close,
             btnNewGame, btnReturn, lbTextNamePlayer }, false);
@@ -86,7 +76,31 @@ namespace MagnusDreams
             textNamesDesingners, textNamesAudio, textNamesProgrammers }, true);
         }
 
-        private void BtnReturn_Click(object sender, RoutedEventArgs e)
+        private void ExitButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void OptionsButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            ChangeVisibility(new Control[] { btnCredits, btnOptions, btn_Close, btnNewGame }, false);
+            ChangeVisibility(new Control[] { btnBegin, lbTextNamePlayer, textDescription }, true);
+
+            Background.Source = new BitmapImage(new Uri("Sky.jpg", UriKind.Relative));
+        }
+
+        private void NewGame_Clicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void StartGame_Clicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ReturnButton_Clicked(object sender, RoutedEventArgs e)
         {
             ChangeVisibility(new Control[] { btnCredits, btnOptions, btn_Close, btnNewGame, btnReturn }, false);
 

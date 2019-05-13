@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace MagnusDreams.ViewModels
 {
-    public class CreditosViewModel
+    class OptionsViewModel
     {
-
     }
 }

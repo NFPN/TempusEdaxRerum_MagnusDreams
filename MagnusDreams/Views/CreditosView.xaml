@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="AntiqueWhite">
-            
+        <Image HorizontalAlignment="Left" Height="168" Margin="227,110,0,0" VerticalAlignment="Top" Width="346" Source="/MagnusDreams;component/Images/Sky.jpg"/>
+
     </Grid>
 </UserControl>
