@@ -24,7 +24,7 @@ namespace MagnusDreams
         {
             InitializeComponent();
 
-            changeVisibility(new Control[]{
+            ChangeVisibility(new Control[]{
                 btnBegin,
                 lbTextNamePlayer,
                 textDescription,
@@ -39,7 +39,7 @@ namespace MagnusDreams
                 textNamesProgrammers}, false);
         }
 
-        private void changeVisibility(Control[] sender, bool isVisible)
+        private void ChangeVisibility(Control[] sender, bool isVisible)
         {
             foreach (var obj in sender)
             {
@@ -63,8 +63,8 @@ namespace MagnusDreams
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-            changeVisibility(new Control[] { btnCredits, btnOptions, btn_Close, btnNewGame }, false);
-            changeVisibility(new Control[] { btnBegin, lbTextNamePlayer, textDescription }, true);
+            ChangeVisibility(new Control[] { btnCredits, btnOptions, btn_Close, btnNewGame }, false);
+            ChangeVisibility(new Control[] { btnBegin, lbTextNamePlayer, textDescription }, true);
 
             Background.Source = new BitmapImage(new Uri("Sky.jpg", UriKind.Relative));
         }
@@ -76,11 +76,11 @@ namespace MagnusDreams
 
         private void BtnCredits_Click(object sender, RoutedEventArgs e)
         {
-            changeVisibility(new Control[] {
+            ChangeVisibility(new Control[] {
             btnCredits, btnOptions, btn_Close,
             btnNewGame, btnReturn, lbTextNamePlayer }, false);
 
-            changeVisibility(new Control[] {
+            ChangeVisibility(new Control[] {
             textDescriptionEquip, textDescriptionAudio,
             textDescriptionDesigners, textDescriptionProgrammers,
             textNamesDesingners, textNamesAudio, textNamesProgrammers }, true);
@@ -88,9 +88,9 @@ namespace MagnusDreams
 
         private void BtnReturn_Click(object sender, RoutedEventArgs e)
         {
-            changeVisibility(new Control[] { btnCredits, btnOptions, btn_Close, btnNewGame, btnReturn }, false);
+            ChangeVisibility(new Control[] { btnCredits, btnOptions, btn_Close, btnNewGame, btnReturn }, false);
 
-            changeVisibility(new Control[] {
+            ChangeVisibility(new Control[] {
             textDescriptionEquip, textDescriptionAudio, textDescriptionDesigners, textDescriptionProgrammers,
             lbTextNamePlayer, textNamesDesingners, textNamesAudio, textNamesProgrammers }, true);
         }
