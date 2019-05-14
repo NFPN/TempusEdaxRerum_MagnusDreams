@@ -7,7 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280">
     <Grid Background="Aqua">
-        <Button x:Name="btnReturn" Content="VOLTAR" HorizontalAlignment="Left" Height="75" Margin="72,569,0,0" VerticalAlignment="Top" Width="250" FontSize="20" Click="ReturnButton_Clicked"/>
+        <ContentControl x:Name="contentControlCredits" Grid.Row="1"/>
+        <Button x:Name="btnReturn" Content="VOLTAR" HorizontalAlignment="Left" Height="75" Margin="72,569,0,0" VerticalAlignment="Top" Width="250" FontSize="20" Click="ReturnButton_Clicked">
+            <Button.Background>
+                <ImageBrush ImageSource="/MagnusDreams;component/Images/fundo.jpg"/>
+            </Button.Background>
+        </Button>
         <Label x:Name="textDescriptionEquip" Content="Equipe Desenvolvedora" HorizontalAlignment="Left" Margin="402,68,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center"/>
         <Label x:Name="textDescriptionProgrammers" Content="Programadores" HorizontalAlignment="Left" Margin="111,169,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center"/>
         <Label x:Name="textDescriptionDesigners" Content="Designers" HorizontalAlignment="Left" Margin="823,169,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center"/>

@@ -20,6 +20,8 @@ namespace MagnusDreams.Views
     /// </summary>
     public partial class OptionsView : UserControl
     {
+        MainWindow main = (MainWindow)Application.Current.MainWindow;
+
         public OptionsView()
         {
             InitializeComponent();
@@ -28,6 +30,21 @@ namespace MagnusDreams.Views
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ReturnButtonOp_Clicked(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = new MenuView();
+            backgroundFundo.Visibility = Visibility.Hidden;
+            main.ChangeVisibility(new Control[]{
+                txtmusicVolume,
+                txtSfxVolume,
+                musicIsChecked,
+                sfxIsChecked,
+                btnReturn
+            }, false);
+
+            
         }
     }
 }

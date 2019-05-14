@@ -21,14 +21,18 @@ namespace MagnusDreams.Views
     /// </summary>
     public partial class MenuView : UserControl
     {
+        MainWindow main = (MainWindow)Application.Current.MainWindow;
+
         public MenuView()
         {
             InitializeComponent();
+            ShowMenu();
         }
 
         private void CreditsButton_Clicked(object sender, RoutedEventArgs e)
         {
-           
+            contentControl.Content = new CreditosView();
+            HiddenMenu();
         }
 
         private void ExitButton_Clicked(object sender, RoutedEventArgs e)
@@ -39,9 +43,9 @@ namespace MagnusDreams.Views
         private void OptionsButton_Clicked(object sender, RoutedEventArgs e)
         {
             //Cast app window for proper acess (new MainWindow doesn't work)
-            MainWindow main = (MainWindow)Application.Current.MainWindow;
-            main.ChangeBG();
-            MessageBox.Show("Funciona!");
+            contentControl.Content = new OptionsView();
+            HiddenMenu();
+
         }
 
         private void NewGame_Clicked(object sender, RoutedEventArgs e)
@@ -49,17 +53,21 @@ namespace MagnusDreams.Views
             //---- For testing -----
             contentControl.Content = new Gameplay();
             //----------------------
-            ChangeVisibility(new Control[] {
+            HiddenMenu();
+        }
+
+        public void HiddenMenu()
+        {
+            main.ChangeVisibility(new Control[] {
             btnCredits, btnOptions, btn_Close,
             btnNewGame }, false);
         }
 
-        private void ChangeVisibility(Control[] sender, bool isVisible)
+        public void ShowMenu()
         {
-            foreach (var obj in sender)
-            {
-                obj.Visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
-            }
+            main.ChangeVisibility(new Control[] {
+            btnCredits, btnOptions, btn_Close,
+            btnNewGame }, true);
         }
     }
 }
