@@ -24,5 +24,12 @@ namespace MagnusDreams.Views
         {
             InitializeComponent();
         }
+
+        private void ReturnButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = (MainWindow)Application.Current.MainWindow;
+            main.ChangeBG();
+            MessageBox.Show("Funciona!");
+        }
     }
 }

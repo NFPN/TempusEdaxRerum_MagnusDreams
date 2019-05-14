@@ -28,7 +28,7 @@ namespace MagnusDreams.Views
 
         private void CreditsButton_Clicked(object sender, RoutedEventArgs e)
         {
-
+           
         }
 
         private void ExitButton_Clicked(object sender, RoutedEventArgs e)
