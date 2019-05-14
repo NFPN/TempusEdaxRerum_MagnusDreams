@@ -49,6 +49,17 @@ namespace MagnusDreams.Views
             //---- For testing -----
             contentControl.Content = new Gameplay();
             //----------------------
+            ChangeVisibility(new Control[] {
+            btnCredits, btnOptions, btn_Close,
+            btnNewGame }, false);
+        }
+
+        private void ChangeVisibility(Control[] sender, bool isVisible)
+        {
+            foreach (var obj in sender)
+            {
+                obj.Visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
+            }
         }
     }
 }

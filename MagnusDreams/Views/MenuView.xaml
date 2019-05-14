@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MagnusDreams.Views"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-    <Grid>
+    <Grid Name="MenuGrid">
         <ContentControl x:Name="contentControl" Grid.Row="1"/>
         <Button x:Name="btnNewGame" Content="NOVO JOGO" HorizontalAlignment="Left" Height="75" Margin="520,270,0,0" VerticalAlignment="Top" Width="250" FontSize="20" FontWeight="Bold" Click="NewGame_Clicked"/>
         <Button x:Name="btnOptions" Content="OPÇÕES" HorizontalAlignment="Left" Height="75" Margin="520,360,0,0" VerticalAlignment="Top" Width="250" FontSize="20" Click="OptionsButton_Clicked"/>

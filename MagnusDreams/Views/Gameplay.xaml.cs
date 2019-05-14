@@ -24,30 +24,31 @@ namespace MagnusDreams.Views
         DispatcherTimer timer = new DispatcherTimer();
 
 
+
         public Gameplay()
         {
             InitializeComponent();
             timer.Tick += TimerTick;
-            timer.Interval = TimeSpan.FromMilliseconds(50);
+            timer.Interval = TimeSpan.FromMilliseconds(5);
             timer.Start();
-
         }
 
         private void TimerTick(object sender, EventArgs e)
         {
+            Log.Content = $"m{PlayerTest} c{GameCanvas.Margin.Bottom}";
             if (Keyboard.IsKeyDown(Key.Down))
             {
                 Canvas.SetTop(PlayerTest, Canvas.GetTop(PlayerTest) + 10);
             }
-            else if (Keyboard.IsKeyDown(Key.Up))
+            if (Keyboard.IsKeyDown(Key.Up))
             {
                 Canvas.SetTop(PlayerTest, Canvas.GetTop(PlayerTest) - 10);
             }
-            else if (Keyboard.IsKeyDown(Key.Left))
+            if (Keyboard.IsKeyDown(Key.Left))
             {
                 Canvas.SetLeft(PlayerTest, Canvas.GetLeft(PlayerTest) - 10);
             }
-            else if (Keyboard.IsKeyDown(Key.Right))
+            if (Keyboard.IsKeyDown(Key.Right))
             {
                 Canvas.SetLeft(PlayerTest, Canvas.GetLeft(PlayerTest) + 10);
             }
