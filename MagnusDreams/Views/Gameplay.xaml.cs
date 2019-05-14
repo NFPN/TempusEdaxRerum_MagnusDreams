@@ -35,24 +35,19 @@ namespace MagnusDreams.Views
 
         private void TimerTick(object sender, EventArgs e)
         {
-
-        }
-
-        private void Canvas_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Down)
+            if (Keyboard.IsKeyDown(Key.Down))
             {
                 Canvas.SetTop(PlayerTest, Canvas.GetTop(PlayerTest) + 10);
             }
-            else if (e.Key == Key.Up)
+            else if (Keyboard.IsKeyDown(Key.Up))
             {
                 Canvas.SetTop(PlayerTest, Canvas.GetTop(PlayerTest) - 10);
             }
-            else if (e.Key == Key.Left)
+            else if (Keyboard.IsKeyDown(Key.Left))
             {
                 Canvas.SetLeft(PlayerTest, Canvas.GetLeft(PlayerTest) - 10);
             }
-            else if (e.Key == Key.Right)
+            else if (Keyboard.IsKeyDown(Key.Right))
             {
                 Canvas.SetLeft(PlayerTest, Canvas.GetLeft(PlayerTest) + 10);
             }
