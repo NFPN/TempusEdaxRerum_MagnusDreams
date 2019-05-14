@@ -20,6 +20,8 @@ namespace MagnusDreams.Views
     /// </summary>
     public partial class CreditosView : UserControl
     {
+        MainWindow main = (MainWindow)Application.Current.MainWindow;
+
         public CreditosView()
         {
             InitializeComponent();
@@ -27,9 +29,18 @@ namespace MagnusDreams.Views
 
         private void ReturnButton_Clicked(object sender, RoutedEventArgs e)
         {
-            MainWindow main = (MainWindow)Application.Current.MainWindow;
-            main.ChangeBG();
-            MessageBox.Show("Funciona!");
+            contentControlCredits.Content = new MenuView();
+
+            main.ChangeVisibility(new Control[]{
+                textDescriptionAudio,
+                textDescriptionDesigners,
+                textDescriptionEquip,
+                textDescriptionProgrammers,
+                btnReturn,
+                textNamesAudio,
+                textNamesDesingners,
+                textNamesProgrammers               
+            },false);
         }
     }
 }

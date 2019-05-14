@@ -46,5 +46,13 @@ namespace MagnusDreams
             // Begin dragging the window
             DragMove();
         }
+
+        public void ChangeVisibility(Control[] sender, bool isVisible)
+        {
+            foreach (var obj in sender)
+            {
+                obj.Visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
+            }
+        }
     }
 }
