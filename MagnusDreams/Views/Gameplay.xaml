@@ -8,7 +8,9 @@
              d:DesignHeight="720" d:DesignWidth="1280">
     <Grid>
         <Image x:Name="FundoGame" HorizontalAlignment="Left" Height="710" Margin="10,10,0,0" VerticalAlignment="Top" Width="1270" Source="/MagnusDreams;component/Images/Sky.jpg"/>
-        <Image x:Name="PlayerTest" HorizontalAlignment="Left" Height="84" Margin="75,297,0,0" VerticalAlignment="Top" Width="90" Source="/MagnusDreams;component/Images/placeHolder.png"/>
 
+        <Canvas Name="MyCanvas" KeyDown="Canvas_KeyDown" Focusable="True">
+            <Image x:Name="PlayerTest" HorizontalAlignment="Left" Height="84" Margin="75,297,0,0" VerticalAlignment="Top" Width="90" Source="/MagnusDreams;component/Images/placeHolder.png"/>
+        </Canvas>
     </Grid>
 </UserControl>

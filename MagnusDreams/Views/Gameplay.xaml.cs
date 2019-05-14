@@ -37,5 +37,25 @@ namespace MagnusDreams.Views
         {
 
         }
+
+        private void Canvas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Down)
+            {
+                Canvas.SetTop(PlayerTest, Canvas.GetTop(PlayerTest) + 10);
+            }
+            else if (e.Key == Key.Up)
+            {
+                Canvas.SetTop(PlayerTest, Canvas.GetTop(PlayerTest) - 10);
+            }
+            else if (e.Key == Key.Left)
+            {
+                Canvas.SetLeft(PlayerTest, Canvas.GetLeft(PlayerTest) - 10);
+            }
+            else if (e.Key == Key.Right)
+            {
+                Canvas.SetLeft(PlayerTest, Canvas.GetLeft(PlayerTest) + 10);
+            }
+        }
     }
 }
