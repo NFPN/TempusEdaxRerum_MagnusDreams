@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="MagnusDreams.Views.OptionsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MagnusDreams.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1080">
+    <Grid>
+        <Image x:Name="backgroundFundo" HorizontalAlignment="Left" Height="720" VerticalAlignment="Top" Width="1080" Source="/MagnusDreams;component/Images/fundo.jpg" Margin="-10,-10,0,0" Stretch="Fill" Cursor="None"/>
+        <Label Content="Music Volume" HorizontalAlignment="Left" Height="66" Margin="10,205,0,0" VerticalAlignment="Top" Width="364" FontSize="48" FontFamily="Showcard Gothic"/>
+        <Label Content="SFX Volume" HorizontalAlignment="Left" Height="81" Margin="10,375,0,0" VerticalAlignment="Top" Width="364" FontFamily="Showcard Gothic" FontSize="48"/>
+        <CheckBox Content="YES&#xD;&#xA;yes" HorizontalAlignment="Left" Height="39" Margin="644,235,0,0" VerticalAlignment="Top" Width="110" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White"/>
+        <CheckBox Content="no" HorizontalAlignment="Left" Height="39" Margin="810,247,0,0" VerticalAlignment="Top" Width="70" FontFamily="Showcard Gothic" FontSize="36">
+            <CheckBox.Background>
+                <SolidColorBrush Color="White" Opacity="0.975"/>
+            </CheckBox.Background>
+        </CheckBox>
+        <CheckBox Content="yes" HorizontalAlignment="Left" Height="46" Margin="644,393,0,0" VerticalAlignment="Top" Width="94" Checked="CheckBox_Checked" FontFamily="Showcard Gothic" FontSize="36"/>
+        <CheckBox Content="NO" HorizontalAlignment="Left" Height="46" Margin="810,393,0,0" VerticalAlignment="Top" Width="82" FontFamily="Showcard Gothic" FontSize="36"/>
+    </Grid>
+</UserControl>
