@@ -3,25 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-         xmlns:viewmodels="clr-namespace:MagnusDreams.ViewModels"
-        xmlns:views="clr-namespace:MagnusDreams.Views"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="720" Width="1280" WindowStyle="None">
     
-    <Window.Resources>
-        <DataTemplate x:Name="creditosTemplate" DataType="{x:Type viewmodels:CreditosViewModel}">
-            <views:CreditosView DataContext="{Binding}"/>
-        </DataTemplate>
-    </Window.Resources>
-    
-    <Grid x:Name="GridMenu">
+    <Grid x:Name="GridMenu" Background="#FF818181">
         <Image x:Name="Background" HorizontalAlignment="Left" Height="728" VerticalAlignment="Top" Width="1280" Source="Images/Frame.png" Stretch="Fill" Margin="0,0,0,-8"/>
-        <Button x:Name="btnNewGame" Content="NOVO JOGO" HorizontalAlignment="Left" Height="75" Margin="520,270,0,0" VerticalAlignment="Top" Width="250" FontSize="20" FontWeight="Bold" Click="NewGame_Clicked"/>
-        <Button x:Name="btnOptions" Content="OPÇÕES" HorizontalAlignment="Left" Height="75" Margin="520,360,0,0" VerticalAlignment="Top" Width="250" FontSize="20" Click="OptionsButton_Clicked"/>
-        <Button x:Name="btn_Close" Content="SAIR" HorizontalAlignment="Left" Height="75" Margin="520,540,0,0" VerticalAlignment="Top" Width="250" FontSize="20" Click="ExitButton_Clicked"/>
-        <Button x:Name="btnCredits" Content="CRÉDITOS" HorizontalAlignment="Left" Height="75" Margin="520,450,0,0" VerticalAlignment="Top" Width="250" FontSize="20" Click="CreditsButton_Clicked"/>
+        <!-- Content control pra controlar qual usercontrol aparece em main-->
+        <ContentControl x:Name="contentControl" Grid.Row="1"/>
+        <!--        
         <Button x:Name="btnBegin" Content="COMEÇAR" HorizontalAlignment="Left" Height="75" Margin="951,569,0,0" VerticalAlignment="Top" Width="250" FontSize="20" FontWeight="Bold" Click="StartGame_Clicked"/>
         <TextBox x:Name="lbTextNamePlayer" HorizontalAlignment="Left" Height="68" Margin="247,401,0,0" TextWrapping="Wrap" Text="Name..." VerticalAlignment="Top" Width="802" FontSize="24" FontFamily="Square721 BT" Background="Transparent" BorderBrush="#00ABADB3" SelectionBrush="#33D70000"/>
         <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -33,6 +24,8 @@
         <Label x:Name="textDescriptionAudio" Content="Audio / Efeitos" HorizontalAlignment="Left" Margin="500,400,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <Label x:Name="textNamesProgrammers" Content="Natanael    (MadWalker)&#xD;&#xA;Nicolas S. Soares (Keyblase)" HorizontalAlignment="Left" Margin="91,243,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="563" Height="186"/>
         <Label x:Name="textNamesDesingners" Content="Andriel&#xD;&#xA;João de Castro" HorizontalAlignment="Left" Margin="823,243,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="396" Height="186"/>
-        <Label x:Name="textNamesAudio" Content="Rafael Donato" HorizontalAlignment="Left" Margin="545,506,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="362" Height="96"/>
+        <Label x:Name="textNamesAudio" Content="Rafael Donato" HorizontalAlignment="Left" Margin="545,506,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="362" Height="96"/> -->
+
+        
     </Grid>
 </Window>

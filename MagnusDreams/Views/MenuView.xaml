@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="MagnusDreams.Views.MenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MagnusDreams.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1280" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Grid>
+        <Button x:Name="btnNewGame" Content="NOVO JOGO" HorizontalAlignment="Left" Height="75" Margin="520,270,0,0" VerticalAlignment="Top" Width="250" FontSize="20" FontWeight="Bold" Click="NewGame_Clicked"/>
+        <Button x:Name="btnOptions" Content="OPÇÕES" HorizontalAlignment="Left" Height="75" Margin="520,360,0,0" VerticalAlignment="Top" Width="250" FontSize="20" Click="OptionsButton_Clicked"/>
+        <Button x:Name="btn_Close" Content="SAIR" HorizontalAlignment="Left" Height="75" Margin="520,540,0,0" VerticalAlignment="Top" Width="250" FontSize="20" Click="ExitButton_Clicked"/>
+        <Button x:Name="btnCredits" Content="CRÉDITOS" HorizontalAlignment="Left" Height="75" Margin="520,450,0,0" VerticalAlignment="Top" Width="250" FontSize="20" Click="CreditsButton_Clicked"/>
+    </Grid>
+    
+</UserControl>

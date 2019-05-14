@@ -5,9 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MagnusDreams.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="AntiqueWhite">
-        <Image HorizontalAlignment="Left" Height="168" Margin="227,110,0,0" VerticalAlignment="Top" Width="346" Source="/MagnusDreams;component/Images/Sky.jpg"/>
-
-    </Grid>
+             d:DesignHeight="720" d:DesignWidth="1280">
+    <Grid Background="AntiqueWhite"/>
 </UserControl>

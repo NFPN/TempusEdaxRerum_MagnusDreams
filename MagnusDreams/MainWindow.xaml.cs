@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MagnusDreams.ViewModels;
+using MagnusDreams.Views;
 
 namespace MagnusDreams
 {
@@ -24,18 +25,37 @@ namespace MagnusDreams
         public MainWindow()
         {
             InitializeComponent();
-            MenuOptions();
+            this.contentControl.Content = new MenuView();
+            //MenuOptions();
         }
 
-        private void ChangeVisibility(Control[] sender, bool isVisible)
+        /*private void ChangeVisibility(Control[] sender, bool isVisible)
         {
             foreach (var obj in sender)
             {
                 obj.Visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
             }
+        }*/
+
+        private void ButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.contentControl.Content = new CreditosView();
+
         }
 
-        public void MenuOptions()
+        public void ChangeBG()
+        {
+            Background.Source = new BitmapImage(new Uri("Images\\Sky.jpg", UriKind.Relative));
+        }
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            // Begin dragging the window
+            DragMove();
+        }
+
+        /*public void MenuOptions()
         {
             ChangeVisibility(new Control[]{
                 btnBegin,
@@ -53,20 +73,6 @@ namespace MagnusDreams
 
             ChangeVisibility(new Control[]{btnNewGame,btnOptions,btnCredits,btn_Close}, true);
         }
-
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-        {
-            base.OnMouseLeftButtonDown(e);
-
-            // Begin dragging the window
-            DragMove();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Environment.Exit(0);
-        }
-        
 
         private void CreditsButton_Clicked(object sender, RoutedEventArgs e)
         {
@@ -89,11 +95,12 @@ namespace MagnusDreams
 
         private void OptionsButton_Clicked(object sender, RoutedEventArgs e)
         {
+            Background.Source = new BitmapImage(new Uri("Images\\Sky.jpg", UriKind.Relative));
             Button btn = (Button)sender;
             ChangeVisibility(new Control[] { btnCredits, btnOptions, btn_Close, btnNewGame }, false);
             ChangeVisibility(new Control[] { btnBegin, lbTextNamePlayer, textDescription }, true);
 
-            Background.Source = new BitmapImage(new Uri("Sky.jpg", UriKind.Relative));
+            
         }
 
         private void NewGame_Clicked(object sender, RoutedEventArgs e)
@@ -109,6 +116,6 @@ namespace MagnusDreams
         private void ReturnButton_Clicked(object sender, RoutedEventArgs e)
         {
             MenuOptions();
-        }
+        }*/
     }
 }
