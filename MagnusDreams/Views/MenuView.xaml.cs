@@ -46,7 +46,9 @@ namespace MagnusDreams.Views
 
         private void NewGame_Clicked(object sender, RoutedEventArgs e)
         {
-
+            //---- For testing -----
+            contentControl.Content = new Gameplay();
+            //----------------------
         }
     }
 }
