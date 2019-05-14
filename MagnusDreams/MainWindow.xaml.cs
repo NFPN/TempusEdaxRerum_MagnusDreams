@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MagnusDreams.ViewModels;
 using MagnusDreams.Views;
 
 namespace MagnusDreams
@@ -45,7 +44,7 @@ namespace MagnusDreams
 
         public void ChangeBG()
         {
-            Background.Source = new BitmapImage(new Uri("Images\\Sky.jpg", UriKind.Relative));
+            Fundo.Source = new BitmapImage(new Uri("Images\\Sky.jpg", UriKind.Relative));
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {

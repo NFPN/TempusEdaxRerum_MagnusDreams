@@ -55,10 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\CreditosViewModel.cs" />
-    <Compile Include="ViewModels\OptionsViewModel.cs" />
     <Compile Include="Views\CreditosView.xaml.cs">
       <DependentUpon>CreditosView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gameplay.xaml.cs">
+      <DependentUpon>Gameplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
@@ -76,6 +77,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\CreditosView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Gameplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

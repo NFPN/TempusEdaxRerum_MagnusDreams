@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="MagnusDreams.Views.Gameplay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MagnusDreams.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1280">
+    <Grid>
+        <Image x:Name="FundoGame" HorizontalAlignment="Left" Height="710" Margin="10,10,0,0" VerticalAlignment="Top" Width="1270" Source="/MagnusDreams;component/Images/Sky.jpg"/>
+        <Image x:Name="PlayerTest" HorizontalAlignment="Left" Height="84" Margin="75,297,0,0" VerticalAlignment="Top" Width="90" Source="/MagnusDreams;component/Images/placeHolder.png"/>
+
+    </Grid>
+</UserControl>
