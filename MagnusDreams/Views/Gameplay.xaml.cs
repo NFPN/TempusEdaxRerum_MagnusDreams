@@ -28,30 +28,40 @@ namespace MagnusDreams.Views
         public Gameplay()
         {
             InitializeComponent();
-            timer.Tick += TimerTick;
+            timer.Tick += Timer;
             timer.Interval = TimeSpan.FromMilliseconds(5);
             timer.Start();
         }
 
-        private void TimerTick(object sender, EventArgs e)
+        private void Timer(object sender, EventArgs e)
         {
-            Log.Content = $"m{PlayerTest} c{GameCanvas.Margin.Bottom}";
-            if (Keyboard.IsKeyDown(Key.Down))
+            Update();
+        }
+
+        private void Update()
+        {
+            Log.Content = $"" +
+                $"Top:{Canvas.GetTop(PlayerTest)} " +
+                $"Left:{Canvas.GetLeft(PlayerTest)} "; 
+
+            if (Keyboard.IsKeyDown(Key.Down) && Canvas.GetTop(PlayerTest) < 720-PlayerTest.ActualHeight)
             {
                 Canvas.SetTop(PlayerTest, Canvas.GetTop(PlayerTest) + 10);
             }
-            if (Keyboard.IsKeyDown(Key.Up))
+            if (Keyboard.IsKeyDown(Key.Up) && Canvas.GetTop(PlayerTest) > 0)
             {
                 Canvas.SetTop(PlayerTest, Canvas.GetTop(PlayerTest) - 10);
             }
-            if (Keyboard.IsKeyDown(Key.Left))
+            if (Keyboard.IsKeyDown(Key.Left)&& Canvas.GetLeft(PlayerTest) > 0)
             {
                 Canvas.SetLeft(PlayerTest, Canvas.GetLeft(PlayerTest) - 10);
             }
-            if (Keyboard.IsKeyDown(Key.Right))
+            if (Keyboard.IsKeyDown(Key.Right) && Canvas.GetLeft(PlayerTest) < 1280 - PlayerTest.ActualWidth)
             {
                 Canvas.SetLeft(PlayerTest, Canvas.GetLeft(PlayerTest) + 10);
             }
+
+
         }
     }
 }

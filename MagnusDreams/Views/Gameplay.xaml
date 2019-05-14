@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280">
     <Grid>
-        <Image x:Name="FundoGame" HorizontalAlignment="Left" Height="710" Margin="10,10,0,0" VerticalAlignment="Top" Width="1270" Source="/MagnusDreams;component/Images/Sky.jpg"/>
+        <Image x:Name="FundoGame" Height="710" VerticalAlignment="Top" Source="/MagnusDreams;component/Images/Sky.jpg"/>
 
-        <Canvas Name="GameCanvas">
+        <Canvas Name="GameCanvas" RenderTransformOrigin="0.5,0.5">
             <Image x:Name="PlayerTest" HorizontalAlignment="Left" Height="84" VerticalAlignment="Top" Width="90" Source="/MagnusDreams;component/Images/placeHolder.png" Canvas.Left="87" Canvas.Top="318"/>
         </Canvas>
         <Label x:Name="Log" Content="testsadf" HorizontalAlignment="Left" Height="57" Margin="393,60,0,0" VerticalAlignment="Top" Width="426" FontSize="36"/>
