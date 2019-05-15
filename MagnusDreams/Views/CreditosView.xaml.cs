@@ -42,5 +42,13 @@ namespace MagnusDreams.Views
                 textNamesProgrammers               
             },false);
         }
+
+        private void OpenGamePause(object sender, RoutedEventArgs e)
+        {
+            contentControlCredits.Content = new InGamePauseView();
+            main.ChangeVisibility(new Control[] {
+                btnPause
+            },false);
+        }
     }
 }
