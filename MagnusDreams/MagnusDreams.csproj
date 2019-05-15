@@ -8,13 +8,12 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>MagnusDreams</RootNamespace>
     <AssemblyName>MagnusDreams</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,14 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -65,14 +58,8 @@
     <Compile Include="Views\CreditosView.xaml.cs">
       <DependentUpon>CreditosView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GameOverView.xaml.cs">
-      <DependentUpon>GameOverView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Gameplay.xaml.cs">
       <DependentUpon>Gameplay.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\InGamePauseView.xaml.cs">
-      <DependentUpon>InGamePauseView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
@@ -96,15 +83,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GameOverView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Gameplay.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\InGamePauseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,11 +135,11 @@
     <Resource Include="Images\fundo.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\pause.png" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Content Include="Sounds\bgSound.mp4" />
+    <Resource Include="Images\Hit.png" />
+    <Resource Include="Images\jogavel.png" />
+    <Resource Include="Images\morto.png" />
+    <Resource Include="Images\normal.png" />
+    <Resource Include="Images\puto.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
