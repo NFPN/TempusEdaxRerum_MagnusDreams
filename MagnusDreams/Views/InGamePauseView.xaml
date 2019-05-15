@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="MagnusDreams.Views.InGamePauseView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MagnusDreams.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1280">
+    <Grid  Width="1280" Height="720">
+        <ContentControl x:Name="contentControlPaused" Grid.Row="1"/>
+        <Image x:Name="bgPauseGame"  Height="598" Width="649" Margin="0,61,320,0" VerticalAlignment="Top" HorizontalAlignment="Right" Source="/MagnusDreams;component/Images/fundo.jpg" Stretch="Fill" Cursor="None">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/MagnusDreams;component/Images/Sky.jpg"/>
+            </Image.OpacityMask>
+        </Image>
+        <Label x:Name="txtmusicVolume" Content="Music Volume :" HorizontalAlignment="Left" Height="89" Margin="353,308,0,0" VerticalAlignment="Top" Width="336" FontSize="48" FontFamily="Showcard Gothic"/>
+        <Label x:Name="txtSfxVolume" Content="SFX Volume :" HorizontalAlignment="Left" Height="75" Margin="353,397,0,0" VerticalAlignment="Top" Width="340" FontFamily="Showcard Gothic" FontSize="48" RenderTransformOrigin="1.166,0.323"/>
+        <CheckBox x:Name="musicIsChecked" Content="" HorizontalAlignment="Left" Height="16" Margin="740,342,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" IsChecked="True" VerticalContentAlignment="Center" Padding="15,-1,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+            <CheckBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </CheckBox.RenderTransform>
+        </CheckBox>
+        <CheckBox x:Name="sfxIsChecked" Content="." HorizontalAlignment="Left" Height="15" Margin="739,431,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" VerticalContentAlignment="Center" Padding="15,-1,0,0" IsChecked="True" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+            <CheckBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </CheckBox.RenderTransform>
+        </CheckBox>
+        <Button x:Name="btnReturnMenu" Content="Menu" HorizontalAlignment="Left" Margin="338,551,0,0" VerticalAlignment="Top" Width="198" Height="81" Background="#FFDDDDDD" Click="ReturnMainMenuClicked"/>
+        <Button x:Name="btnReturnToGame" Content="Voltar" HorizontalAlignment="Left" Margin="639,551,0,0" VerticalAlignment="Top" Width="225" Height="81" Background="#FFDDDDDD"/>
+        <Label x:Name="txtDescriptionPause" Content="Jogo está Pausado" HorizontalAlignment="Left" Margin="325,137,0,0" VerticalAlignment="Top" FontSize="72" FontWeight="Bold"/>
+
+    </Grid>
+</UserControl>
