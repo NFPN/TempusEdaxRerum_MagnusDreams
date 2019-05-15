@@ -7,11 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280">
     <Grid>
-        <Image x:Name="FundoGame" Height="710" VerticalAlignment="Top" Source="/MagnusDreams;component/Images/Sky.jpg"/>
+        <Image x:Name="FundoGame" VerticalAlignment="Top" Source="/MagnusDreams;component/Images/Sky.jpg"/>
 
         <Canvas Name="GameCanvas" RenderTransformOrigin="0.5,0.5">
-            <Image x:Name="PlayerTest" HorizontalAlignment="Left" Height="84" VerticalAlignment="Top" Width="90" Source="/MagnusDreams;component/Images/placeHolder.png" Canvas.Left="87" Canvas.Top="318"/>
+            <Image x:Name="PlayerTest" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="120" Source="/MagnusDreams;component/Images/jogavel.png" Canvas.Left="77" Canvas.Top="316"/>
+            <Image x:Name="PlayerBullet" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="15" Canvas.Left="36" Canvas.Top="351" Source="/MagnusDreams;component/Images/fundo.jpg" Stretch="Fill"/>
         </Canvas>
-        <Label x:Name="Log" Content="testsadf" HorizontalAlignment="Left" Height="57" Margin="393,60,0,0" VerticalAlignment="Top" Width="426" FontSize="36"/>
+        <Label x:Name="Log" Content="testsadf" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="69" VerticalAlignment="Top" Width="1270" Margin="0,48,0,0" FontSize="20"/>
     </Grid>
 </UserControl>
