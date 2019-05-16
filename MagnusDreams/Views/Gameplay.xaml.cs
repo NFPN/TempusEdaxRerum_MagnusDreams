@@ -22,22 +22,41 @@ namespace MagnusDreams.Views
     public partial class Gameplay : UserControl
     {
         bool shouldMakeNewbullet = false;
+
         List<Image> bulletPool = new List<Image>();
-        DispatcherTimer mainTime = new DispatcherTimer();
+
+        DispatcherTimer mainTime = new DispatcherTimer(), dangerTimer = new DispatcherTimer();
+
         BitmapSource bitmap = new BitmapImage(new Uri("Images/fundo.jpg", UriKind.Relative));
+
         DateTime startingTime = DateTime.Now;
-        TimeSpan deltaTime;
-        int timer;
-        int timeToShoot=0;
+
+        TimeSpan deltaTime = new TimeSpan(), shotTime = new TimeSpan();
+
+        double elapsedSeconds, elapseMilidSeconds, timeToShoot, speed, fireRate;
+
 
 
         public Gameplay()
         {
             InitializeComponent();
+            PlayerBullet.Visibility = Visibility.Hidden;
+            
+            elapsedSeconds = 0;
+            elapseMilidSeconds = 0;
+            fireRate = 2;
+            timeToShoot = 0;
+            speed = 10;
+
             mainTime.Tick += MainTimeController;
             mainTime.Tick += SecondaryTimeController;
             mainTime.Interval = TimeSpan.FromMilliseconds(5);
             mainTime.Start();
+
+
+            dangerTimer.Tick += DangerTick;
+            dangerTimer.Interval = TimeSpan.FromMilliseconds(1);
+            dangerTimer.Start();
         }
 
         private void MainTimeController(object sender, EventArgs e)
@@ -50,23 +69,33 @@ namespace MagnusDreams.Views
             AutoUpdate();
         }
 
-        private void AutoUpdate()
+        private void DangerTick(object sender, EventArgs e)
         {
             deltaTime = DateTime.Now - startingTime;
-            timer += deltaTime.Seconds;
-            if(bulletPool.Count >0)
-            foreach (var bullet in bulletPool)
-            {
-                    if (Canvas.GetTop(bullet) > 720   ||
-                        Canvas.GetTop(bullet) < 0     ||
+            elapseMilidSeconds = deltaTime.Milliseconds;
+            elapsedSeconds = deltaTime.Seconds;
+            //visual debug
+            Log.Content = $"{bulletPool.Count}" +
+                $" - {string.Format("{0:0}", elapsedSeconds)}" +
+                $" - {string.Format("{0:0.00}", elapseMilidSeconds)}";
+        }
+
+        private void AutoUpdate()
+        {
+            
+            if (bulletPool.Count > 0)
+                foreach (var bullet in bulletPool)
+                {
+                    if (Canvas.GetTop(bullet) > 720 ||
+                        Canvas.GetTop(bullet) < 0 ||
                         Canvas.GetLeft(bullet) > 1280 ||
                         Canvas.GetLeft(bullet) < 0)//need collision verification
                     {
                         bullet.Visibility = Visibility.Hidden;
                     }
-                    else if(bullet.Visibility == Visibility.Visible)
+                    else if (bullet.Visibility == Visibility.Visible)
                     {
-                        Canvas.SetLeft(bullet, Canvas.GetLeft(bullet) + 10);
+                        Canvas.SetLeft(bullet, Canvas.GetLeft(bullet) + speed);
                     }
                 }
         }
@@ -75,9 +104,6 @@ namespace MagnusDreams.Views
 
         private void Update()
         {
-            //visual debug
-            Log.Content = $"{deltaTime}";
-
             if (Keyboard.IsKeyDown(Key.Down) && Canvas.GetTop(PlayerTest) < 720 - PlayerTest.ActualHeight)
             {
                 Canvas.SetTop(PlayerTest, Canvas.GetTop(PlayerTest) + 10);
@@ -94,9 +120,9 @@ namespace MagnusDreams.Views
             {
                 Canvas.SetLeft(PlayerTest, Canvas.GetLeft(PlayerTest) + 10);
             }
-            if (Keyboard.IsKeyDown(Key.A) && timeToShoot < deltaTime.Seconds + 1)
+            if (Keyboard.IsKeyDown(Key.A) && elapsedSeconds > timeToShoot)
             {
-                timeToShoot = deltaTime.Seconds;
+                timeToShoot = elapsedSeconds + fireRate;
                 shouldMakeNewbullet = true;
 
                 if (bulletPool.Count > 0)
@@ -113,7 +139,7 @@ namespace MagnusDreams.Views
                 {
                     bulletPool.Add(new Image()
                     {
-                        Height = PlayerBullet.Height ,
+                        Height = PlayerBullet.Height,
                         Width = PlayerBullet.Width,
                         Source = PlayerBullet.Source,
                         HorizontalAlignment = HorizontalAlignment.Left,
@@ -121,25 +147,22 @@ namespace MagnusDreams.Views
                         Visibility = Visibility.Hidden,
                         Tag = "PlayerBullet"
                     });
-                    //GameCanvas.Children.Add(bulletPool.LastOrDefault());
+                    GameCanvas.Children.Add(bulletPool.LastOrDefault());
                     SetBullet(bulletPool.LastOrDefault());
                 }
-                Log.Content = $"{PlayerBullet.Visibility}";
             }
         }
 
         public void SetBullet(Image bullet)
         {
-            GameCanvas.Children.Add(bullet);
+            //GameCanvas.Children.Add(bullet);
             Canvas.SetTop(bullet, Canvas.GetTop(PlayerTest));
             Canvas.SetLeft(bullet, Canvas.GetLeft(PlayerTest) + PlayerTest.ActualWidth);
-
             bullet.Visibility = Visibility.Visible;
-
             bullet.Refresh();
         }
 
-       
+
     }
 
     public static class ExtensionMethods

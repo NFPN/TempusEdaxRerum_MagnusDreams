@@ -45,7 +45,7 @@ namespace MagnusDreams.Views
 
         private void OpenGamePause(object sender, RoutedEventArgs e)
         {
-            contentControlCredits.Content = new InGamePauseView();
+            //contentControlCredits.Content = new InGamePauseView();
             main.ChangeVisibility(new Control[] {
                 btnPause
             },false);
