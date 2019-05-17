@@ -21,7 +21,7 @@ namespace MagnusDreams.Views
     public partial class GameOverView : UserControl
     {
         MainWindow main = (MainWindow)Application.Current.MainWindow;
-        
+
         public GameOverView()
         {
             InitializeComponent();
@@ -33,11 +33,11 @@ namespace MagnusDreams.Views
             contentControlGameOver.Content = new MainWindow();
 
             main.ChangeVisibility(new Control[]
-            {              
+            {
                 txtDescriptionGameOver,
                 btnMenu,
                 btnPlayAgain
-            },false);
+            }, false);
         }
     }
 }

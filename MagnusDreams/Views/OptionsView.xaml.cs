@@ -44,7 +44,7 @@ namespace MagnusDreams.Views
                 btnReturn
             }, false);
 
-            
+
         }
     }
 }

@@ -8,11 +8,7 @@
              d:DesignHeight="720" d:DesignWidth="1280">
     <Grid Background="Aqua">
         <ContentControl x:Name="contentControlCredits" Grid.Row="1"/>
-        <Button x:Name="btnReturn" Content="VOLTAR" HorizontalAlignment="Left" Height="75" Margin="72,569,0,0" VerticalAlignment="Top" Width="250" FontSize="20" Click="ReturnButton_Clicked">
-            <Button.Background>
-                <ImageBrush ImageSource="/MagnusDreams;component/Images/fundo.jpg"/>
-            </Button.Background>
-        </Button>
+        <Button x:Name="btnReturn" Content="VOLTAR" HorizontalAlignment="Left" Height="75" Margin="72,569,0,0" VerticalAlignment="Top" Width="250" FontSize="20" Click="ReturnButton_Clicked" Background="{x:Null}"/>
         <Label x:Name="textDescriptionEquip" Content="Equipe Desenvolvedora" HorizontalAlignment="Left" Margin="402,68,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center"/>
         <Label x:Name="textDescriptionProgrammers" Content="Programadores" HorizontalAlignment="Left" Margin="111,169,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center"/>
         <Label x:Name="textDescriptionDesigners" Content="Designers" HorizontalAlignment="Left" Margin="823,169,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center"/>
@@ -20,14 +16,7 @@
         <Label x:Name="textNamesProgrammers" Content="Natanael    (MadWalker)&#xD;&#xA;Nicolas S. Soares (Keyblase)" HorizontalAlignment="Left" Margin="91,243,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="563" Height="186"/>
         <Label x:Name="textNamesDesingners" Content="Andriel&#xD;&#xA;João de Castro" HorizontalAlignment="Left" Margin="823,243,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="396" Height="186"/>
         <Label x:Name="textNamesAudio" Content="Rafael Donato" HorizontalAlignment="Left" Margin="557,506,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="362" Height="96"/>
-        <Button x:Name="btnPause" Content="" HorizontalAlignment="Left" Margin="1217,0,0,0" VerticalAlignment="Top" Width="63" Height="60" BorderBrush="{x:Null}" Click="OpenGamePause">
-            <Button.Background>
-                <ImageBrush ImageSource="/MagnusDreams;component/Images/pause.png"/>
-            </Button.Background>
-            <Button.Foreground>
-                <ImageBrush ImageSource="/MagnusDreams;component/Images/Sky.jpg"/>
-            </Button.Foreground>
-        </Button>
+        <Button x:Name="btnPause" Content="" HorizontalAlignment="Left" Margin="1217,0,0,0" VerticalAlignment="Top" Width="63" Height="60" BorderBrush="{x:Null}" Click="OpenGamePause" Foreground="{x:Null}"/>
         <Label x:Name="txtHighScore" Content="HighScore:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
         <Label x:Name="txtPlayerScore" Content="Score:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,26,0,0" FontSize="18" FontWeight="Bold"/>
     </Grid>

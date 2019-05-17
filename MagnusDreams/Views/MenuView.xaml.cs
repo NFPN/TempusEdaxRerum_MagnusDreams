@@ -30,7 +30,7 @@ namespace MagnusDreams.Views
             AudioGame("bgSound.mp4");
             InitializeComponent();
             ShowMenu();
-            
+
         }
 
         private void CreditsButton_Clicked(object sender, RoutedEventArgs e)
@@ -90,9 +90,9 @@ namespace MagnusDreams.Views
 
 
             var p1 = new MediaPlayer();
-            p1.Open(new Uri(@"C:\Users\nico_\source\repos\TempusEdaxRerum_MagnusDreams\MagnusDreams\Sounds\bgSound.mp4") );          
+            p1.Open(new Uri(@"C:\Users\nico_\source\repos\TempusEdaxRerum_MagnusDreams\MagnusDreams\Sounds\bgSound.mp4"));
             p1.Play();
-            
+
         }
     }
 }
