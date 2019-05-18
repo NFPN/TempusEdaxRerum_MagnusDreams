@@ -33,7 +33,7 @@ namespace MagnusDreams.Views
 
         TimeSpan deltaTime = new TimeSpan(), shotTime = new TimeSpan();
 
-        double elapsedSeconds, elapsedMiliSeconds, timeToShoot, speed, fireRate;
+        double elapsedSeconds, elapsedMiliSeconds, timeToShoot, speed;
 
         DispatcherTimer mainTime = new DispatcherTimer(), fastTimer = new DispatcherTimer();
 
@@ -82,7 +82,6 @@ namespace MagnusDreams.Views
             elapsedMiliSeconds = 0;
             elapsedSeconds = 0;
             timeToShoot = 0;
-            fireRate = 2;
             speed = 10;
         }
 
@@ -108,22 +107,27 @@ namespace MagnusDreams.Views
 
         private void Update()
         {
+            if (Keyboard.IsKeyDown(Key.Escape))
+                Log.Content = "Pause";
             #region Movement Logic
-            if (Keyboard.IsKeyDown(Key.Down) && Canvas.GetTop(PlayerTest) < 720 - PlayerTest.ActualHeight)
+            if (canMove)
             {
-                Canvas.SetTop(PlayerTest, Canvas.GetTop(PlayerTest) + 10);
-            }
-            if (Keyboard.IsKeyDown(Key.Up) && Canvas.GetTop(PlayerTest) > 0)
-            {
-                Canvas.SetTop(PlayerTest, Canvas.GetTop(PlayerTest) - 10);
-            }
-            if (Keyboard.IsKeyDown(Key.Left) && Canvas.GetLeft(PlayerTest) > 0)
-            {
-                Canvas.SetLeft(PlayerTest, Canvas.GetLeft(PlayerTest) - 10);
-            }
-            if (Keyboard.IsKeyDown(Key.Right) && Canvas.GetLeft(PlayerTest) < 1280 - PlayerTest.ActualWidth)
-            {
-                Canvas.SetLeft(PlayerTest, Canvas.GetLeft(PlayerTest) + 10);
+                if (Keyboard.IsKeyDown(Key.Down) && Canvas.GetTop(PlayerTest) < 720 - PlayerTest.ActualHeight)
+                {
+                    Canvas.SetTop(PlayerTest, Canvas.GetTop(PlayerTest) + 10);
+                }
+                if (Keyboard.IsKeyDown(Key.Up) && Canvas.GetTop(PlayerTest) > 0)
+                {
+                    Canvas.SetTop(PlayerTest, Canvas.GetTop(PlayerTest) - 10);
+                }
+                if (Keyboard.IsKeyDown(Key.Left) && Canvas.GetLeft(PlayerTest) > 0)
+                {
+                    Canvas.SetLeft(PlayerTest, Canvas.GetLeft(PlayerTest) - 10);
+                }
+                if (Keyboard.IsKeyDown(Key.Right) && Canvas.GetLeft(PlayerTest) < 1280 - PlayerTest.ActualWidth)
+                {
+                    Canvas.SetLeft(PlayerTest, Canvas.GetLeft(PlayerTest) + 10);
+                }
             }
             #endregion
 
@@ -132,16 +136,36 @@ namespace MagnusDreams.Views
             {
                 foreach (var bullet in bulletPool)
                 {
-                    if (Canvas.GetTop(bullet) > 720 ||
-                        Canvas.GetTop(bullet) < 0 ||
-                        Canvas.GetLeft(bullet) > 1280 ||
-                        Canvas.GetLeft(bullet) < 0)
-                    {
-                        bullet.Visibility = Visibility.Hidden;
-                    }
-                    else if (bullet.Visibility == Visibility.Visible)
+                    if (bullet.Visibility == Visibility.Visible)
                     {
                         Canvas.SetLeft(bullet, Canvas.GetLeft(bullet) + speed);
+                    }
+
+                    foreach (Image img in GameCanvas.Children.OfType<Image>())
+                    {
+                        if (img.Tag != null && img.Tag.ToString() == "Enemy")
+                        {
+                            var x1 = Canvas.GetLeft(img);
+                            var y1 = Canvas.GetTop(img);
+                            Rect r1 = new Rect(x1, y1, img.ActualWidth, img.ActualHeight);
+
+
+                            var x2 = Canvas.GetLeft(bullet);
+                            var y2 = Canvas.GetTop(bullet);
+                            Rect r2 = new Rect(x2, y2, bullet.ActualWidth, bullet.ActualHeight);
+
+                            if (r1.IntersectsWith(r2))
+                                Log.Content = "Intersected!";
+                        }
+                        else if (Canvas.GetTop(bullet) > 720 ||
+                                 Canvas.GetTop(bullet) < 0 ||
+                                 Canvas.GetLeft(bullet) > 1280 ||
+                                 Canvas.GetLeft(bullet) < 0)
+                        {
+                            bullet.Visibility = Visibility.Hidden;
+                        }
+
+                        
                     }
                 }
             }
@@ -182,7 +206,7 @@ namespace MagnusDreams.Views
 
         public void SetBullet(Image bullet)
         {
-            Canvas.SetTop(bullet, Canvas.GetTop(PlayerTest));
+            Canvas.SetTop(bullet, (Canvas.GetTop(PlayerTest) + PlayerTest.ActualHeight) - (bullet.ActualHeight*2));
             Canvas.SetLeft(bullet, Canvas.GetLeft(PlayerTest) + PlayerTest.ActualWidth);
             bullet.Visibility = Visibility.Visible;
             bullet.Refresh();
