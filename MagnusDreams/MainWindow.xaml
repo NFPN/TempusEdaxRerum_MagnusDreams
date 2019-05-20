@@ -12,12 +12,6 @@
         <Image x:Name="Fundo" HorizontalAlignment="Left" Height="728" VerticalAlignment="Top" Width="1280" Source="Images/Frame.png" Stretch="Fill" Margin="0,0,0,-8"/>
         <!-- Content control pra controlar qual usercontrol aparece em main-->
         <ContentControl x:Name="contentControl" Grid.Row="1"/>
-         <!--       
-        <Button x:Name="btnBegin" Content="COMEÇAR" HorizontalAlignment="Left" Height="75" Margin="951,569,0,0" VerticalAlignment="Top" Width="250" FontSize="20" FontWeight="Bold" Click="StartGame_Clicked"/>
-        <TextBox x:Name="lbTextNamePlayer" HorizontalAlignment="Left" Height="68" Margin="247,401,0,0" TextWrapping="Wrap" Text="Name..." VerticalAlignment="Top" Width="802" FontSize="24" FontFamily="Square721 BT" Background="Transparent" BorderBrush="#00ABADB3" SelectionBrush="#33D70000"/>
-        <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Label x:Name="textDescription" Content="Escreva seu nome para começar" HorizontalAlignment="Left" Margin="247,303,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold"/>
-       -->
-        
+
     </Grid>
 </Window>
