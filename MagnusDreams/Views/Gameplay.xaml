@@ -10,7 +10,7 @@
         <Image x:Name="FundoGame" VerticalAlignment="Top" Source="/MagnusDreams;component/Images/Sky.jpg"/>
 
         <Canvas Name="GameCanvas" RenderTransformOrigin="0.5,0.5">
-            <Image x:Name="PlayerTest" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="120" Source="/MagnusDreams;component/Images/jogavel.png" Canvas.Left="77" Canvas.Top="316"/>
+            <Image x:Name="PlayerImage" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="120" Source="/MagnusDreams;component/Images/jogavel.png" Canvas.Left="77" Canvas.Top="316" Tag="Player"/>
             <Image x:Name="PlayerBullet" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="15" Canvas.Left="36" Canvas.Top="351" Source="/MagnusDreams;component/Images/fundo.jpg" Stretch="Fill"/>
             <Image x:Name="Enemy" HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="64" Source="/MagnusDreams;component/Images/pause.png" Stretch="Fill" Canvas.Left="988" Canvas.Top="338" Tag="Enemy"/>
             <Image x:Name="Enemy_Copy" HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="64" Source="/MagnusDreams;component/Images/pause.png" Stretch="Fill" Canvas.Left="988" Canvas.Top="496" Tag="Enemy"/>
