@@ -171,6 +171,11 @@
   <ItemGroup>
     <Resource Include="Images\pause.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Sounds\bgSound.mp4" />
+    <Content Include="Sounds\click.wav" />
+    <Content Include="Sounds\select.wav" />
+    <Content Include="Sounds\shineselect.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
