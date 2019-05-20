@@ -182,7 +182,10 @@ namespace MagnusDreams.Views
                             Canvas.SetTop(PlayerImage, playerStartingTop);
                             return;
                         }
+                        img.Visibility = Visibility.Hidden;
                         obj.Visibility = Visibility.Hidden;
+                        GameCanvas.Children.Remove(img);
+                        GameCanvas.Children.Remove(obj);
                         return;
                     }
                 }
@@ -191,6 +194,7 @@ namespace MagnusDreams.Views
                           Canvas.GetLeft(obj) > 1280 ||
                           Canvas.GetLeft(obj) < 0) && isBullet)
                 {
+                    Canvas.SetLeft(obj, -100);
                     obj.Visibility = Visibility.Hidden;
                 }
             }
@@ -209,7 +213,7 @@ namespace MagnusDreams.Views
                 Visibility = Visibility.Hidden,
                 Tag = "PlayerBullet"
             });
-            GameCanvas.Children.Add(bulletPool.LastOrDefault());
+            //GameCanvas.Children.Add(bulletPool.LastOrDefault());
             SetBullet(bulletPool.LastOrDefault());
         }
 
@@ -231,6 +235,8 @@ namespace MagnusDreams.Views
 
         public void SetBullet(Image bullet)
         {
+            if (!GameCanvas.Children.Contains(bullet))
+                GameCanvas.Children.Add(bullet);
             bullet.Refresh();
             bullet.Visibility = Visibility.Visible;
             Canvas.SetLeft(bullet, Canvas.GetLeft(PlayerImage) + PlayerImage.ActualWidth);
