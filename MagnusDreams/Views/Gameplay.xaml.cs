@@ -46,10 +46,10 @@ namespace MagnusDreams.Views
             playerStartingLeft = Canvas.GetLeft(PlayerImage);
             playerStartingTop = Canvas.GetTop(PlayerImage);
 
-            //Low input lag controller( Com erro!)
-            //KeyboardController kbControl = new KeyboardController(Window.GetWindow(this));
-            //kbControl.timer.Interval = TimeSpan.FromMilliseconds(1);
-            //kbControl.KeyboardTick += Movement;
+            //low input lag controller(com erro!)
+            KeyboardController kbcontrol = new KeyboardController(MainWindow.appWindow);
+            kbcontrol.timer.Interval = TimeSpan.FromMilliseconds(1);
+            kbcontrol.KeyboardTick += Movement;
 
             fastTimer.Tick += GlobalTick;
             fastTimer.Interval = TimeSpan.FromMilliseconds(1);
@@ -73,7 +73,6 @@ namespace MagnusDreams.Views
             elapsedMiliSeconds = deltaTime.Milliseconds;
             timeToShoot = elapsedMiliSeconds % 100;
 
-
             //Loop Methods
             FastUpdate();
         }
@@ -83,7 +82,7 @@ namespace MagnusDreams.Views
             PlayerBullet.Visibility = Visibility.Hidden;
             elapsedMiliSeconds = 0;
             timeToShoot = 0;
-            speed = 10;
+            speed = 20;
         }
 
         private void FastUpdate()
@@ -91,7 +90,7 @@ namespace MagnusDreams.Views
             if (elapsedMiliSeconds > 100)
                 canShoot = true;
 
-            if (Keyboard.IsKeyDown(Key.A))
+            /*if (Keyboard.IsKeyDown(Key.A))
             {
                 if (canShoot && timeToShoot >= 85)
                 {
@@ -101,14 +100,22 @@ namespace MagnusDreams.Views
                     else
                         NewBullet();
                 }
-            }
+            }*/
         }
 
 
-        /*private void Movement(object sender, EventArgs e)
+        private void Movement(object sender, EventArgs e)
         {
-            Log.Content = e;
-        }*/
+            if (((KeyboardController)sender).KeyDown(Key.A))
+                if (canShoot && timeToShoot >= 85)
+                {
+                    canShoot = false;
+                    if (bulletPool.Count > 0)
+                        GetExistingBullet();
+                    else
+                        NewBullet();
+                }
+        }
 
 
         private void Update()
@@ -145,8 +152,8 @@ namespace MagnusDreams.Views
                     if (bullet.Visibility == Visibility.Visible)
                     {
                         Canvas.SetLeft(bullet, Canvas.GetLeft(bullet) + speed);
+                        CollisionCheck(bullet, true);
                     }
-                    CollisionCheck(bullet, true);
                 }
             }
             CollisionCheck(PlayerImage, false);

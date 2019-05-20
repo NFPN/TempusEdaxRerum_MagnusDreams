@@ -21,11 +21,14 @@ namespace MagnusDreams
     /// </summary>
     public partial class MainWindow : Window
     {
+        static public Window appWindow;
         public MainWindow()
         {
             InitializeComponent();
             contentControl.Content = new MenuView();
             //MenuOptions();
+
+            appWindow = GetWindow(this);
         }
 
         private void ButtonClick(object sender, RoutedEventArgs e)
