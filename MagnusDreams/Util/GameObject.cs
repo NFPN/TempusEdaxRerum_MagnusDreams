@@ -13,10 +13,10 @@ namespace MagnusDreams.Util
         public EntityObject(int life, Image entityObjectGraphic)
         {
             Life = life;
-            EntityObjectGraphic = entityObjectGraphic;
+            Image = entityObjectGraphic;
         }
 
-        int Life { get; set; }
-        Image EntityObjectGraphic { get; }
+        public int Life { get; set; }
+        public Image Image { get; }
     }
 }
