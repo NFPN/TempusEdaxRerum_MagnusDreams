@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Threading;
 
-namespace MagnusDreams.Extensions
+namespace MagnusDreams.Util
 {
     /// <summary>
     /// Renders the UIElement in canvas

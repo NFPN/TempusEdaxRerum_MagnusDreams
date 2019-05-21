@@ -4,7 +4,7 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using System.Collections.Generic;
 
-namespace MagnusDreams.Extensions
+namespace MagnusDreams.Util
 {
     class KeyboardController
     {
