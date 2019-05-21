@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -14,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MagnusDreams.Views;
 
+
 namespace MagnusDreams
 {
     /// <summary>
@@ -22,9 +24,16 @@ namespace MagnusDreams
     public partial class MainWindow : Window
     {
         static public Window appWindow;
+        public List<MediaPlayer> audios = new List<MediaPlayer>();
+        string startupPath = Environment.CurrentDirectory;
+
+        
+
         public MainWindow()
         {
+            
             InitializeComponent();
+            AudioGame("bgSoundsss.wav");
             contentControl.Content = new MenuView();
             //MenuOptions();
 
@@ -34,7 +43,7 @@ namespace MagnusDreams
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
             contentControl.Content = new CreditosView();
-
+            
         }
 
         public void ChangeBG()
@@ -56,6 +65,24 @@ namespace MagnusDreams
             {
                 obj.Visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
             }
+        }
+
+        public  void AudioGame(string audioName)
+        {
+
+            // Get application path and return 2 foldes (parents) 
+            DirectoryInfo directoryInfo = Directory.GetParent(Directory.GetParent(startupPath).FullName);
+
+            Directory.GetDirectories(directoryInfo.FullName);
+
+            var p1 = new MediaPlayer();
+
+            p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + audioName , UriKind.Relative));
+            p1.Play();
+            //Add backgroung to yout list of audios if necessary
+            audios.Add(p1);
+            //MessageBox.Show(directoryInfo.FullName + @"\Sounds");
+
         }
     }
 }
