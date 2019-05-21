@@ -7,11 +7,19 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="720" Width="1280" WindowStyle="None">
-    
-    <Grid x:Name="GridMenu" Background="#FF818181">
-        <Image x:Name="Fundo" HorizontalAlignment="Left" Height="728" VerticalAlignment="Top" Width="1280" Source="Images/Frame.png" Stretch="Fill" Margin="0,0,0,-8"/>
+
+    <Grid x:Name="GridMenu">
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/MENU FINAL_Prancheta 1.jpg"/>
+        </Grid.Background>
         <!-- Content control pra controlar qual usercontrol aparece em main-->
-        <ContentControl x:Name="contentControl" Grid.Row="1"/>
+        <!-- Content control pra controlar qual usercontrol aparece em main-->
+        <ContentControl x:Name="contentControl" Grid.Row="1">
+            <Image x:Name="Fundo" HorizontalAlignment="Left" Height="728" VerticalAlignment="Top" Width="1280" Source="Images/Frame.png" Stretch="Fill" Margin="0,0,0,-8"/>
+        </ContentControl>
+        <Image />
 
     </Grid>
+
+
 </Window>

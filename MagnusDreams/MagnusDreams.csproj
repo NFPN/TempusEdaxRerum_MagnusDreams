@@ -172,14 +172,16 @@
     <Resource Include="Images\pause.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\fireball.gif" />
-    <Resource Include="Images\olho.png" />
-    <Resource Include="Images\tentaculo.png" />
     <Resource Include="Images\Treco Pronto-01.png" />
-    <Resource Include="Images\botao iniciar_Prancheta 1.png" />
     <Resource Include="Images\Game Derrota_Prancheta 1.jpg" />
     <Resource Include="Images\Game Win_Prancheta 1.jpg" />
     <Resource Include="Images\MENU FINAL_Prancheta 1.jpg" />
+    <Resource Include="Images\olhoo.png" />
+    <Resource Include="Images\Botao iniciar_Prancheta 1.png" />
+    <Resource Include="Images\BOSS_Prancheta 1.png" />
+    <Resource Include="Images\fogo.gif" />
+    <Resource Include="Images\config.png" />
+    <Resource Include="Images\sair.png" />
     <Content Include="Sounds\bgSound.mp4" />
     <Content Include="Sounds\click.wav" />
     <Content Include="Sounds\select.wav" />

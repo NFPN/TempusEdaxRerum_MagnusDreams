@@ -29,12 +29,12 @@ namespace MagnusDreams.Views
 
         private void ReturnMainMenuClicked(object sender, RoutedEventArgs e)
         {
-            bgGameOver.Visibility = Visibility.Hidden;
+            contentControlGameOver.Visibility = Visibility.Hidden;
             contentControlGameOver.Content = new MainWindow();
 
             main.ChangeVisibility(new Control[]
             {
-                txtDescriptionGameOver,
+                
                 btnMenu,
                 btnPlayAgain
             }, false);
