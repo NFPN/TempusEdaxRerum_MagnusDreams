@@ -29,6 +29,9 @@ namespace MagnusDreams.Views
 
         private void ReturnMainMenuClicked(object sender, RoutedEventArgs e)
         {
+            //Teste de som
+            main.AudioGame("shineselect.wav");
+
             contentControlPaused.Content = new MenuView();
 
             bgPauseGame.Visibility = Visibility.Hidden;

@@ -12,7 +12,7 @@
         <Label x:Name="txtmusicVolume" Content="Music Volume :" HorizontalAlignment="Left" Height="66" Margin="252,219,0,0" VerticalAlignment="Top" Width="364" FontSize="48" FontFamily="Showcard Gothic"/>
         <Label x:Name="txtSfxVolume" Content="SFX Volume :" HorizontalAlignment="Left" Height="81" Margin="252,375,0,0" VerticalAlignment="Top" Width="364" FontFamily="Showcard Gothic" FontSize="48" RenderTransformOrigin="1.166,0.323"/>
         <Button x:Name="btnReturn" Content="VOLTAR" HorizontalAlignment="Left" Height="75" Margin="72,569,0,0" VerticalAlignment="Top" Width="250" FontSize="20" Click="ReturnButtonOp_Clicked"/>
-        <CheckBox x:Name="musicIsChecked" Content="" HorizontalAlignment="Left" Height="15.218" Margin="640.189,277.819,0,0" VerticalAlignment="Top" Width="15.907" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" IsChecked="True" VerticalContentAlignment="Center" Padding="15,-1,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+        <CheckBox x:Name="musicIsChecked" Unchecked="musicOff" Content="" HorizontalAlignment="Left" Height="15.218" Margin="640.189,277.819,0,0" VerticalAlignment="Top" Width="15.907" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" IsChecked="True" VerticalContentAlignment="Center" Padding="15,-1,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" >
             <CheckBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="4" ScaleY="4"/>
@@ -22,7 +22,7 @@
                 </TransformGroup>
             </CheckBox.RenderTransform>
         </CheckBox>
-        <CheckBox x:Name="sfxIsChecked" Content="." HorizontalAlignment="Left" Height="15.218" Margin="642.257,432.918,0,0" VerticalAlignment="Top" Width="15.907" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" VerticalContentAlignment="Center" Padding="15,-1,0,0" IsChecked="True" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+        <CheckBox x:Name="sfxIsChecked" Unchecked="sfxOff" Content="." HorizontalAlignment="Left" Height="15.218" Margin="642.257,432.918,0,0" VerticalAlignment="Top" Width="15.907" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" VerticalContentAlignment="Center" Padding="15,-1,0,0" IsChecked="True" BorderBrush="{x:Null}" Foreground="{x:Null}" >
             <CheckBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="4" ScaleY="4"/>

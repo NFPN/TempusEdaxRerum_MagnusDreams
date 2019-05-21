@@ -7,7 +7,7 @@ using System.Windows.Threading;
 using System.Collections.Generic;
 using System.Windows.Media.Imaging;
 
-using MagnusDreams.Extensions;
+using MagnusDreams.Util;
 
 namespace MagnusDreams.Views
 {
@@ -22,6 +22,7 @@ namespace MagnusDreams.Views
         DateTime startingTime = DateTime.Now;
 
         List<Image> bulletPool = new List<Image>();
+        List<EntityObject> enemyPool = new List<EntityObject>();
 
         bool canShoot = false, shouldMakeNewBullet = false, canMove = true;
 
@@ -31,6 +32,7 @@ namespace MagnusDreams.Views
 
         DispatcherTimer mainTime = new DispatcherTimer(), fastTimer = new DispatcherTimer();
 
+        
 
         //BitmapSource bitmap = new BitmapImage(new Uri("Images/fundo.jpg", UriKind.Relative));
 
@@ -41,6 +43,15 @@ namespace MagnusDreams.Views
         public Gameplay()
         {
             InitializeComponent();
+
+            //Test purpose only(change o update later)
+            foreach (var img in GameCanvas.Children.OfType<Image>())
+            {
+                if (img.Tag != null && img.Tag.ToString() == "Enemy")
+                {
+                    enemyPool.Add(new EntityObject(3, img));
+                }
+            }
 
             //Sets player respawn position
             playerStartingLeft = Canvas.GetLeft(PlayerImage);

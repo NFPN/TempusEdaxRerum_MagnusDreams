@@ -59,8 +59,9 @@
     <Compile Include="DataBase\App.xaml.cs" />
     <Compile Include="DataBase\ComandosSQL.cs" />
     <Compile Include="DataBase\Connection.cs" />
-    <Compile Include="Extensions\ExtensionMethods.cs" />
-    <Compile Include="Extensions\KeyboardController.cs" />
+    <Compile Include="Util\GameObject.cs" />
+    <Compile Include="Util\ExtensionMethods.cs" />
+    <Compile Include="Util\KeyboardController.cs" />
     <Compile Include="Views\CreditosView.xaml.cs">
       <DependentUpon>CreditosView.xaml</DependentUpon>
     </Compile>
@@ -172,17 +173,10 @@
     <Resource Include="Images\pause.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Treco Pronto-01.png" />
-    <Resource Include="Images\Game Derrota_Prancheta 1.jpg" />
-    <Resource Include="Images\Game Win_Prancheta 1.jpg" />
-    <Resource Include="Images\MENU FINAL_Prancheta 1.jpg" />
-    <Resource Include="Images\olhoo.png" />
-    <Resource Include="Images\Botao iniciar_Prancheta 1.png" />
-    <Resource Include="Images\BOSS_Prancheta 1.png" />
-    <Resource Include="Images\fogo.gif" />
-    <Resource Include="Images\config.png" />
-    <Resource Include="Images\sair.png" />
-    <Content Include="Sounds\bgSound.mp4" />
+    <Resource Include="Images\fireball.gif" />
+    <Resource Include="Images\olho.png" />
+    <Resource Include="Images\tentaculo.png" />
+    <Content Include="Sounds\bgSoundsss.wav" />
     <Content Include="Sounds\click.wav" />
     <Content Include="Sounds\select.wav" />
     <Content Include="Sounds\shineselect.wav" />

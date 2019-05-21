@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 using MagnusDreams;
 using Microsoft.Win32;
 
@@ -23,11 +24,13 @@ namespace MagnusDreams.Views
     public partial class MenuView : UserControl
     {
         MainWindow main = (MainWindow)Application.Current.MainWindow;
-        List<MediaPlayer> audios = new List<MediaPlayer>();
+        //List<MediaPlayer> audios = new List<MediaPlayer>();
+        //string startupPath = Environment.CurrentDirectory;
 
         public MenuView()
         {
-            AudioGame("bgSound.mp4");
+            
+            //AudioGame("bgSound.mp4");
             InitializeComponent();
             ShowMenu();
 
@@ -37,11 +40,15 @@ namespace MagnusDreams.Views
         {
             contentControl.Content = new CreditosView();
             HiddenMenu();
+            //Teste de som
+            main.AudioGame("shineselect.wav");
         }
 
         private void ExitButton_Clicked(object sender, RoutedEventArgs e)
         {
             Environment.Exit(0);
+            //Teste de som
+            main.AudioGame("select.wav");
         }
 
         private void OptionsButton_Clicked(object sender, RoutedEventArgs e)
@@ -51,9 +58,8 @@ namespace MagnusDreams.Views
             HiddenMenu();
 
             //Teste de som
-            var p1 = new MediaPlayer();
-            p1.Open(new Uri(@"C:\Users\nico_\source\repos\TempusEdaxRerum_MagnusDreams\MagnusDreams\Sounds\shineselect.wav"));
-            p1.Play();
+            main.AudioGame("click.wav");
+            
 
         }
 
@@ -63,6 +69,9 @@ namespace MagnusDreams.Views
             contentControl.Content = new Gameplay();
             //----------------------
             HiddenMenu();
+
+            //Teste de som
+            main.AudioGame("click.wav");
         }
 
         public void HiddenMenu()
@@ -77,22 +86,6 @@ namespace MagnusDreams.Views
             main.ChangeVisibility(new Control[] {
             btnCredits, btnOptions, btn_Close,
             btnNewGame }, true);
-        }
-
-        private void AudioGame(string audioName)
-        {
-            //Parecido com  o que o prof fez mas aqui n deu certo
-            //string url = ApplicationCommands.Open + @"\" + audioName;
-            //var som = new MediaPlayer();
-            //som.Open(new Uri(url));
-            //som.Play();
-            //audios.Add(som);
-
-
-            var p1 = new MediaPlayer();
-            p1.Open(new Uri(@"C:\Users\nico_\source\repos\TempusEdaxRerum_MagnusDreams\MagnusDreams\Sounds\bgSound.mp4"));
-            p1.Play();
-
-        }
+        }        
     }
 }
