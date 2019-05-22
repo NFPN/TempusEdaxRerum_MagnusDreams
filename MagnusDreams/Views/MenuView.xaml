@@ -8,10 +8,10 @@
              d:DesignHeight="720" d:DesignWidth="1280" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
     <Grid Name="MenuGrid">
         <ContentControl x:Name="contentControl" Grid.Row="1"/>
-        <Button x:Name="btnNewGame" Content="NOVO JOGO" HorizontalAlignment="Left" Height="309" Margin="437,10,0,0" VerticalAlignment="Top" Width="641" FontSize="20" FontWeight="Bold" Click="NewGame_Clicked" BorderBrush="{x:Null}" Foreground="{x:Null}">
-            <Button.Background>
+        <Button x:Name="btnNewGame" Content="NOVO JOGO" HorizontalAlignment="Left" Height="309" Margin="408,10,0,0" VerticalAlignment="Top" Width="641" FontSize="20" FontWeight="Bold" Click="NewGame_Clicked" BorderBrush="{x:Null}" Foreground="{x:Null}">
+           <!-- <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/botao iniciar_Prancheta 1.png"/>
-            </Button.Background>
+            </Button.Background>-->
         </Button>
         <Button x:Name="btnOptions" Content="" HorizontalAlignment="Left" Height="141" Margin="520,360,0,0" VerticalAlignment="Top" Width="357" FontSize="20" Click="OptionsButton_Clicked" BorderBrush="{x:Null}">
             <Button.Background>
