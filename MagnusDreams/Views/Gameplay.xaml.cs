@@ -16,7 +16,12 @@ namespace MagnusDreams.Views
     {
         #region Global Variables
 
-        public enum ObjType { Player, Enemy, PlayerBullet }
+        //The hidden position of player and playerBullet objects, enemy and enemyBullet objects
+        double[,] hiddenPos = new double[2, 2] 
+        { 
+            { -250, 0 }, 
+            { -250, 250 }
+        }; 
 
         //Time Info
         double elapsedMiliSeconds;
@@ -24,20 +29,18 @@ namespace MagnusDreams.Views
         DateTime startingTime = DateTime.Now;
         DispatcherTimer mainTime = new DispatcherTimer(), fastTimer = new DispatcherTimer();
 
-        //Bullet Info
-        ImageSource bulletSource;
-        double bulletHeight, bulletWidth;
-
         //Enemy Info
-        ImageSource enemySource;
-        double enemyBaseHeight, enemyBaseWidth;
-        List<EntityObject> enemyPool = new List<EntityObject>();
+        //ImageSource enemySource;
+        //double enemyBaseHeight, enemyBaseWidth;
+        //List<EntityObject> enemyPool = new List<EntityObject>();
 
         //Player Info
         EntityObject player;
-        List<Image> playerBulletPool = new List<Image>();
-        bool shouldMakeNewBullet, canMove = true;
+        List<EntityObject> playerBulletPool = new List<EntityObject>();
+        bool shouldMakeNewBullet, canMove;
         double playerInitialLeftPosition, playerInitialTopPosition, playerSpeed, timeToShootPlayerBullets;
+
+        List<EntityObject> allObjects = new List<EntityObject>();
 
         #endregion
 
@@ -48,7 +51,7 @@ namespace MagnusDreams.Views
             
             KeyboardController kbcontrol = new KeyboardController(MainWindow.appWindow);
             kbcontrol.timer.Interval = TimeSpan.FromMilliseconds(1);
-            kbcontrol.KeyboardTick += Movement;
+            kbcontrol.KeyboardTick += InputChecker;
 
             fastTimer.Tick += GlobalTick;
             fastTimer.Interval = TimeSpan.FromMilliseconds(1);
@@ -79,6 +82,8 @@ namespace MagnusDreams.Views
         // Executes once when the game scene is loaded
         private void Start()
         {
+            allObjects.Add(player);
+            
             //Initializing timers
             elapsedMiliSeconds = 0;
             timeToShootPlayerBullets = 0;
@@ -86,9 +91,12 @@ namespace MagnusDreams.Views
             //Player Setup
             playerInitialLeftPosition = Canvas.GetLeft(PlayerImage);
             playerInitialTopPosition = Canvas.GetTop(PlayerImage);
-            player = new EntityObject(3, PlayerImage);
+            player = new EntityObject(3, PlayerImage, ObjType.Player);
             playerSpeed = 20;
-            
+            canMove = true;
+
+            //Enemy Setup
+
             //Scene Cleanup
             PlayerBullet.Visibility = Visibility.Hidden;
             GameCanvas.Children.Remove(PlayerBullet);
@@ -98,7 +106,7 @@ namespace MagnusDreams.Views
             {
                 if (img.Tag != null && img.Tag.ToString() == "Enemy")
                 {
-                    enemyPool.Add(new EntityObject(3, img));
+                    allObjects.Add(new EntityObject(3, img, ObjType.Enemy));
                 }
             }
         }
@@ -108,22 +116,16 @@ namespace MagnusDreams.Views
 
         }
 
-
-        private void Movement(object sender, EventArgs e)
-        {
-            if (((KeyboardController)sender).KeyDown(Key.A) || ((KeyboardController)sender).KeyDown(Key.Space))
-                if (timeToShootPlayerBullets >= 85)
-                    if (playerBulletPool.Count > 0)
-                        GetExistingBullet();
-                    else
-                        NewBullet();
-        }
-
-
-        private void Update()
+        private void InputChecker(object sender, EventArgs e)
         {
             if (Keyboard.IsKeyDown(Key.Escape))
                 Log.Content = "Pause";
+
+            //Shooting Logic
+            if (((KeyboardController)sender).KeyDown(Key.A) || ((KeyboardController)sender).KeyDown(Key.Space))
+                if (timeToShootPlayerBullets >= 85)
+                    if (playerBulletPool.Count > 0) GetExistingBullet();
+                    else NewBullet();
 
             //Movement Logic
             if (canMove)
@@ -145,84 +147,94 @@ namespace MagnusDreams.Views
                     Canvas.SetLeft(player.Image, Canvas.GetLeft(player.Image) + 10);
                 }
             }
-            
-            //Player collision check
-            CollisionCheck(player.Image, ObjType.Player);
+        }
+
+        private void Update()
+        {
+            CollisionCheck();
 
             //Bullet pooling and collision
             if (playerBulletPool.Count > 0)
             {
                 foreach (var bullet in playerBulletPool)
                 {
-                    if (bullet.Visibility == Visibility.Visible)
+                    if (bullet.Image.Visibility == Visibility.Visible)
                     {
-                        Canvas.SetLeft(bullet, Canvas.GetLeft(bullet) + playerSpeed);
-                        CollisionCheck(bullet, ObjType.PlayerBullet);
+                        Canvas.SetLeft(bullet.Image, Canvas.GetLeft(bullet.Image) + playerSpeed);
                     }
                 }
             }
         }
 
-        public void CollisionCheck(Image imgObj, ObjType type)
+        public void CollisionUpdate(EntityObject obj)
         {
-            foreach (Image img in GameCanvas.Children.OfType<Image>())
-            {
-                //Draw rectantgles on top of all
-                var x1 = Canvas.GetLeft(img);
-                var y1 = Canvas.GetTop(img);
-                var x2 = Canvas.GetLeft(imgObj);
-                var y2 = Canvas.GetTop(imgObj);
-                Rect r1 = new Rect(x1, y1, img.ActualWidth, img.ActualHeight);
-                Rect r2 = new Rect(x2, y2, imgObj.ActualWidth, imgObj.ActualHeight);
+            var x = Canvas.GetLeft(obj.Image);
+            var y = Canvas.GetTop(obj.Image);
+            obj.Rect =  new Rect(x, y, obj.Image.ActualWidth, obj.Image.ActualHeight);
+        }
 
+        public void CollisionCheck()
+        {
+            foreach(var obj1 in allObjects)
+            foreach (var obj2 in allObjects)
+            {
                 //Check rectangles collision
-                if (r1.IntersectsWith(r2) && img.Tag != null)
+                if (obj1.Rect.IntersectsWith(obj2.Rect))
                 {
-                    if (type == ObjType.Player && img.Tag.ToString() == "Enemy")
+                    //PlayerCollided
+                    if (obj1.Type == ObjType.Player && obj2.Type != ObjType.Player && obj2.Type != ObjType.PlayerBullet)
                     {
-                        player.Life--;
+                            Log.Content = "PlayerCollided";
+                        //player.Life--;
                         if (player.Life <= 0)
                         {
                             //gameover
                         }
-                    }
-                    else if (type == ObjType.Enemy)
-                    {
-                        CheckOutOfBounds(imgObj);
-                    }
-                    else if (type == ObjType.PlayerBullet)
-                    {
-                        CheckOutOfBounds(imgObj);
-                    }
 
-                    if (imgObj.Tag.ToString() != null && imgObj.Tag.ToString() == "Player")
-                    {
-                        Canvas.SetLeft(PlayerImage, playerInitialLeftPosition);
-                        Canvas.SetTop(PlayerImage, playerInitialTopPosition);
                         return;
                     }
-                    img.Visibility = Visibility.Hidden;
-                    imgObj.Visibility = Visibility.Hidden;
-                    GameCanvas.Children.Remove(img);
-                    GameCanvas.Children.Remove(imgObj);
+                    else if(obj1.Type == ObjType.Enemy && obj2.Type != ObjType.Enemy)
+                    GameCanvas.Children.Remove(obj1.Image);
                     return;
                 }
             }
         }
 
-        public void CheckOutOfBounds(Image imgObj)
+        public void ClearFromScreen(EntityObject entity)
         {
-            if (Canvas.GetTop(imgObj) > 720 || Canvas.GetTop(imgObj) < 0 || Canvas.GetLeft(imgObj) > 1280 || Canvas.GetLeft(imgObj) < 0)
+            //Verify if its player and resets position or hide and remove obj from the interaction area
+            entity.Image.Visibility = Visibility.Hidden;
+            if (entity.Type == ObjType.Player || entity.Type == ObjType.PlayerBullet)
             {
-                Canvas.SetLeft(imgObj, -100);
-                imgObj.Visibility = Visibility.Hidden;
+                bool check = entity.Type == ObjType.PlayerBullet ?
+                    GoToHiddenPos(entity.Image, hiddenPos[1, 0], hiddenPos[1, 1]) :
+                    GoToHiddenPos(entity.Image, hiddenPos[1, 0], hiddenPos[1, 1], false);
+            }
+            else if (entity.Type == ObjType.Enemy || entity.Type == ObjType.EnemyBullet)
+            {
+                GoToHiddenPos(entity.Image, hiddenPos[1, 0],hiddenPos[1, 1]);
             }
         }
 
+        public bool GoToHiddenPos(Image img, double posX, double posY, bool hide = true)
+        {
+            if (hide)
+                img.Visibility = Visibility.Hidden;
+            Canvas.SetLeft(img, posX);
+            Canvas.SetTop(img, posY);
+            return hide;
+        }
+
+        public bool CheckOutOfBounds(Image imgObj)
+        {
+            if (Canvas.GetTop(imgObj) > 720 || Canvas.GetTop(imgObj) < 0 || Canvas.GetLeft(imgObj) > 1280 || Canvas.GetLeft(imgObj) < 0)
+                return true;
+            return false;
+        }
 
         public void NewBullet()
         {
-            playerBulletPool.Add(new Image()
+            playerBulletPool.Add(new EntityObject(1, new Image()
             {
                 Height = PlayerBullet.Height,
                 Width = PlayerBullet.Width,
@@ -231,9 +243,8 @@ namespace MagnusDreams.Views
                 VerticalAlignment = VerticalAlignment.Top,
                 Visibility = Visibility.Hidden,
                 Tag = "PlayerBullet"
-            });
-            //GameCanvas.Children.Add(bulletPool.LastOrDefault());
-            SetBullet(playerBulletPool.LastOrDefault());
+            }, ObjType.PlayerBullet));
+            SetBullet(playerBulletPool.LastOrDefault().Image);
         }
 
         public void GetExistingBullet()
@@ -241,9 +252,9 @@ namespace MagnusDreams.Views
             shouldMakeNewBullet = true;
             for (int i = 0; i < playerBulletPool.Count; i++)
             {
-                if (playerBulletPool[i].Visibility == Visibility.Hidden)
+                if (playerBulletPool[i].Image.Visibility == Visibility.Hidden)
                 {
-                    SetBullet(playerBulletPool[i]);
+                    SetBullet(playerBulletPool[i].Image);
                     shouldMakeNewBullet = false;
                     break;
                 }
