@@ -29,23 +29,22 @@ namespace MagnusDreams.Views
 
         private void sfxOff(object sender, System.EventArgs e)
         {
-            CheckBox Mute = (CheckBox)sender;
-            Mute.Content = "";
+            //faz com q os barulhos do bottão fiquem off
+        }
 
-            // Use the checked state to set the mute property. 
-            sfxIsChecked.Content = Mute.Content;
+        private void musicOn(object sender, System.EventArgs e)
+        {
+            //main.audios[0].Volume = 0.5f;
+        }
 
-            //Mute.ContextMenu = Mute.Checked;
-            //player.settings.mute = Mute.Checked;
+        private void sfxOn(object sender, System.EventArgs e)
+        {
+            //faz com q os barulhos do bottão fiquem on
         }
 
         private void musicOff(object sender, System.EventArgs e)
         {
-            CheckBox Mute = (CheckBox)sender;
-            Mute.Content = "";
-
-            // Use the checked state to set the mute property. 
-            sfxIsChecked.Content = Mute.Content;
+            main.audios[0].Volume = 0;
         }
 
         private void ReturnButtonOp_Clicked(object sender, RoutedEventArgs e)

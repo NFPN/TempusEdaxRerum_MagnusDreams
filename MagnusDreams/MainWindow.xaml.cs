@@ -24,6 +24,7 @@ namespace MagnusDreams
     public partial class MainWindow : Window
     {
         static public Window appWindow;
+        OptionsView op = new OptionsView();
         public List<MediaPlayer> audios = new List<MediaPlayer>();
         string startupPath = Environment.CurrentDirectory;
 
@@ -69,19 +70,20 @@ namespace MagnusDreams
 
         public  void AudioGame(string audioName)
         {
+            
+                // Get application path and return 2 foldes (parents) 
+                DirectoryInfo directoryInfo = Directory.GetParent(Directory.GetParent(startupPath).FullName);
 
-            // Get application path and return 2 foldes (parents) 
-            DirectoryInfo directoryInfo = Directory.GetParent(Directory.GetParent(startupPath).FullName);
+                Directory.GetDirectories(directoryInfo.FullName);
 
-            Directory.GetDirectories(directoryInfo.FullName);
+                var p1 = new MediaPlayer();
 
-            var p1 = new MediaPlayer();
-
-            p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + audioName , UriKind.Relative));
-            p1.Play();
-            //Add backgroung to yout list of audios if necessary
-            audios.Add(p1);
-            //MessageBox.Show(directoryInfo.FullName + @"\Sounds");
+                p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + audioName, UriKind.Relative));
+                p1.Volume = 0.5;
+                p1.Play();
+                //Add backgroung to yout list of audios if necessary
+                audios.Add(p1);
+                //MessageBox.Show(directoryInfo.FullName + @"\Sounds");
 
         }
     }

@@ -9,21 +9,33 @@
     <Grid Name="MenuGrid">
         <ContentControl x:Name="contentControl" Grid.Row="1"/>
         <Button x:Name="btnNewGame" Content="NOVO JOGO" HorizontalAlignment="Left" Height="309" Margin="408,10,0,0" VerticalAlignment="Top" Width="641" FontSize="20" FontWeight="Bold" Click="NewGame_Clicked" BorderBrush="{x:Null}" Foreground="{x:Null}">
-           <!-- <Button.Background>
+            <Button.Background>
+                <ImageBrush ImageSource="/MagnusDreams;component/Images/Botao Iniciar sem borda.png"/>
+            </Button.Background>
+            <!-- <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/botao iniciar_Prancheta 1.png"/>
             </Button.Background>-->
         </Button>
-        <Button x:Name="btnOptions" Content="" HorizontalAlignment="Left" Height="141" Margin="520,360,0,0" VerticalAlignment="Top" Width="357" FontSize="20" Click="OptionsButton_Clicked" BorderBrush="{x:Null}">
+
+
+        <Button x:Name="btnOptions"  HorizontalAlignment="Left" Height="141" Margin="520,360,0,0" VerticalAlignment="Top" Width="357" FontSize="20" Click="OptionsButton_Clicked" BorderBrush="{x:Null}"  Foreground="{x:Null}" OpacityMask="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+            
+
             <Button.Background>
-                <ImageBrush ImageSource="/MagnusDreams;component/Images/config.png"/>
+                <ImageBrush ImageSource="/MagnusDreams;component/Images/configsemborda.png"/>
+            </Button.Background>
+
+        </Button>
+        <Button x:Name="btn_Close" Content="" HorizontalAlignment="Left" Height="105" Margin="1030,615,0,0" VerticalAlignment="Top" Width="250" FontSize="20" Click="ExitButton_Clicked" BorderBrush="{x:Null}" RenderTransformOrigin="0.949,0.827">
+            <Button.Background>
+                <ImageBrush ImageSource="/MagnusDreams;component/Images/sairsemborda.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btn_Close" Content="" HorizontalAlignment="Left" Height="105" Margin="968,581,0,0" VerticalAlignment="Top" Width="250" FontSize="20" Click="ExitButton_Clicked" BorderBrush="{x:Null}">
+        <Button x:Name="btnCredits"  HorizontalAlignment="Left" Height="126" Margin="520,501,0,0" VerticalAlignment="Top" Width="357" FontSize="20" Click="CreditsButton_Clicked" BorderBrush="{x:Null}">
             <Button.Background>
-                <ImageBrush ImageSource="/MagnusDreams;component/Images/sair.png"/>
+                <ImageBrush ImageSource="/MagnusDreams;component/Images/creditossemborda.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnCredits" Content="CRÉDITOS" HorizontalAlignment="Left" Height="75" Margin="520,506,0,0" VerticalAlignment="Top" Width="250" FontSize="20" Click="CreditsButton_Clicked" BorderBrush="{x:Null}"/>
     </Grid>
 
 </UserControl>
