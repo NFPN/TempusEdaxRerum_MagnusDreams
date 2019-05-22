@@ -18,6 +18,7 @@ using MagnusDreams.Views;
 
 namespace MagnusDreams
 {
+    public enum ObjType { Player, Enemy, PlayerBullet, EnemyBullet }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
