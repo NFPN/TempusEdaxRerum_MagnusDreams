@@ -86,6 +86,19 @@ namespace MagnusDreams.Views
             main.ChangeVisibility(new Control[] {
             btnCredits, btnOptions, btn_Close,
             btnNewGame }, true);
-        }        
+        }
+
+      //private void onConfigFocus(object sender, RoutedEventArgs e)
+      //  {
+      //      Button tb = e.Source as Button;
+      //      tb.Background = Brushes.BlueViolet;
+      //  }
+      //
+      //  private void ConfigLost(object sender, RoutedEventArgs e)
+      //  {
+      //      Button tb = e.Source as Button;
+      //      tb.Background = Brushes.Yellow;
+      //  }
+
     }
 }

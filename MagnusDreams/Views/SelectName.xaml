@@ -9,11 +9,21 @@
         
     
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/MagnusDreams;component/Images/Escrever Nome.jpg"/>
+        </Grid.Background>
         <ContentControl x:Name="contentControl" Grid.Row="1"/>
         
-        <Button x:Name="btnBegin" Content="COMEÇAR" HorizontalAlignment="Left" Height="75" Margin="951,569,0,0" VerticalAlignment="Top" Width="250" FontSize="20" FontWeight="Bold" Click="StartGame_Clicked"/>
-        <TextBox x:Name="lbTextNamePlayer" HorizontalAlignment="Left" Height="68" Margin="247,401,0,0" TextWrapping="Wrap" Text="Name..." VerticalAlignment="Top" Width="802" FontSize="24" FontFamily="Square721 BT" Background="Transparent" BorderBrush="#00ABADB3" SelectionBrush="#33D70000"/>
-        <Label x:Name="textDescription" Content="Escreva seu nome para começar" HorizontalAlignment="Left" Margin="247,303,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold"/>
+        <Button x:Name="btnBegin" Content="COMEÇAR" HorizontalAlignment="Left" Height="75" Margin="951,569,0,0" VerticalAlignment="Top" Width="250" FontSize="20" FontWeight="Bold" Click="StartGame_Clicked">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBox x:Name="lbTextNamePlayer" HorizontalAlignment="Left" Height="68" Margin="423,175,0,0" TextWrapping="Wrap" Text="Name..." VerticalAlignment="Top" Width="436" FontSize="24" FontFamily="Square721 BT" Background="Transparent" BorderBrush="#00ABADB3" SelectionBrush="#33D70000"/>
+        <Label x:Name="textDescription" Content="Escreva seu nome para começar" HorizontalAlignment="Left" Margin="463,52,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
        
     </Grid>
 </Window>

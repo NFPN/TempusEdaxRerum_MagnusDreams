@@ -174,15 +174,27 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\BOSS_Prancheta 1.png" />
-    <Resource Include="Images\botao iniciar_Prancheta 1.png" />
-    <Resource Include="Images\config.png" />
     <Resource Include="Images\fogo.gif" />
     <Resource Include="Images\Game Derrota_Prancheta 1.jpg" />
     <Resource Include="Images\Game Win_Prancheta 1.jpg" />
     <Resource Include="Images\MENU FINAL_Prancheta 1.jpg" />
     <Resource Include="Images\olhoo.png" />
-    <Resource Include="Images\sair.png" />
     <Resource Include="Images\Treco Pronto-01.png" />
+    <Resource Include="Images\Botao Iniciar Com Borda.png" />
+    <Resource Include="Images\Botao Iniciar sem borda.png" />
+    <Resource Include="Images\configborder.png" />
+    <Resource Include="Images\configsemborda.png" />
+    <Resource Include="Images\creditosborder.png" />
+    <Resource Include="Images\creditossemborda.png" />
+    <Resource Include="Images\Escrever Nome.jpg" />
+    <Resource Include="Images\jnborder.png" />
+    <Resource Include="Images\jnsemborda.png" />
+    <Resource Include="Images\menuborder.png" />
+    <Resource Include="Images\menusemborda.png" />
+    <Resource Include="Images\sairborder.png" />
+    <Resource Include="Images\sairsemborda.png" />
+    <Resource Include="Images\voltarborder.png" />
+    <Resource Include="Images\voltarsemborda.png" />
     <Content Include="Sounds\bgSoundsss.wav" />
     <Content Include="Sounds\click.wav" />
     <Content Include="Sounds\select.wav" />
