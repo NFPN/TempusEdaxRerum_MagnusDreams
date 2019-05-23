@@ -4,11 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="720" Width="1280" WindowStyle="None">
+    
 
     <Grid x:Name="GridMenu">
+        
         <Grid.Background>
             <ImageBrush ImageSource="Images/MENU FINAL_Prancheta 1.jpg"/>
         </Grid.Background>

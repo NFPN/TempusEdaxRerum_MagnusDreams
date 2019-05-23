@@ -42,8 +42,9 @@
         </Button>
         <Button x:Name="btnReturnToGame"  HorizontalAlignment="Left" Margin="639,527,0,0" VerticalAlignment="Top" Width="297" Height="105" BorderBrush="{x:Null}">
             <Button.Background>
-                <ImageBrush ImageSource="/MagnusDreams;component/Images/BtnReturn.png"/>
+                <ImageBrush ImageSource="/MagnusDreams;component/Images/voltarsemborda.png"/>
             </Button.Background>
+
         </Button>
         <Label x:Name="txtDescriptionPause" Content="Jogo está Pausado" HorizontalAlignment="Left" Margin="325,137,0,0" VerticalAlignment="Top" FontSize="72" FontWeight="Bold"/>
 
