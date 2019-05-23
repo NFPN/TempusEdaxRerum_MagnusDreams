@@ -13,5 +13,9 @@ namespace MagnusDreams
     /// </summary>
     public partial class App : Application
     {
+        private void Setter_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+
+        }
     }
 }

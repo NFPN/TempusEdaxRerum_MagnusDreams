@@ -15,23 +15,21 @@
             <!-- <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/botao iniciar_Prancheta 1.png"/>
             </Button.Background>-->
+            <Button.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="20"></Setter>
+                </Style>
+            </Button.Resources>
         </Button>
 
 
-        <Button x:Name="btnOptions"  HorizontalAlignment="Left" Height="141" Margin="520,360,0,0" VerticalAlignment="Top" Width="357" FontSize="20" Click="OptionsButton_Clicked" BorderBrush="{x:Null}"  Foreground="{x:Null}" OpacityMask="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
-            
-
-            <Button.Background>
-                <ImageBrush ImageSource="/MagnusDreams;component/Images/configsemborda.png"/>
-            </Button.Background>
-
-        </Button>
+        <Button x:Name="btnOptions"  HorizontalAlignment="Left" Height="141" Margin="520,360,0,0" VerticalAlignment="Top" Width="357" FontSize="20" Click="OptionsButton_Clicked" BorderBrush="{x:Null}"  Foreground="{x:Null}" Style="{DynamicResource ButtonStyle}"/>
         <Button x:Name="btn_Close" Content="" HorizontalAlignment="Left" Height="105" Margin="1030,615,0,0" VerticalAlignment="Top" Width="250" FontSize="20" Click="ExitButton_Clicked" BorderBrush="{x:Null}" RenderTransformOrigin="0.949,0.827">
             <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/sairsemborda.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnCredits"  HorizontalAlignment="Left" Height="126" Margin="520,501,0,0" VerticalAlignment="Top" Width="357" FontSize="20" Click="CreditsButton_Clicked" BorderBrush="{x:Null}">
+        <Button x:Name="btnCredits"  HorizontalAlignment="Left" Height="126" Margin="520,501,0,0" VerticalAlignment="Top" Width="357" FontSize="20" Click="CreditsButton_Clicked" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle2}">
             <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/creditossemborda.png"/>
             </Button.Background>

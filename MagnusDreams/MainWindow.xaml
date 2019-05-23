@@ -11,6 +11,7 @@
     
 
     <Grid x:Name="GridMenu">
+        
         <Grid.Background>
             <ImageBrush ImageSource="Images/MENU FINAL_Prancheta 1.jpg"/>
         </Grid.Background>
