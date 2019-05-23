@@ -64,5 +64,27 @@ namespace MagnusDreams.Views
 
 
         }
+
+        //private void focustest(object sender, RoutedEventArgs e)
+        // {
+        //
+        //    Button tb = e.Source as Button;
+        //    tb.Background = Brushes.Red;
+        //    tb.Foreground = Brushes.Yellow;
+        //    
+        //}
+        //
+        //private void BtnReturn_LostFocus(object sender, RoutedEventArgs e)
+        //{
+        //    Button tb = e.Source as Button;
+        //    tb.Background = Brushes.Aquamarine;
+        //}
+
+        private void testemouseEnter(object sender, MouseEventArgs e)
+        {
+            Button tb = e.Source as Button;
+            tb.Background = Brushes.Aquamarine;
+            
+        }
     }
 }

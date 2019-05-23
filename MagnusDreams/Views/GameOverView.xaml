@@ -18,11 +18,17 @@
             </Image.OpacityMask>
         </Image>-->
         <Button x:Name="btnMenu"  HorizontalAlignment="Left" Margin="478,220,0,0" VerticalAlignment="Top" Width="312" Height="120" Click="ReturnMainMenuClicked" BorderBrush="{x:Null}">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
             <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/menusemborda.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="btnPlayAgain"  HorizontalAlignment="Left" Margin="478,345,0,0" VerticalAlignment="Top" Width="305" Height="79" BorderBrush="{x:Null}">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
             <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/jnsemborda.png"/>
             </Button.Background>
