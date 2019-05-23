@@ -59,7 +59,7 @@
     <Compile Include="DataBase\App.xaml.cs" />
     <Compile Include="DataBase\ComandosSQL.cs" />
     <Compile Include="DataBase\Connection.cs" />
-    <Compile Include="Util\GameObject.cs" />
+    <Compile Include="Util\EntityObject.cs" />
     <Compile Include="Util\ExtensionMethods.cs" />
     <Compile Include="Util\KeyboardController.cs" />
     <Compile Include="Views\CreditosView.xaml.cs">

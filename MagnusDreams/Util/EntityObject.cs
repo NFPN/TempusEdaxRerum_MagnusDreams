@@ -20,16 +20,14 @@ namespace MagnusDreams.Util
             (
                 Canvas.GetLeft(entityImage),
                 Canvas.GetTop(entityImage),
-                entityImage.ActualWidth,
-                entityImage.ActualHeight
+                entityImage.Width * 1.5,
+                entityImage.Height * 1.5
             );
         }
 
         public int Life { get; set; }
         public Image Image { get; }
-
         public Rect Rect { get; set; }
-
         public ObjType Type { get; }
     }
 }
