@@ -17,11 +17,11 @@ namespace MagnusDreams.Views
     {
         #region Global Variables
 
-        //The hidden position of player and playerBullet objects, enemy and enemyBullet objects
+        //The hidden position of playerBullet objects, enemy and enemyBullet objects
         double[,] hiddenPos = new double[2, 2] 
         { 
-            { -250, 0 }, 
-            { -250, 250 }
+            { -250, 0 },  //player bullets 
+            { -250, 250 } // enemy hidden
         }; 
 
         //Time Info
@@ -188,6 +188,21 @@ namespace MagnusDreams.Views
                             allObjects.Remove(playerBulletPool[i]);
                         Canvas.SetLeft(playerBulletPool[i].Image, hiddenPos[0, 0]);
                         Canvas.SetTop(playerBulletPool[i].Image, hiddenPos[0, 1]);
+                    }
+                }
+            }
+
+            for (int i = 0; i < allObjects.Count; i++)
+            {
+                if (allObjects[i] == null)
+                    continue;
+
+                if (allObjects[i].Image.Visibility == Visibility.Hidden)
+                {
+                    if (allObjects[i].Type == ObjType.Enemy || allObjects[i].Type == ObjType.EnemyBullet)
+                    {
+                        Canvas.SetLeft(allObjects[i].Image, hiddenPos[1, 0]);
+                        Canvas.SetTop(allObjects[i].Image, hiddenPos[1, 1]);
                     }
                 }
             }
