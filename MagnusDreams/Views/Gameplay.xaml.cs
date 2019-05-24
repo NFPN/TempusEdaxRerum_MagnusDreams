@@ -284,6 +284,7 @@ namespace MagnusDreams.Views
             else if (entity.Type == ObjType.Enemy || entity.Type == ObjType.EnemyBullet)
             {
                 GoToHiddenPos(entity.Image, hiddenPos[1, 0],hiddenPos[1, 1]);
+                entity.Rect = new Rect(hiddenPos[1, 0], hiddenPos[1, 1], entity.Rect.Width, entity.Rect.Height);
             }
             GameCanvas.Children.Remove(entity.Image);
         }

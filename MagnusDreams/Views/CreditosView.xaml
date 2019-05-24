@@ -7,20 +7,32 @@
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280">
     <Grid >
-        <Image x:Name="backgroundFundo" HorizontalAlignment="Left" Height="720" VerticalAlignment="Top" Width="1280" Source="/MagnusDreams;component/Images/MoonBg.jpg" Stretch="Fill" Cursor="None"/>
+        <Image x:Name="backgroundFundo" HorizontalAlignment="Left" Height="720" VerticalAlignment="Top" Width="1280" Source="/MagnusDreams;component/Images/Livro creditos_Prancheta 1.jpg" Stretch="Fill" Cursor="None"/>
         <ContentControl x:Name="contentControlCredits" Grid.Row="1"/>
-        <Button x:Name="btnReturn"  HorizontalAlignment="Left" Height="106" Margin="36,579,0,0" VerticalAlignment="Top" Width="288" FontSize="20" Click="ReturnButton_Clicked" BorderBrush="{x:Null}" Style="{DynamicResource ButtonReturn}" Foreground="{x:Null}">
+        <Button x:Name="btnReturn"  HorizontalAlignment="Left" Height="106" Margin="680.326,466.287,0,0" VerticalAlignment="Top" Width="288" FontSize="20" Click="ReturnButton_Clicked" BorderBrush="{x:Null}" Style="{DynamicResource ButtonReturn}" Foreground="{x:Null}" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
             <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/voltarsemborda.png"/>
             </Button.Background>
         </Button>
-        <Label x:Name="textDescriptionEquip" Content="Equipe Desenvolvedora" HorizontalAlignment="Left" Margin="402,68,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" Foreground="White"/>
-        <Label x:Name="textDescriptionProgrammers" Content="Programadores" HorizontalAlignment="Left" Margin="111,169,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" Foreground="White"/>
-        <Label x:Name="textDescriptionDesigners" Content="Designers" HorizontalAlignment="Left" Margin="823,169,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" Foreground="White"/>
-        <Label x:Name="textDescriptionAudio" Content="Audio / Efeitos" HorizontalAlignment="Left" Margin="498,427,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White"/>
-        <Label x:Name="textNamesProgrammers" Content="Natanael    (MadWalker)&#xD;&#xA;Nicolas S. Soares (Keyblase)" HorizontalAlignment="Left" Margin="91,243,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="563" Height="186" Foreground="White"/>
-        <Label x:Name="textNamesDesingners" Content="Andriel&#xD;&#xA;João de Castro" HorizontalAlignment="Left" Margin="823,243,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="396" Height="186" Foreground="White"/>
-        <Label x:Name="textNamesAudio" Content="Rafael Donato" HorizontalAlignment="Left" Margin="557,506,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="362" Height="96" Foreground="White"/>
+        <Label x:Name="textDescriptionEquip" Content="Equipe Desenvolvedora" HorizontalAlignment="Left" Margin="342.762,22.434,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" Height="69.469" Width="625.564" Foreground="#FF6E1A1A">
+            <Label.Effect>
+                <DropShadowEffect Color="White" ShadowDepth="4" BlurRadius="8"/>
+            </Label.Effect>
+        </Label>
+        <Label x:Name="textDescriptionProgrammers" Content="Programadores" HorizontalAlignment="Left" Margin="638.898,160.524,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" Foreground="Black" Height="69.47" Width="394.467"/>
+        <Label x:Name="textDescriptionDesigners" Content="Designers" HorizontalAlignment="Left" Margin="319.357,160.524,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" Foreground="Black" Height="69.469" Width="211.679" RenderTransformOrigin="0.443,1.023"/>
+        <Label x:Name="textDescriptionAudio" Content="Audio / Efeitos" HorizontalAlignment="Left" Margin="214.745,400.956,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="Black" Height="69.468" Width="419.153"/>
+        <Label x:Name="textNamesProgrammers" Content="Natanael (MadWalker)&#xD;&#xA;Nicolas Soares (Keyblase)" HorizontalAlignment="Left" Margin="633.898,213.284,0,0" VerticalAlignment="Top" FontSize="30" VerticalContentAlignment="Center" Width="415.098" Height="187.672" Foreground="Black"/>
+        <Label x:Name="textNamesDesingners" Content="Andriel(KooriKage)&#xA;João de Castro" HorizontalAlignment="Left" Margin="233.552,213.284,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="357.243" Height="187.672" Foreground="Black"/>
+        <Label x:Name="textNamesAudio" Content="Rafael Donato" HorizontalAlignment="Left" Margin="264.224,475.424,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="326.571" Height="96.863" Foreground="Black"/>
         <Button x:Name="btnPause" Content="" HorizontalAlignment="Left" Margin="1217,0,0,0" VerticalAlignment="Top" Width="63" Height="60" BorderBrush="{x:Null}" Click="OpenGamePause" Foreground="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/BOSS_Prancheta 1.png"/>
@@ -28,7 +40,7 @@
         </Button>
         <Label x:Name="txtHighScore" Content="HighScore:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
         <Label x:Name="txtPlayerScore" Content="Score:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,26,0,0" FontSize="18" FontWeight="Bold"/>
-        <Label x:Name="txtGlobalScore" Content="Global:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,68,0,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="1.594,0.61"/>
+        <Label x:Name="txtGlobalScore" Content="Global:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,52.4,0,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="1.594,0.61"/>
     </Grid>
 
 </UserControl>

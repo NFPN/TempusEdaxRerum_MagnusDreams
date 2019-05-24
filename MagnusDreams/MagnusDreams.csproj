@@ -198,6 +198,7 @@
     <Resource Include="Images\DarkBg.jpg" />
     <Resource Include="Images\MontainBg.jpg" />
     <Resource Include="Images\MoonBg.jpg" />
+    <Resource Include="Images\Livro creditos_Prancheta 1.jpg" />
     <Content Include="Sounds\bgSoundsss.wav" />
     <Content Include="Sounds\click.wav" />
     <Content Include="Sounds\select.wav" />
