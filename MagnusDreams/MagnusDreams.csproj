@@ -195,6 +195,9 @@
     <Resource Include="Images\sairsemborda.png" />
     <Resource Include="Images\voltarborder.png" />
     <Resource Include="Images\voltarsemborda.png" />
+    <Resource Include="Images\DarkBg.jpg" />
+    <Resource Include="Images\MontainBg.jpg" />
+    <Resource Include="Images\MoonBg.jpg" />
     <Content Include="Sounds\bgSoundsss.wav" />
     <Content Include="Sounds\click.wav" />
     <Content Include="Sounds\select.wav" />

@@ -6,9 +6,10 @@
              xmlns:local="clr-namespace:MagnusDreams.Views"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280">
-    <Grid Background="Aqua">
+    <Grid >
+        <Image x:Name="backgroundFundo" HorizontalAlignment="Left" Height="720" VerticalAlignment="Top" Width="1280" Source="/MagnusDreams;component/Images/MoonBg.jpg" Stretch="Fill" Cursor="None"/>
         <ContentControl x:Name="contentControlCredits" Grid.Row="1"/>
-        <Button x:Name="btnReturn"  HorizontalAlignment="Left" Height="106" Margin="36,579,0,0" VerticalAlignment="Top" Width="288" FontSize="20" Click="ReturnButton_Clicked" Foreground="{x:Null}" BorderBrush="{x:Null}">
+        <Button x:Name="btnReturn"  HorizontalAlignment="Left" Height="106" Margin="36,579,0,0" VerticalAlignment="Top" Width="288" FontSize="20" Click="ReturnButton_Clicked" BorderBrush="{x:Null}" Style="{DynamicResource ButtonReturn}" Foreground="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/voltarsemborda.png"/>
             </Button.Background>
@@ -27,6 +28,7 @@
         </Button>
         <Label x:Name="txtHighScore" Content="HighScore:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
         <Label x:Name="txtPlayerScore" Content="Score:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,26,0,0" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="txtGlobalScore" Content="Global:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,68,0,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="1.594,0.61"/>
     </Grid>
 
 </UserControl>
