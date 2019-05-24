@@ -24,7 +24,6 @@ namespace MagnusDreams.Views
     public partial class MenuView : UserControl
     {
         MainWindow main = (MainWindow)Application.Current.MainWindow;
-        //List<MediaPlayer> audios = new List<MediaPlayer>();
         //string startupPath = Environment.CurrentDirectory;
         
         public MenuView()
@@ -59,8 +58,6 @@ namespace MagnusDreams.Views
 
             //Teste de som
             main.AudioGame("click.wav");
-            
-
         }
 
         private void NewGame_Clicked(object sender, RoutedEventArgs e)
@@ -87,20 +84,5 @@ namespace MagnusDreams.Views
             btnCredits, btnOptions, btn_Close,
             btnNewGame }, true);
         }
-
-     
-
-        //private void onConfigFocus(object sender, RoutedEventArgs e)
-        //  {
-        //      Button tb = e.Source as Button;
-        //      tb.Background = Brushes.BlueViolet;
-        //  }
-        //
-        //  private void ConfigLost(object sender, RoutedEventArgs e)
-        //  {
-        //      Button tb = e.Source as Button;
-        //      tb.Background = Brushes.Yellow;
-        //  }
-
     }
 }

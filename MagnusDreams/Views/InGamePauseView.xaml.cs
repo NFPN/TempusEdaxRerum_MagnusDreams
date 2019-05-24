@@ -48,5 +48,15 @@ namespace MagnusDreams.Views
 
             }, false);
         }
+
+        private void musicOn(object sender, RoutedEventArgs e)
+        {
+            main.AudioGame("bgSoundsss.wav");
+        }
+
+        private void musicOff(object sender, System.EventArgs e)
+        {
+            main.audios[0].Volume = 0;
+        }
     }
 }

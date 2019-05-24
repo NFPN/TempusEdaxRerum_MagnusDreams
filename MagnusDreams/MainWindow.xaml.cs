@@ -19,24 +19,20 @@ using MagnusDreams.Views;
 namespace MagnusDreams
 {
     public enum ObjType { Player, Enemy, PlayerBullet, EnemyBullet }
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
         static public Window appWindow;
         OptionsView op = new OptionsView();
         public List<MediaPlayer> audios = new List<MediaPlayer>();
         
-        string startupPath = Environment.CurrentDirectory;
-
         
+        string startupPath = Environment.CurrentDirectory;
 
         public MainWindow()
         {
-            
-            InitializeComponent();
             AudioGame("bgSoundsss.wav");
+            InitializeComponent();
             contentControl.Content = new MenuView();
             //MenuOptions();
 
@@ -48,7 +44,6 @@ namespace MagnusDreams
             contentControl.Content = new CreditosView();
             
         }
-
         public void ChangeBG()
         {
             Fundo.Source = new BitmapImage(new Uri("Images\\Sky.jpg", UriKind.Relative));
@@ -71,8 +66,7 @@ namespace MagnusDreams
         }
 
         public  void AudioGame(string audioName)
-        {
-            
+        {          
                 // Get application path and return 2 foldes (parents) 
                 DirectoryInfo directoryInfo = Directory.GetParent(Directory.GetParent(startupPath).FullName);
 
@@ -85,7 +79,6 @@ namespace MagnusDreams
                 p1.Play();
                 //Add backgroung to yout list of audios if necessary
                 audios.Add(p1);
-
         }
     }
 }

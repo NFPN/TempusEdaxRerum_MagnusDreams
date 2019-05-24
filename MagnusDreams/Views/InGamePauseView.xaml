@@ -15,7 +15,7 @@
         </Image>
         <Label x:Name="txtmusicVolume" Content="Music Volume :" HorizontalAlignment="Left" Height="89" Margin="353,308,0,0" VerticalAlignment="Top" Width="336" FontSize="48" FontFamily="Showcard Gothic"/>
         <Label x:Name="txtSfxVolume" Content="SFX Volume :" HorizontalAlignment="Left" Height="75" Margin="353,397,0,0" VerticalAlignment="Top" Width="340" FontFamily="Showcard Gothic" FontSize="48" RenderTransformOrigin="1.166,0.323"/>
-        <CheckBox x:Name="musicIsChecked" Content="" HorizontalAlignment="Left" Height="16" Margin="740,342,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" IsChecked="True" VerticalContentAlignment="Center" Padding="15,-1,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+        <CheckBox x:Name="musicIsChecked" Content="" HorizontalAlignment="Left" Height="16" Margin="740,342,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" IsChecked="True" VerticalContentAlignment="Center" Padding="15,-1,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" Checked="musicOn" >
             <CheckBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
@@ -46,7 +46,7 @@
             </Button.Background>
 
         </Button>
-        <Label x:Name="txtDescriptionPause" Content="Jogo está Pausado" HorizontalAlignment="Left" Margin="325,137,0,0" VerticalAlignment="Top" FontSize="72" FontWeight="Bold"/>
+        <Label x:Name="txtDescriptionPause" Content="Jogo está Pausado" HorizontalAlignment="Left" Margin="353,109.4,0,0" VerticalAlignment="Top" FontSize="60" FontWeight="Bold" Height="92.277" Width="583"/>
         <Label Content="Botão volta ao menu não ao jogo " HorizontalAlignment="Left" Margin="655.76,497.383,0,0" VerticalAlignment="Top"/>
 
     </Grid>

@@ -14,13 +14,13 @@
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/voltarsemborda.png"/>
             </Button.Background>
         </Button>
-        <Label x:Name="textDescriptionEquip" Content="Equipe Desenvolvedora" HorizontalAlignment="Left" Margin="402,68,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center"/>
-        <Label x:Name="textDescriptionProgrammers" Content="Programadores" HorizontalAlignment="Left" Margin="111,169,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center"/>
-        <Label x:Name="textDescriptionDesigners" Content="Designers" HorizontalAlignment="Left" Margin="823,169,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center"/>
-        <Label x:Name="textDescriptionAudio" Content="Audio / Efeitos" HorizontalAlignment="Left" Margin="498,427,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Label x:Name="textNamesProgrammers" Content="Natanael    (MadWalker)&#xD;&#xA;Nicolas S. Soares (Keyblase)" HorizontalAlignment="Left" Margin="91,243,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="563" Height="186"/>
-        <Label x:Name="textNamesDesingners" Content="Andriel&#xD;&#xA;João de Castro" HorizontalAlignment="Left" Margin="823,243,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="396" Height="186"/>
-        <Label x:Name="textNamesAudio" Content="Rafael Donato" HorizontalAlignment="Left" Margin="557,506,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="362" Height="96"/>
+        <Label x:Name="textDescriptionEquip" Content="Equipe Desenvolvedora" HorizontalAlignment="Left" Margin="402,68,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" Foreground="White"/>
+        <Label x:Name="textDescriptionProgrammers" Content="Programadores" HorizontalAlignment="Left" Margin="111,169,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" Foreground="White"/>
+        <Label x:Name="textDescriptionDesigners" Content="Designers" HorizontalAlignment="Left" Margin="823,169,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" Foreground="White"/>
+        <Label x:Name="textDescriptionAudio" Content="Audio / Efeitos" HorizontalAlignment="Left" Margin="498,427,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White"/>
+        <Label x:Name="textNamesProgrammers" Content="Natanael    (MadWalker)&#xD;&#xA;Nicolas S. Soares (Keyblase)" HorizontalAlignment="Left" Margin="91,243,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="563" Height="186" Foreground="White"/>
+        <Label x:Name="textNamesDesingners" Content="Andriel&#xD;&#xA;João de Castro" HorizontalAlignment="Left" Margin="823,243,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="396" Height="186" Foreground="White"/>
+        <Label x:Name="textNamesAudio" Content="Rafael Donato" HorizontalAlignment="Left" Margin="557,506,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="362" Height="96" Foreground="White"/>
         <Button x:Name="btnPause" Content="" HorizontalAlignment="Left" Margin="1217,0,0,0" VerticalAlignment="Top" Width="63" Height="60" BorderBrush="{x:Null}" Click="OpenGamePause" Foreground="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/BOSS_Prancheta 1.png"/>
