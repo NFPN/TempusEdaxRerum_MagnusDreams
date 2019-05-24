@@ -43,13 +43,29 @@ namespace MagnusDreams.Views
 
         List<EntityObject> allObjects = new List<EntityObject>();
 
+        int frames;
+
         #endregion
 
         
         public Gameplay()
         {
             InitializeComponent();
-            
+
+            CompositionTarget.Rendering += (s, a) =>
+            {
+                ++frames;
+            };
+
+            DispatcherTimer fpsTimer = new DispatcherTimer();
+            fpsTimer.Interval = TimeSpan.FromSeconds(1);
+            fpsTimer.Tick += (s, a) =>
+            {
+                Log.Content = string.Format("FPS:{0}", frames);
+                frames = 0;
+            };
+            fpsTimer.Start();
+
             KeyboardController kbcontrol = new KeyboardController(MainWindow.appWindow);
             kbcontrol.timer.Interval = TimeSpan.FromMilliseconds(1);
             kbcontrol.KeyboardTick += InputChecker;
@@ -164,10 +180,9 @@ namespace MagnusDreams.Views
                             Canvas.GetTop(playerBulletPool[i].Image),
                             playerBulletPool[i].Image.Width,
                             playerBulletPool[i].Image.Height);
-                        //Log.Content = $"{bullet.Rect.Left} - {bullet.Rect.Top}";
                         CollisionUpdate(playerBulletPool[i]);
                     }
-                    else //if(GameCanvas.Children.Contains(bullet.Image))
+                    else
                     {
                         if (allObjects.Contains(playerBulletPool[i]))
                             allObjects.Remove(playerBulletPool[i]);
@@ -180,31 +195,8 @@ namespace MagnusDreams.Views
 
         private void Update()
         {
-
             if (!allObjects.Contains(player))
                 allObjects.Add(player);
-
-            /*if (allObjects.Count > 0)
-            {
-                foreach (var entity in allObjects)
-                {
-                    if (entity == null)
-                        continue;
-                    CollisionUpdate(entity);
-                }
-            }
-            CollisionUpdate(player);
-            CollisionCheck();
-            /*if (playerBulletPool.Count > 0)
-            {
-                foreach (var entity in playerBulletPool)
-                {
-                    if (entity == null)
-                        continue;
-                    CollisionUpdate(entity);
-                    //Log.Content = $"{entity.Rect.Left}";
-                }
-            }*/
         }
 
         public void CollisionUpdate(EntityObject obj)
