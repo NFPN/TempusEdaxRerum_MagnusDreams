@@ -11,13 +11,7 @@
             <ImageBrush ImageSource="/MagnusDreams;component/Images/Game Derrota_Prancheta 1.jpg"/>
         </Grid.Background>
         <ContentControl x:Name="contentControlGameOver" Grid.Row="1"/>
-        <!--
-        <Image x:Name="bgGameOver" HorizontalAlignment="Left" Height="378" Margin="213,42,0,0" VerticalAlignment="Top" Width="323" Stretch="Fill" Cursor="None">
-            <Image.OpacityMask>
-                <ImageBrush ImageSource="/MagnusDreams;component/Images/Game Derrota_Prancheta 1.jpg" />
-            </Image.OpacityMask>
-        </Image>-->
-        <Button x:Name="btnMenu"  HorizontalAlignment="Left" Margin="478,220,0,0" VerticalAlignment="Top" Width="312" Height="120" Click="ReturnMainMenuClicked" BorderBrush="{x:Null}">
+        <Button x:Name="btnMenu"  HorizontalAlignment="Left" Margin="478,220,0,0" VerticalAlignment="Top" Width="312" Height="120" Click="ReturnMainMenuClicked" BorderBrush="{x:Null}" Style="{StaticResource ButtonBackMenu}">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -25,7 +19,7 @@
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/menusemborda.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnPlayAgain"  HorizontalAlignment="Left" Margin="478,345,0,0" VerticalAlignment="Top" Width="305" Height="79" BorderBrush="{x:Null}">
+        <Button x:Name="btnPlayAgain"  HorizontalAlignment="Left" Margin="478,345,0,0" VerticalAlignment="Top" Width="312" Height="105" BorderBrush="{x:Null}" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

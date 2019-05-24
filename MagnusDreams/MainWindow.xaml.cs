@@ -27,6 +27,7 @@ namespace MagnusDreams
         static public Window appWindow;
         OptionsView op = new OptionsView();
         public List<MediaPlayer> audios = new List<MediaPlayer>();
+        
         string startupPath = Environment.CurrentDirectory;
 
         
@@ -84,7 +85,6 @@ namespace MagnusDreams
                 p1.Play();
                 //Add backgroung to yout list of audios if necessary
                 audios.Add(p1);
-                //MessageBox.Show(directoryInfo.FullName + @"\Sounds");
 
         }
     }

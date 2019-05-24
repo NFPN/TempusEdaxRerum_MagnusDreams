@@ -26,7 +26,7 @@ namespace MagnusDreams.Views
         MainWindow main = (MainWindow)Application.Current.MainWindow;
         //List<MediaPlayer> audios = new List<MediaPlayer>();
         //string startupPath = Environment.CurrentDirectory;
-
+        
         public MenuView()
         {
             
@@ -88,17 +88,19 @@ namespace MagnusDreams.Views
             btnNewGame }, true);
         }
 
-      //private void onConfigFocus(object sender, RoutedEventArgs e)
-      //  {
-      //      Button tb = e.Source as Button;
-      //      tb.Background = Brushes.BlueViolet;
-      //  }
-      //
-      //  private void ConfigLost(object sender, RoutedEventArgs e)
-      //  {
-      //      Button tb = e.Source as Button;
-      //      tb.Background = Brushes.Yellow;
-      //  }
+     
+
+        //private void onConfigFocus(object sender, RoutedEventArgs e)
+        //  {
+        //      Button tb = e.Source as Button;
+        //      tb.Background = Brushes.BlueViolet;
+        //  }
+        //
+        //  private void ConfigLost(object sender, RoutedEventArgs e)
+        //  {
+        //      Button tb = e.Source as Button;
+        //      tb.Background = Brushes.Yellow;
+        //  }
 
     }
 }

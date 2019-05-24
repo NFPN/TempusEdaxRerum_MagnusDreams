@@ -34,7 +34,11 @@ namespace MagnusDreams.Views
 
         private void musicOn(object sender, System.EventArgs e)
         {
-            //main.audios[0].Volume = 0.5f;
+            //if(main.audios == null || main.audios.Count > 0 )
+            //{
+            //    main.audios[0].Volume = 0.5f;
+            //}
+
         }
 
         private void sfxOn(object sender, System.EventArgs e)
@@ -63,28 +67,6 @@ namespace MagnusDreams.Views
             }, false);
 
 
-        }
-
-        //private void focustest(object sender, RoutedEventArgs e)
-        // {
-        //
-        //    Button tb = e.Source as Button;
-        //    tb.Background = Brushes.Red;
-        //    tb.Foreground = Brushes.Yellow;
-        //    
-        //}
-        //
-        //private void BtnReturn_LostFocus(object sender, RoutedEventArgs e)
-        //{
-        //    Button tb = e.Source as Button;
-        //    tb.Background = Brushes.Aquamarine;
-        //}
-
-        private void testemouseEnter(object sender, MouseEventArgs e)
-        {
-            Button tb = e.Source as Button;
-            tb.Background = Brushes.Aquamarine;
-            
-        }
+        }       
     }
 }

@@ -31,10 +31,13 @@ namespace MagnusDreams.Views
         {
             //Teste de som
             main.AudioGame("click.wav");
-
+            
             contentControlCredits.Content = new MenuView();
+            backgroundFundo.Visibility = Visibility.Hidden;
+            
 
             main.ChangeVisibility(new Control[]{
+               
                 textDescriptionAudio,
                 textDescriptionDesigners,
                 textDescriptionEquip,
@@ -43,6 +46,7 @@ namespace MagnusDreams.Views
                 textNamesAudio,
                 textNamesDesingners,
                 textNamesProgrammers
+                
             }, false);
         }
 

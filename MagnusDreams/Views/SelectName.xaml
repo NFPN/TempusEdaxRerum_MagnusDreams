@@ -18,7 +18,7 @@
         </Grid.Background>
         <ContentControl x:Name="contentControl" Grid.ColumnSpan="2" Margin="0,0,-0.4,0.4"/>
 
-        <Button x:Name="btnBegin" Content="COMEÇAR" HorizontalAlignment="Left" Height="75" Margin="589.069,569,0,0" VerticalAlignment="Top" Width="250" FontSize="20" FontWeight="Bold" Click="StartGame_Clicked" Grid.Column="1">
+        <Button x:Name="btnBegin" Content="COMEÇAR" HorizontalAlignment="Left" Height="75" Margin="589.069,569,0,0" VerticalAlignment="Top" Width="250" FontSize="20" FontWeight="Bold" Click="StartGame_Clicked" Grid.Column="1" Style="{DynamicResource ButtonStyle }"> 
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="0"/>
