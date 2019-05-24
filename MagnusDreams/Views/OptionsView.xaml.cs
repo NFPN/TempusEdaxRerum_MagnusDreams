@@ -15,13 +15,10 @@ using System.Windows.Shapes;
 
 namespace MagnusDreams.Views
 {
-    /// <summary>
-    /// Interaction logic for OptionsView.xaml
-    /// </summary>
     public partial class OptionsView : UserControl
     {
         MainWindow main = (MainWindow)Application.Current.MainWindow;
-
+       
         public OptionsView()
         {
             InitializeComponent();
@@ -34,11 +31,11 @@ namespace MagnusDreams.Views
 
         private void musicOn(object sender, System.EventArgs e)
         {
-            //if(main.audios == null || main.audios.Count > 0 )
-            //{
-            //    main.audios[0].Volume = 0.5f;
-            //}
-
+            if(main != null)
+            {
+                main.audios[0].Volume = 0.5;
+            }
+            
         }
 
         private void sfxOn(object sender, System.EventArgs e)
@@ -67,6 +64,6 @@ namespace MagnusDreams.Views
             }, false);
 
 
-        }       
+        }        
     }
 }
