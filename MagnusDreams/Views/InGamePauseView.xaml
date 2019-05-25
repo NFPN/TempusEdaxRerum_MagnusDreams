@@ -8,14 +8,14 @@
              d:DesignHeight="720" d:DesignWidth="1280">
     <Grid  Width="1280" Height="720">
         <ContentControl x:Name="contentControlPaused" Grid.Row="1"/>
-        <Image x:Name="bgPauseGame"  Height="598" Width="649" Margin="0,61,320,0" VerticalAlignment="Top" HorizontalAlignment="Right" Source="/MagnusDreams;component/Images/fundo.jpg" Stretch="Fill" Cursor="None">
+        <Image x:Name="bgPauseGame"  Height="2676.04" Width="2488.2" Margin="-579.4,-903.8,-628.8,-1052.24" VerticalAlignment="Top" HorizontalAlignment="Right" Source="/MagnusDreams;component/Images/TER Magnus rosto_Prancheta 1.png" Stretch="Fill" Cursor="None">
             <Image.OpacityMask>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/Sky.jpg"/>
             </Image.OpacityMask>
         </Image>
-        <Label x:Name="txtmusicVolume" Content="Music Volume :" HorizontalAlignment="Left" Height="89" Margin="353,308,0,0" VerticalAlignment="Top" Width="336" FontSize="48" FontFamily="Showcard Gothic"/>
-        <Label x:Name="txtSfxVolume" Content="SFX Volume :" HorizontalAlignment="Left" Height="75" Margin="353,397,0,0" VerticalAlignment="Top" Width="340" FontFamily="Showcard Gothic" FontSize="48" RenderTransformOrigin="1.166,0.323"/>
-        <CheckBox x:Name="musicIsChecked" Content="" HorizontalAlignment="Left" Height="16" Margin="740,342,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" IsChecked="True" VerticalContentAlignment="Center" Padding="15,-1,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" Checked="musicOn" >
+        <Label x:Name="txtmusicVolume" Content="Volume  Musica:" HorizontalAlignment="Left" Height="89" Margin="275.4,132,0,0" VerticalAlignment="Top" Width="428" FontSize="40" FontFamily="Showcard Gothic"/>
+        <Label x:Name="txtSfxVolume" Content="Volume Efeitos :" HorizontalAlignment="Left" Height="75" Margin="296.2,221,0,0" VerticalAlignment="Top" Width="428" FontFamily="Showcard Gothic" FontSize="40" RenderTransformOrigin="1.166,0.323"/>
+        <CheckBox x:Name="musicIsChecked" Content="" HorizontalAlignment="Left" Height="16" Margin="807.6,169.2,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" IsChecked="True" VerticalContentAlignment="Center" Padding="15,-1,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" Checked="musicOn" >
             <CheckBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
@@ -25,7 +25,7 @@
                 </TransformGroup>
             </CheckBox.RenderTransform>
         </CheckBox>
-        <CheckBox x:Name="sfxIsChecked" Content="." HorizontalAlignment="Left" Height="15" Margin="739,431,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" VerticalContentAlignment="Center" Padding="15,-1,0,0" IsChecked="True" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+        <CheckBox x:Name="sfxIsChecked" Content="." HorizontalAlignment="Left" Height="15" Margin="816.2,255,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" VerticalContentAlignment="Center" Padding="15,-1,0,0" IsChecked="True" BorderBrush="{x:Null}" Foreground="{x:Null}" >
             <CheckBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
@@ -35,19 +35,19 @@
                 </TransformGroup>
             </CheckBox.RenderTransform>
         </CheckBox>
-        <Button x:Name="btnReturnMenu" Content="Menu" HorizontalAlignment="Left" Margin="325,527,0,0" VerticalAlignment="Top" Width="296" Height="105" Click="ReturnMainMenuClicked" BorderBrush="{x:Null}" Style="{DynamicResource  ButtonBackMenu }">
+        <Button x:Name="btnReturnMenu" Content="Menu" HorizontalAlignment="Left" Margin="275.4,390.2,0,0" VerticalAlignment="Top" Width="296" Height="105" Click="ReturnMainMenuClicked" BorderBrush="{x:Null}" Style="{DynamicResource  ButtonBackMenu }">
             <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/menusemborda.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnReturnToGame"  HorizontalAlignment="Left" Margin="639,527,0,0" VerticalAlignment="Top" Width="297" Height="105" BorderBrush="{x:Null}" Style="{DynamicResource  ButtonReturn }">
+        <Button x:Name="btnReturnToGame"  HorizontalAlignment="Left" Margin="639,390.2,0,0" VerticalAlignment="Top" Width="297" Height="105" BorderBrush="{x:Null}" Style="{DynamicResource  ButtonReturn }">
             <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/voltarsemborda.png"/>
             </Button.Background>
 
         </Button>
-        <Label x:Name="txtDescriptionPause" Content="Jogo está Pausado" HorizontalAlignment="Left" Margin="353,109.4,0,0" VerticalAlignment="Top" FontSize="60" FontWeight="Bold" Height="92.277" Width="583"/>
         <Label Content="Botão volta ao menu não ao jogo " HorizontalAlignment="Left" Margin="655.76,497.383,0,0" VerticalAlignment="Top"/>
+        <Image x:Name="ImgPause" HorizontalAlignment="Left" Height="224.8" Margin="505.2,532,0,-36.8" VerticalAlignment="Top" Width="219" Source="/MagnusDreams;component/Images/pause.png"/>
 
     </Grid>
 </UserControl>

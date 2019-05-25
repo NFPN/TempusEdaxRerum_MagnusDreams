@@ -35,10 +35,10 @@ namespace MagnusDreams.Views
             contentControlPaused.Content = new MenuView();
 
             bgPauseGame.Visibility = Visibility.Hidden;
+            ImgPause.Visibility = Visibility.Hidden;
 
             main.ChangeVisibility(new Control[]
             {
-                txtDescriptionPause,
                 txtmusicVolume,
                 txtSfxVolume,
                 musicIsChecked,

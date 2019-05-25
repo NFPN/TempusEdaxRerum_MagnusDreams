@@ -199,6 +199,7 @@
     <Resource Include="Images\MontainBg.jpg" />
     <Resource Include="Images\MoonBg.jpg" />
     <Resource Include="Images\Livro creditos_Prancheta 1.jpg" />
+    <Resource Include="Images\TER Magnus rosto_Prancheta 1.png" />
     <Content Include="Sounds\bgSoundsss.wav" />
     <Content Include="Sounds\click.wav" />
     <Content Include="Sounds\select.wav" />
