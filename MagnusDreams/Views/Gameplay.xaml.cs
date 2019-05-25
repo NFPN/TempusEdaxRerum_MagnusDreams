@@ -34,6 +34,7 @@ namespace MagnusDreams.Views
         //ImageSource enemySource;
         //double enemyBaseHeight, enemyBaseWidth;
         //List<EntityObject> enemyPool = new List<EntityObject>();
+        bool enemyFlyUp;
 
         //Player Info
         EntityObject player;
@@ -58,7 +59,7 @@ namespace MagnusDreams.Views
             };
 
             DispatcherTimer fpsTimer = new DispatcherTimer();
-            fpsTimer.Interval = TimeSpan.FromSeconds(1);
+            fpsTimer.Interval = TimeSpan.FromSeconds(0.5);
             fpsTimer.Tick += (s, a) =>
             {
                 Log.Content = string.Format("FPS:{0}", frames);
@@ -68,7 +69,7 @@ namespace MagnusDreams.Views
 
             KeyboardController kbcontrol = new KeyboardController(MainWindow.appWindow);
             kbcontrol.timer.Interval = TimeSpan.FromMilliseconds(1);
-            kbcontrol.KeyboardTick += InputChecker;
+            kbcontrol.KeyboardTick += InputUpdate;
 
             fastTimer.Tick += GlobalTick;
             fastTimer.Interval = TimeSpan.FromMilliseconds(1);
@@ -85,6 +86,7 @@ namespace MagnusDreams.Views
         {
             Update();
         }
+
         private void GlobalTick(object sender, EventArgs e)
         {
             //TimeControl
@@ -129,7 +131,7 @@ namespace MagnusDreams.Views
             
         }
 
-        private void InputChecker(object sender, EventArgs e)
+        private void InputUpdate(object sender, EventArgs e)
         {
             if (Keyboard.IsKeyDown(Key.Escape))
                 Log.Content = "Pause";
@@ -170,7 +172,7 @@ namespace MagnusDreams.Views
             //Bullet pooling and collision
             if (playerBulletPool.Count > 0)
             {
-                for (int i = 0; i < playerBulletPool.Count;i++)
+                for (int i = 0; i < playerBulletPool.Count; i++)
                 {
                     if (playerBulletPool[i].Image.Visibility == Visibility.Visible && !CheckOutOfBounds(playerBulletPool[i].Image))
                     {
@@ -197,12 +199,21 @@ namespace MagnusDreams.Views
                 if (allObjects[i] == null)
                     continue;
 
-                if (allObjects[i].Image.Visibility == Visibility.Hidden)
+                if (allObjects[i].Type == ObjType.Enemy || allObjects[i].Type == ObjType.EnemyBullet)
                 {
-                    if (allObjects[i].Type == ObjType.Enemy || allObjects[i].Type == ObjType.EnemyBullet)
+                    if (allObjects[i].Image.Visibility == Visibility.Hidden)
                     {
                         Canvas.SetLeft(allObjects[i].Image, hiddenPos[1, 0]);
                         Canvas.SetTop(allObjects[i].Image, hiddenPos[1, 1]);
+                    }
+                    else
+                    {
+                        if (allObjects[i].Type == ObjType.Enemy)
+                        {
+                            Canvas.SetLeft(allObjects[i].Image, Canvas.GetLeft(allObjects[i].Image) - 2);
+                            //Canvas.SetTop(allObjects[i].Image, Canvas.GetTop(allObjects[i].Image) + 5);
+                            CollisionUpdate(allObjects[i]);
+                        }
                     }
                 }
             }
@@ -236,8 +247,6 @@ namespace MagnusDreams.Views
                         if (allObjects[obj1index].Type == ObjType.Player && (allObjects[obj2index].Type == ObjType.Enemy ||
                             allObjects[obj2index].Type == ObjType.EnemyBullet))
                         {
-                            Log.Content = $"{allObjects[obj1index].Image.Name} with {allObjects[obj2index].Image.Name}";
-
                             //obj1.Life--;
                             if (allObjects[obj1index].Life <= 0)
                             {
@@ -269,30 +278,30 @@ namespace MagnusDreams.Views
             }
         }
 
+        // hide and remove obj from the interaction area
         public void ClearFromScreen(EntityObject entity)
         {
-            //Verify if its player and resets position or hide and remove obj from the interaction area
-            entity.Image.Visibility = Visibility.Hidden;
+            bool check;
+            //entity.Image.Visibility = Visibility.Hidden;
             if (entity.Type == ObjType.Player || entity.Type == ObjType.PlayerBullet)
             {
-                bool check = entity.Type == ObjType.PlayerBullet ?
+                check = entity.Type == ObjType.PlayerBullet ?
                     GoToHiddenPos(entity.Image, hiddenPos[1, 0], hiddenPos[1, 1]) :
-                    GoToHiddenPos(entity.Image, hiddenPos[1, 0], hiddenPos[1, 1], false);
+                    GoToHiddenPos(entity.Image, hiddenPos[1, 0], hiddenPos[1, 1]);
                 if (!check)
                     return;
             }
             else if (entity.Type == ObjType.Enemy || entity.Type == ObjType.EnemyBullet)
             {
-                GoToHiddenPos(entity.Image, hiddenPos[1, 0],hiddenPos[1, 1]);
-                entity.Rect = new Rect(hiddenPos[1, 0], hiddenPos[1, 1], entity.Rect.Width, entity.Rect.Height);
+                check = GoToHiddenPos(entity.Image, hiddenPos[1, 0], hiddenPos[1, 1]);
             }
-            GameCanvas.Children.Remove(entity.Image);
+            if (GameCanvas.Children.Contains(entity.Image))
+                GameCanvas.Children.Remove(entity.Image);
         }
 
-        public bool GoToHiddenPos(Image img, double posX, double posY, bool hide = true)
+        public bool GoToHiddenPos(Image img, double posX, double posY)
         {
-            if (hide)
-                img.Visibility = Visibility.Hidden;
+            bool hide = true;
             Canvas.SetLeft(img, posX);
             Canvas.SetTop(img, posY);
             return hide;
@@ -305,6 +314,7 @@ namespace MagnusDreams.Views
             return false;
         }
 
+        #region BulletMethods
         public void NewBullet()
         {
             playerBulletPool.Add(new EntityObject(1, new Image()
@@ -349,5 +359,6 @@ namespace MagnusDreams.Views
             Canvas.SetTop(bullet.Image, Canvas.GetTop(PlayerImage) + PlayerImage.ActualHeight - (bullet.Image.ActualHeight * 2));
             bullet.Image.Refresh();
         }
+        #endregion
     }
 }
