@@ -28,6 +28,10 @@ namespace MagnusDrems.DAO
 
         public void InsertData(string nome)
         {
+            if(nome != null)
+            {
+
+          
             try
             {
                 qLComand = defaulCommand(nome);
@@ -40,9 +44,10 @@ namespace MagnusDrems.DAO
                 this.mensagem = " Erro ao criar jogador \n" + e.Message;
             }
             connection.desconnect();
+            }
         }
 
-        
+
         public void UpdtadeDataName(string nome)//acho que precisa de todos os valores
         {
             qLComand.CommandText = "update into informaçãoPersonagem(vidaJogador,nomeJogador,score,highScore)" +

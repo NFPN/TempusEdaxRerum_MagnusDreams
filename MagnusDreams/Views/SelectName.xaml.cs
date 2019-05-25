@@ -29,9 +29,10 @@ namespace MagnusDreams.Views
 
         private void StartGame_Clicked(object sender, RoutedEventArgs e)
         {
-
+         
             //Insere o texto inserido do player no Banco de dados
             comandos.InsertData(lbTextNamePlayer.Text);
+            contentControl.Content = new Gameplay();
         }
     }
 }
