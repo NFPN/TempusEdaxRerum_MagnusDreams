@@ -18,11 +18,11 @@ namespace MagnusDreams.Views
         #region Global Variables
 
         //The hidden position of playerBullet objects, enemy and enemyBullet objects
-        double[,] hiddenPos = new double[2, 2] 
-        { 
+        double[,] hiddenPos = new double[2, 2]
+        {
             { -250, 0 },  //player bullets 
             { -250, 250 } // enemy hidden
-        }; 
+        };
 
         //Time Info
         double elapsedMiliSeconds;
@@ -33,8 +33,9 @@ namespace MagnusDreams.Views
         //Enemy Info
         //ImageSource enemySource;
         //double enemyBaseHeight, enemyBaseWidth;
-        //List<EntityObject> enemyPool = new List<EntityObject>();
+        List<EntityObject> enemyBulletPool = new List<EntityObject>();
         bool enemyFlyUp;
+        double angle;
 
         //Player Info
         EntityObject player;
@@ -45,10 +46,11 @@ namespace MagnusDreams.Views
         List<EntityObject> allObjects = new List<EntityObject>();
 
         int frames;
+        Random random = new Random();
 
         #endregion
 
-        
+
         public Gameplay()
         {
             InitializeComponent();
@@ -110,7 +112,7 @@ namespace MagnusDreams.Views
                 }
             }
             allObjects.Add(player);
-            
+
             //Initializing timers
             elapsedMiliSeconds = 0;
             timeToShootPlayerBullets = 0;
@@ -127,8 +129,8 @@ namespace MagnusDreams.Views
             //Scene Cleanup
             PlayerBullet.Visibility = Visibility.Hidden;
             GameCanvas.Children.Remove(PlayerBullet);
-            
-            
+
+
         }
 
         private void InputUpdate(object sender, EventArgs e)
@@ -167,7 +169,7 @@ namespace MagnusDreams.Views
         private void FastUpdate()
         {
             CollisionUpdate(player);
-            CollisionCheck();
+            CheckCollision();
 
             //Bullet pooling and collision
             if (playerBulletPool.Count > 0)
@@ -194,6 +196,31 @@ namespace MagnusDreams.Views
                 }
             }
 
+            //enemy bullet pooling and collision
+            if (enemyBulletPool.Count > 0)
+            {
+                for (int i = 0; i < enemyBulletPool.Count; i++)
+                {
+                    if (enemyBulletPool[i].Image.Visibility == Visibility.Visible && !CheckOutOfBounds(enemyBulletPool[i].Image))
+                    {
+                        Canvas.SetLeft(enemyBulletPool[i].Image, Canvas.GetLeft(enemyBulletPool[i].Image) - 15);
+                        enemyBulletPool[i].Rect = new Rect(
+                            Canvas.GetLeft(enemyBulletPool[i].Image),
+                            Canvas.GetTop(enemyBulletPool[i].Image),
+                            enemyBulletPool[i].Image.Width,
+                            enemyBulletPool[i].Image.Height);
+                        CollisionUpdate(enemyBulletPool[i]);
+                    }
+                    else
+                    {
+                        if (allObjects.Contains(enemyBulletPool[i]))
+                            allObjects.Remove(enemyBulletPool[i]);
+                        Canvas.SetLeft(enemyBulletPool[i].Image, hiddenPos[0, 0]);
+                        Canvas.SetTop(enemyBulletPool[i].Image, hiddenPos[0, 1]);
+                    }
+                }
+            }
+
             for (int i = 0; i < allObjects.Count; i++)
             {
                 if (allObjects[i] == null)
@@ -210,34 +237,38 @@ namespace MagnusDreams.Views
                     {
                         if (allObjects[i].Type == ObjType.Enemy)
                         {
-                            Canvas.SetLeft(allObjects[i].Image, Canvas.GetLeft(allObjects[i].Image) - 2);
-                            //Canvas.SetTop(allObjects[i].Image, Canvas.GetTop(allObjects[i].Image) + 5);
+                            var randNum = random.Next(0, 1001);
+
+                            if (randNum < 10)
+                                NewEnemyBullet(allObjects[i]);
+                            
+                            EnemyCircleMovement(allObjects[i]);
                             CollisionUpdate(allObjects[i]);
                         }
                     }
                 }
             }
         }
-
         private void Update()
         {
+            angle += 0.1;
+            angle = angle % 360;
             if (!allObjects.Contains(player))
                 allObjects.Add(player);
         }
-
         public void CollisionUpdate(EntityObject obj)
         {
-            obj.Rect =  new Rect(Canvas.GetLeft(obj.Image), Canvas.GetTop(obj.Image), obj.Image.ActualWidth, obj.Image.ActualHeight);
+            obj.Rect = new Rect(Canvas.GetLeft(obj.Image), Canvas.GetTop(obj.Image), obj.Image.ActualWidth, obj.Image.ActualHeight);
         }
 
 
-        public void CollisionCheck()
+        public void CheckCollision()
         {
-            for (int obj1index = 0;obj1index< allObjects.Count;obj1index++)
+            for (int obj1index = 0; obj1index < allObjects.Count; obj1index++)
             {
                 for (int obj2index = 0; obj2index < allObjects.Count; obj2index++)
                 {
-                    if (allObjects[obj1index] == null || allObjects[obj2index] == null || 
+                    if (allObjects[obj1index] == null || allObjects[obj2index] == null ||
                         allObjects[obj1index].Type == allObjects[obj2index].Type)
                         continue;
 
@@ -266,7 +297,7 @@ namespace MagnusDreams.Views
                             Log.Content = $"{allObjects[obj1index].Image.Name} with {allObjects[obj2index].Image.Name}";
 
                             allObjects[obj2index].Life--;
-                            
+
                             ClearFromScreen(allObjects[obj1index]);
                             if (allObjects[obj2index].Life <= 0)
                             {
@@ -276,6 +307,12 @@ namespace MagnusDreams.Views
                     }
                 }
             }
+        }
+        public bool CheckOutOfBounds(Image imgObj)
+        {
+            if (Canvas.GetTop(imgObj) > 720 || Canvas.GetTop(imgObj) < 0 || Canvas.GetLeft(imgObj) > 1280 || Canvas.GetLeft(imgObj) < 0)
+                return true;
+            return false;
         }
 
         // hide and remove obj from the interaction area
@@ -298,7 +335,6 @@ namespace MagnusDreams.Views
             if (GameCanvas.Children.Contains(entity.Image))
                 GameCanvas.Children.Remove(entity.Image);
         }
-
         public bool GoToHiddenPos(Image img, double posX, double posY)
         {
             bool hide = true;
@@ -307,14 +343,32 @@ namespace MagnusDreams.Views
             return hide;
         }
 
-        public bool CheckOutOfBounds(Image imgObj)
+
+
+        public void EnemyCircleMovement(EntityObject obj)
         {
-            if (Canvas.GetTop(imgObj) > 720 || Canvas.GetTop(imgObj) < 0 || Canvas.GetLeft(imgObj) > 1280 || Canvas.GetLeft(imgObj) < 0)
-                return true;
-            return false;
+            Canvas.SetLeft(obj.Image, Canvas.GetLeft(obj.Image) - 1 );//988 - Math.Cos(angle) * 10);
+            //Canvas.SetTop(obj.Image, Canvas.GetLeft(obj.Image) + 1);//150 - Math.Sin(angle) * 10);
         }
 
-        #region BulletMethods
+        public void NewEnemyBullet(EntityObject enemyWhoShot)
+        {
+            enemyBulletPool.Add(new EntityObject(1, new Image()
+            {
+                Height = EnemyBullet.Height,
+                Width = EnemyBullet.Width,
+                Source = EnemyBullet.Source,
+                HorizontalAlignment = HorizontalAlignment.Left,
+                VerticalAlignment = VerticalAlignment.Top,
+                Visibility = Visibility.Hidden,
+                Tag = EnemyBullet.Tag
+            }, ObjType.EnemyBullet));
+
+            allObjects.Add(enemyBulletPool.LastOrDefault());
+            SetBulletPosition(enemyBulletPool.LastOrDefault(), enemyWhoShot);
+        }
+
+        #region Player Bullet Methods
         public void NewBullet()
         {
             playerBulletPool.Add(new EntityObject(1, new Image()
@@ -347,18 +401,28 @@ namespace MagnusDreams.Views
             if (shouldMakeNewBullet)
                 NewBullet();
         }
+        #endregion
 
-        public void SetBulletPosition(EntityObject bullet)
+        public void SetBulletPosition(EntityObject bullet, EntityObject whoShot = null)
         {
             if (!GameCanvas.Children.Contains(bullet.Image))
                 GameCanvas.Children.Add(bullet.Image);
 
             bullet.Image.Refresh();
             bullet.Image.Visibility = Visibility.Visible;
-            Canvas.SetLeft(bullet.Image, Canvas.GetLeft(PlayerImage) + PlayerImage.ActualWidth);
-            Canvas.SetTop(bullet.Image, Canvas.GetTop(PlayerImage) + PlayerImage.ActualHeight - (bullet.Image.ActualHeight * 2));
+
+            if (bullet.Type == ObjType.PlayerBullet)
+            {
+                Canvas.SetLeft(bullet.Image, Canvas.GetLeft(PlayerImage) + PlayerImage.ActualWidth);
+                Canvas.SetTop(bullet.Image, Canvas.GetTop(PlayerImage) + PlayerImage.ActualHeight - (bullet.Image.ActualHeight * 2));
+            }
+            else if(bullet.Type == ObjType.EnemyBullet && whoShot != null)
+            {
+                Canvas.SetLeft(bullet.Image, Canvas.GetLeft(whoShot.Image) + whoShot.Image.ActualWidth);
+                Canvas.SetTop(bullet.Image, Canvas.GetTop(whoShot.Image) + whoShot.Image.ActualHeight - (bullet.Image.ActualHeight));
+            }
             bullet.Image.Refresh();
         }
-        #endregion
+        
     }
 }

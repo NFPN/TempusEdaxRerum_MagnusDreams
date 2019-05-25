@@ -17,7 +17,9 @@
             <Image x:Name="Enemy_Copy1" HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="64" Source="/MagnusDreams;component/Images/Treco Pronto-01.png" Stretch="Fill" Canvas.Left="988" Canvas.Top="350" Tag="Enemy" RenderTransformOrigin="0.5,0.5"/>
             <Image x:Name="Enemy_Copy2" HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="64" Source="/MagnusDreams;component/Images/Treco Pronto-01.png" Stretch="Fill" Canvas.Left="988" Canvas.Top="450" Tag="Enemy" RenderTransformOrigin="0.5,0.5"/>
             <Image x:Name="Enemy_Copy3" HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="64" Source="/MagnusDreams;component/Images/Treco Pronto-01.png" Stretch="Fill" Canvas.Left="988" Canvas.Top="550" Tag="Enemy" RenderTransformOrigin="0.5,0.5"/>
+            <Image x:Name="Rosto" Height="212" Canvas.Top="498" Width="269" Source="/MagnusDreams;component/Images/puto.png"/>
         </Canvas>
         <Label x:Name="Log" Content="testsadf" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="69" VerticalAlignment="Top" Width="1270" Margin="0,48,0,0" FontSize="20"/>
+        <Image x:Name="EnemyBullet" HorizontalAlignment="Left" Height="30" Margin="1210,300,0,0" VerticalAlignment="Top" Width="30" Source="/MagnusDreams;component/Images/olhoo.png" Tag="EnemyBullet"/>
     </Grid>
 </UserControl>
