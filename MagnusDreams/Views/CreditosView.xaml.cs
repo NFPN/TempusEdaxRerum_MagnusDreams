@@ -30,7 +30,7 @@ namespace MagnusDreams.Views
         private void ReturnButton_Clicked(object sender, RoutedEventArgs e)
         {
             //Teste de som
-            main.AudioGame("click.wav");
+            //main.AudioGame("click.wav");
             
             contentControlCredits.Content = new MenuView();
             backgroundFundo.Visibility = Visibility.Hidden;
@@ -58,7 +58,7 @@ namespace MagnusDreams.Views
             }, false);
 
             //Teste de som
-            main.AudioGame("select.wav");
+            //main.AudioGame("select.wav");
         }
     }
 }

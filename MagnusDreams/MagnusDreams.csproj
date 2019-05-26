@@ -59,6 +59,7 @@
     <Compile Include="DataBase\App.xaml.cs" />
     <Compile Include="DataBase\ComandosSQL.cs" />
     <Compile Include="DataBase\Connection.cs" />
+    <Compile Include="Util\Audio.cs" />
     <Compile Include="Util\EntityObject.cs" />
     <Compile Include="Util\ExtensionMethods.cs" />
     <Compile Include="Util\KeyboardController.cs" />
@@ -173,6 +174,7 @@
     <Resource Include="Images\pause.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sounds\Shoot.wav" />
     <Resource Include="Images\BOSS_Prancheta 1.png" />
     <Resource Include="Images\fogo.gif" />
     <Resource Include="Images\Game Derrota_Prancheta 1.jpg" />
@@ -202,6 +204,7 @@
     <Resource Include="Images\TER Magnus rosto_Prancheta 1.png" />
     <Content Include="Sounds\bgSoundsss.wav" />
     <Content Include="Sounds\click.wav" />
+    <Content Include="Sounds\movimentacao.wav" />
     <Content Include="Sounds\select.wav" />
     <Content Include="Sounds\shineselect.wav" />
   </ItemGroup>

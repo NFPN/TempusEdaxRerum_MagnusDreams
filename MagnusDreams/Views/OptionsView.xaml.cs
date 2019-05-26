@@ -33,7 +33,7 @@ namespace MagnusDreams.Views
         {
             if(main != null)
             {
-                main.audios[0].Volume = 0.5;
+                //main.audios[0].Volume = 0.5;
             }
             
         }
@@ -45,13 +45,13 @@ namespace MagnusDreams.Views
 
         private void musicOff(object sender, System.EventArgs e)
         {
-            main.audios[0].Volume = 0;
+           // main.audios[0].Volume = 0;
         }
 
         private void ReturnButtonOp_Clicked(object sender, RoutedEventArgs e)
         {
             //Teste de som
-            main.AudioGame("click.wav");
+            //main.AudioGame("click.wav");
 
             contentControl.Content = new MenuView();
             backgroundFundo.Visibility = Visibility.Hidden;

@@ -40,14 +40,14 @@ namespace MagnusDreams.Views
             contentControl.Content = new CreditosView();
             HiddenMenu();
             //Teste de som
-            main.AudioGame("shineselect.wav");
+           // main.AudioGame("shineselect.wav");
         }
 
         private void ExitButton_Clicked(object sender, RoutedEventArgs e)
         {
             Environment.Exit(0);
             //Teste de som
-            main.AudioGame("select.wav");
+           // main.AudioGame("select.wav");
         }
 
         private void OptionsButton_Clicked(object sender, RoutedEventArgs e)
@@ -57,7 +57,7 @@ namespace MagnusDreams.Views
             HiddenMenu();
 
             //Teste de som
-            main.AudioGame("click.wav");
+           // main.AudioGame("click.wav");
         }
 
         private void NewGame_Clicked(object sender, RoutedEventArgs e)
@@ -68,7 +68,7 @@ namespace MagnusDreams.Views
             HiddenMenu();
 
             //Teste de som
-            main.AudioGame("click.wav");
+            //main.AudioGame("click.wav");
         }
 
         public void HiddenMenu()

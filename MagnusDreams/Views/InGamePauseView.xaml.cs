@@ -30,7 +30,7 @@ namespace MagnusDreams.Views
         private void ReturnMainMenuClicked(object sender, RoutedEventArgs e)
         {
             //Teste de som
-            main.AudioGame("shineselect.wav");
+           //main.AudioGame("shineselect.wav");
 
             contentControlPaused.Content = new MenuView();
 
@@ -51,12 +51,12 @@ namespace MagnusDreams.Views
 
         private void musicOn(object sender, RoutedEventArgs e)
         {
-            main.AudioGame("bgSoundsss.wav");
+            //main.AudioGame("bgSoundsss.wav");
         }
 
         private void musicOff(object sender, System.EventArgs e)
         {
-            main.audios[0].Volume = 0;
+            //main.audios[0].Volume = 0;
         }
     }
 }

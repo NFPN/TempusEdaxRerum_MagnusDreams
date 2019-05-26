@@ -13,8 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MagnusDreams.Util;
 using MagnusDreams.Views;
-
+using static MagnusDreams.Util.Audio;
 
 namespace MagnusDreams
 {
@@ -24,14 +25,16 @@ namespace MagnusDreams
     {
         static public Window appWindow;
         OptionsView op = new OptionsView();
-        public List<MediaPlayer> audios = new List<MediaPlayer>();
+        //public List<MediaPlayer> audios = new List<MediaPlayer>();
         
         
-        string startupPath = Environment.CurrentDirectory;
+        //string startupPath = Environment.CurrentDirectory;
 
         public MainWindow()
         {
-            AudioGame("bgSoundsss.wav");
+            //Chama a classe Audio criada recentemente
+            PlayMusic(Audios.bgSoundsss);
+            //AudioGame("bgSoundsss.wav");
             InitializeComponent();
             contentControl.Content = new MenuView();
             //MenuOptions();
@@ -65,20 +68,20 @@ namespace MagnusDreams
             }
         }
 
-        public  void AudioGame(string audioName)
-        {          
-                // Get application path and return 2 foldes (parents) 
-                DirectoryInfo directoryInfo = Directory.GetParent(Directory.GetParent(startupPath).FullName);
-
-                Directory.GetDirectories(directoryInfo.FullName);
-
-                var p1 = new MediaPlayer();
-
-                p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + audioName, UriKind.Relative));
-                p1.Volume = 0.5;
-                p1.Play();
-                //Add backgroung to yout list of audios if necessary
-                audios.Add(p1);
-        }
+        //public  void AudioGame(string audioName)
+        //{          
+        //        // Get application path and return 2 foldes (parents) 
+        //        DirectoryInfo directoryInfo = Directory.GetParent(Directory.GetParent(startupPath).FullName);
+        //
+        //        Directory.GetDirectories(directoryInfo.FullName);
+        //
+        //        var p1 = new MediaPlayer();
+        //
+        //        p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + audioName, UriKind.Relative));
+        //        p1.Volume = 0.5;
+        //        p1.Play();
+        //        //Add backgroung to yout list of audios if necessary
+        //        //audios.Add(p1);
+        //}
     }
 }

@@ -16,6 +16,8 @@ namespace MagnusDreams.Views
     public partial class Gameplay : UserControl
     {
         #region Global Variables
+        //MainWindow reference audios list
+        MainWindow main = (MainWindow)Application.Current.MainWindow;
 
         //The hidden position of playerBullet objects, enemy and enemyBullet objects
         double[,] hiddenPos = new double[2, 2]
@@ -371,6 +373,7 @@ namespace MagnusDreams.Views
         #region Player Bullet Methods
         public void NewBullet()
         {
+            //main.AudioGame("Shoot.wav");
             playerBulletPool.Add(new EntityObject(1, new Image()
             {
                 Height = PlayerBullet.Height,
