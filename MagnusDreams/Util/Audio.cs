@@ -12,7 +12,6 @@ namespace MagnusDreams.Util
     {
         static string  startupPath = Environment.CurrentDirectory;
 
-        
 
         public static void PlayMusic(Musicas musica)
         {
@@ -26,5 +25,6 @@ namespace MagnusDreams.Util
             p1.Volume = 0.5;
             p1.Play();
         }
-    }
-}
+    } //isso ai curti em , bem dinamico 
+}//fiz uma classe pra enum global
+//Estava prucrando ela, a Musicas ne
