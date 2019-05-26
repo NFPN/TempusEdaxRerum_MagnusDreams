@@ -19,8 +19,6 @@ using static MagnusDreams.Util.Audio;
 
 namespace MagnusDreams
 {
-    public enum ObjType { Player, Enemy, PlayerBullet, EnemyBullet }
-
     public partial class MainWindow : Window
     {
         static public Window appWindow;
@@ -33,7 +31,7 @@ namespace MagnusDreams
         public MainWindow()
         {
             //Chama a classe Audio criada recentemente
-            PlayMusic(Audios.bgSoundsss);
+            PlayMusic(Musicas.bgSoundsss);
             //AudioGame("bgSoundsss.wav");
             InitializeComponent();
             contentControl.Content = new MenuView();

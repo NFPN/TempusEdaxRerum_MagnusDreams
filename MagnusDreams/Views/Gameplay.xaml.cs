@@ -35,22 +35,23 @@ namespace MagnusDreams.Views
         //Enemy Info
         //ImageSource enemySource;
         //double enemyBaseHeight, enemyBaseWidth;
-        List<EntityObject> enemyBulletPool = new List<EntityObject>();
+        List<BaseObject> enemyBulletPool = new List<BaseObject>();
         bool enemyFlyUp;
         double angle;
 
         //Player Info
-        EntityObject player;
-        List<EntityObject> playerBulletPool = new List<EntityObject>();
+        BaseObject player;
+        List<BaseObject> playerBulletPool = new List<BaseObject>();
         bool shouldMakeNewBullet, canMove;
         double playerInitialLeftPosition, playerInitialTopPosition, playerSpeed, timeToShootPlayerBullets;
 
-        List<EntityObject> allObjects = new List<EntityObject>();
+        List<BaseObject> allObjects = new List<BaseObject>();
 
         int frames;
         Random random = new Random();
 
         #endregion
+
 
 
         public Gameplay()
@@ -110,7 +111,7 @@ namespace MagnusDreams.Views
             {
                 if (img.Tag != null && img.Tag.ToString() == "Enemy")
                 {
-                    allObjects.Add(new EntityObject(3, img, ObjType.Enemy));
+                    allObjects.Add(new BaseObject(3, img, ObjType.Enemy));
                 }
             }
             allObjects.Add(player);
@@ -122,7 +123,7 @@ namespace MagnusDreams.Views
             //Player Setup
             playerInitialLeftPosition = Canvas.GetLeft(PlayerImage);
             playerInitialTopPosition = Canvas.GetTop(PlayerImage);
-            player = new EntityObject(3, PlayerImage, ObjType.Player);
+            player = new BaseObject(3, PlayerImage, ObjType.Player);
             playerSpeed = 10;
             canMove = true;
 
@@ -258,7 +259,7 @@ namespace MagnusDreams.Views
             if (!allObjects.Contains(player))
                 allObjects.Add(player);
         }
-        public void CollisionUpdate(EntityObject obj)
+        public void CollisionUpdate(BaseObject obj)
         {
             obj.Rect = new Rect(Canvas.GetLeft(obj.Image), Canvas.GetTop(obj.Image), obj.Image.ActualWidth, obj.Image.ActualHeight);
         }
@@ -318,7 +319,7 @@ namespace MagnusDreams.Views
         }
 
         // hide and remove obj from the interaction area
-        public void ClearFromScreen(EntityObject entity)
+        public void ClearFromScreen(BaseObject entity)
         {
             bool check;
             //entity.Image.Visibility = Visibility.Hidden;
@@ -347,15 +348,15 @@ namespace MagnusDreams.Views
 
 
 
-        public void EnemyCircleMovement(EntityObject obj)
+        public void EnemyCircleMovement(BaseObject obj)
         {
             Canvas.SetLeft(obj.Image, Canvas.GetLeft(obj.Image) - 1 );//988 - Math.Cos(angle) * 10);
             //Canvas.SetTop(obj.Image, Canvas.GetLeft(obj.Image) + 1);//150 - Math.Sin(angle) * 10);
         }
 
-        public void NewEnemyBullet(EntityObject enemyWhoShot)
+        public void NewEnemyBullet(BaseObject enemyWhoShot)
         {
-            enemyBulletPool.Add(new EntityObject(1, new Image()
+            enemyBulletPool.Add(new BaseObject(1, new Image()
             {
                 Height = EnemyBullet.Height,
                 Width = EnemyBullet.Width,
@@ -374,7 +375,7 @@ namespace MagnusDreams.Views
         public void NewBullet()
         {
             //main.AudioGame("Shoot.wav");
-            playerBulletPool.Add(new EntityObject(1, new Image()
+            playerBulletPool.Add(new BaseObject(1, new Image()
             {
                 Height = PlayerBullet.Height,
                 Width = PlayerBullet.Width,
@@ -406,7 +407,7 @@ namespace MagnusDreams.Views
         }
         #endregion
 
-        public void SetBulletPosition(EntityObject bullet, EntityObject whoShot = null)
+        public void SetBulletPosition(BaseObject bullet, BaseObject whoShot = null)
         {
             if (!GameCanvas.Children.Contains(bullet.Image))
                 GameCanvas.Children.Add(bullet.Image);

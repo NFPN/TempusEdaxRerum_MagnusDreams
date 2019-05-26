@@ -12,14 +12,9 @@ namespace MagnusDreams.Util
     {
         static string  startupPath = Environment.CurrentDirectory;
 
-        public  enum Audios
-        {
-            bgSoundsss, //.wav
-            //"bgSoundsss.wav"
+        
 
-        };
-
-        public static void PlayMusic(Enum audioEnum)
+        public static void PlayMusic(Musicas musica)
         {
             DirectoryInfo directoryInfo = Directory.GetParent(Directory.GetParent(startupPath).FullName);
 
@@ -27,7 +22,7 @@ namespace MagnusDreams.Util
 
             var p1 = new MediaPlayer();
 
-            p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + audioEnum + ".wav", UriKind.Relative));
+            p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + musica + ".wav", UriKind.Relative));
             p1.Volume = 0.5;
             p1.Play();
         }

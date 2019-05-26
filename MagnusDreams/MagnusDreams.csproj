@@ -60,8 +60,11 @@
     <Compile Include="DataBase\ComandosSQL.cs" />
     <Compile Include="DataBase\Connection.cs" />
     <Compile Include="Util\Audio.cs" />
-    <Compile Include="Util\EntityObject.cs" />
+    <Compile Include="Util\Bullet.cs" />
+    <Compile Include="Util\Enemy.cs" />
+    <Compile Include="Util\BaseObject.cs" />
     <Compile Include="Util\ExtensionMethods.cs" />
+    <Compile Include="Util\GlobalEnumerators.cs" />
     <Compile Include="Util\KeyboardController.cs" />
     <Compile Include="Views\CreditosView.xaml.cs">
       <DependentUpon>CreditosView.xaml</DependentUpon>
