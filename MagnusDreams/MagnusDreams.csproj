@@ -60,11 +60,10 @@
     <Compile Include="DataBase\ComandosSQL.cs" />
     <Compile Include="DataBase\Connection.cs" />
     <Compile Include="Util\Audio.cs" />
-    <Compile Include="Util\Bullet.cs" />
-    <Compile Include="Util\Enemy.cs" />
     <Compile Include="Util\BaseObject.cs" />
     <Compile Include="Util\ExtensionMethods.cs" />
     <Compile Include="Util\GlobalEnumerators.cs" />
+    <Compile Include="Util\IObjController.cs" />
     <Compile Include="Util\KeyboardController.cs" />
     <Compile Include="Views\CreditosView.xaml.cs">
       <DependentUpon>CreditosView.xaml</DependentUpon>
@@ -177,7 +176,10 @@
     <Resource Include="Images\pause.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sounds\MonsterHit.wav" />
+    <Content Include="Sounds\BossHit.wav" />
     <Content Include="Sounds\Shoot.wav" />
+    <Content Include="Sounds\PlayerHit.wav" />
     <Resource Include="Images\BOSS_Prancheta 1.png" />
     <Resource Include="Images\fogo.gif" />
     <Resource Include="Images\Game Derrota_Prancheta 1.jpg" />

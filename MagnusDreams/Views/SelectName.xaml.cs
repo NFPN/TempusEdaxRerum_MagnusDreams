@@ -1,4 +1,5 @@
-﻿using MagnusDrems.DAO;//para pegar o comando sql
+﻿using MagnusDreams.Util;
+using MagnusDrems.DAO;//para pegar o comando sql
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static MagnusDreams.Util.Audio;
 
 namespace MagnusDreams.Views
 {
@@ -22,6 +24,7 @@ namespace MagnusDreams.Views
     public partial class SelectName : Window
     {
         ComandosSQL comandos = new ComandosSQL();
+
         public SelectName()
         {
             InitializeComponent();
@@ -29,9 +32,10 @@ namespace MagnusDreams.Views
 
         private void StartGame_Clicked(object sender, RoutedEventArgs e)
         {
-         
+            PlayMusic(Efeitos.select);
             //Insere o texto inserido do player no Banco de dados
-            comandos.InsertData(lbTextNamePlayer.Text);
+            string NomeJogador = lbTextNamePlayer.Text;
+            comandos.InsertData(NomeJogador);
             contentControl.Content = new Gameplay();
         }
     }

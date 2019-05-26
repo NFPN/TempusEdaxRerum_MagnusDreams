@@ -47,6 +47,28 @@ namespace MagnusDrems.DAO
             }
         }
 
+        public void InsertData(string nome, string vida, string score, string highScore) 
+        {
+            if (nome != null)
+            {
+
+                try
+                {
+                    qLComand = defaulCommand(nome);
+                    qLComand = defaulCommand(vida);
+                    qLComand = defaulCommand(score);
+                    qLComand = defaulCommand(highScore);
+                    qLComand.Connection = connection.connect();
+                    qLComand.ExecuteNonQuery();
+                    this.mensagem = "Fim de jogo cadatrado com sucesso!!";
+                }
+                catch (SqlException e)
+                {
+                    this.mensagem = " Erro ao criar cadatro \n" + e.Message;
+                }
+                connection.desconnect();
+            }
+        }
 
         public void UpdtadeDataName(string nome)//acho que precisa de todos os valores
         {

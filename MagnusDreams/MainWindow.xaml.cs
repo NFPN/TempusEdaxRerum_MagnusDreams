@@ -23,18 +23,14 @@ namespace MagnusDreams
     {
         static public Window appWindow;
         OptionsView op = new OptionsView();
-        //public List<MediaPlayer> audios = new List<MediaPlayer>();
-        
-        
-        //string startupPath = Environment.CurrentDirectory;
+
 
         public MainWindow()
-        {
+        {          
+            InitializeComponent();          
+            contentControl.Content = new MenuView();
             //Chama a classe Audio criada recentemente
             PlayMusic(Musicas.bgSoundsss);
-            //AudioGame("bgSoundsss.wav");
-            InitializeComponent();
-            contentControl.Content = new MenuView();
             //MenuOptions();
 
             appWindow = GetWindow(this);
@@ -65,21 +61,5 @@ namespace MagnusDreams
                 obj.Visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
             }
         }
-
-        //public  void AudioGame(string audioName)
-        //{          
-        //        // Get application path and return 2 foldes (parents) 
-        //        DirectoryInfo directoryInfo = Directory.GetParent(Directory.GetParent(startupPath).FullName);
-        //
-        //        Directory.GetDirectories(directoryInfo.FullName);
-        //
-        //        var p1 = new MediaPlayer();
-        //
-        //        p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + audioName, UriKind.Relative));
-        //        p1.Volume = 0.5;
-        //        p1.Play();
-        //        //Add backgroung to yout list of audios if necessary
-        //        //audios.Add(p1);
-        //}
     }
 }

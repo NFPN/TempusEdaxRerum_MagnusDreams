@@ -15,21 +15,17 @@ using System.Windows.Shapes;
 using System.IO;
 using MagnusDreams;
 using Microsoft.Win32;
+using MagnusDreams.Util;
+using static MagnusDreams.Util.Audio;
 
 namespace MagnusDreams.Views
 {
-    /// <summary>
-    /// Interação lógica para MenuView.xam
-    /// </summary>
     public partial class MenuView : UserControl
     {
-        MainWindow main = (MainWindow)Application.Current.MainWindow;
-        //string startupPath = Environment.CurrentDirectory;
+        MainWindow main = (MainWindow)Application.Current.MainWindow;     
         
         public MenuView()
-        {
-            
-            //AudioGame("bgSound.mp4");
+        {                     
             InitializeComponent();
             ShowMenu();
 
@@ -39,15 +35,15 @@ namespace MagnusDreams.Views
         {
             contentControl.Content = new CreditosView();
             HiddenMenu();
-            //Teste de som
-           // main.AudioGame("shineselect.wav");
+            
+            PlayMusic(Efeitos.shineselect);
         }
 
         private void ExitButton_Clicked(object sender, RoutedEventArgs e)
         {
+            PlayMusic(Efeitos.shineselect);
             Environment.Exit(0);
-            //Teste de som
-           // main.AudioGame("select.wav");
+            
         }
 
         private void OptionsButton_Clicked(object sender, RoutedEventArgs e)
@@ -56,19 +52,18 @@ namespace MagnusDreams.Views
             contentControl.Content = new OptionsView();
             HiddenMenu();
 
-            //Teste de som
-           // main.AudioGame("click.wav");
+            PlayMusic(Efeitos.shineselect);
         }
 
         private void NewGame_Clicked(object sender, RoutedEventArgs e)
         {
+            PlayMusic(Efeitos.shineselect);
+
             //---- For testing -----
             contentControl.Content = new Gameplay();
             //----------------------
             HiddenMenu();
-
-            //Teste de som
-            //main.AudioGame("click.wav");
+           
         }
 
         public void HiddenMenu()

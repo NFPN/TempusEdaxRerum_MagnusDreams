@@ -10,7 +10,7 @@ namespace MagnusDreams.Util
 {
     public class BaseObject
     {
-        public BaseObject() { }
+        /*public BaseObject() { }
         public BaseObject(int life, Image image, ObjType type)
         {
             Type = type;
@@ -23,25 +23,23 @@ namespace MagnusDreams.Util
                 image.Width ,
                 image.Height
             );
-        }
+        }*/
 
-        public BaseObject(int life, Image image, ObjType type, double customRectHeight, double customRectWidth)
+        public void SetRect()
         {
-            Type = type;
-            Life = life;
-            Image = image;
             Rect = new Rect
             (
-                Canvas.GetLeft(image),
-                Canvas.GetTop(image),
-                image.Width,
-                image.Height
+                Canvas.GetLeft(this.Image),
+                Canvas.GetTop(this.Image),
+                this.Image.Width,
+                this.Image.Height
             );
         }
 
         public int Life { get; set; }
-        public Image Image { get; }
+        public int Speed { get; set; }
         public Rect Rect { get; set; }
-        public ObjType Type { get; }
+        public Image Image { get; set; }
+        public ObjType Type { get; set; }
     }
 }

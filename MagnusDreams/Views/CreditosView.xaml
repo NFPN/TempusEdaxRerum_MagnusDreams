@@ -33,14 +33,6 @@
         <Label x:Name="textNamesProgrammers" Content="Natanael (MadWalker)&#xD;&#xA;Nicolas Soares (Keyblase)" HorizontalAlignment="Left" Margin="633.898,213.284,0,0" VerticalAlignment="Top" FontSize="30" VerticalContentAlignment="Center" Width="415.098" Height="187.672" Foreground="Black"/>
         <Label x:Name="textNamesDesingners" Content="Andriel(KooriKage)&#xA;João de Castro" HorizontalAlignment="Left" Margin="233.552,213.284,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="357.243" Height="187.672" Foreground="Black"/>
         <Label x:Name="textNamesAudio" Content="Rafael Donato" HorizontalAlignment="Left" Margin="264.224,475.424,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="326.571" Height="96.863" Foreground="Black"/>
-        <Button x:Name="btnPause" Content="" HorizontalAlignment="Left" Margin="1217,0,0,0" VerticalAlignment="Top" Width="63" Height="60" BorderBrush="{x:Null}" Click="OpenGamePause" Foreground="{x:Null}">
-            <Button.Background>
-                <ImageBrush ImageSource="/MagnusDreams;component/Images/BOSS_Prancheta 1.png"/>
-            </Button.Background>
-        </Button>
-        <Label x:Name="txtHighScore" Content="HighScore:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-        <Label x:Name="txtPlayerScore" Content="Score:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,26,0,0" FontSize="18" FontWeight="Bold"/>
-        <Label x:Name="txtGlobalScore" Content="Global:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,52.4,0,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="1.594,0.61"/>
     </Grid>
 
 </UserControl>

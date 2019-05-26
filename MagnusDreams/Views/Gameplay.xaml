@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280">
     <Grid x:Name="GameGrid">
+        <ContentControl x:Name="contentControlGamePlay" Grid.Row="1"/>
         <Image x:Name="FundoGame" VerticalAlignment="Top" Source="/MagnusDreams;component/Images/fundo.jpg" Stretch="Fill"/>
 
         <Canvas Name="GameCanvas" RenderTransformOrigin="0.5,0.5">
@@ -17,9 +18,17 @@
             <Image x:Name="Enemy_Copy1" HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="64" Source="/MagnusDreams;component/Images/Treco Pronto-01.png" Stretch="Fill" Canvas.Left="988" Canvas.Top="350" Tag="Enemy" RenderTransformOrigin="0.5,0.5"/>
             <Image x:Name="Enemy_Copy2" HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="64" Source="/MagnusDreams;component/Images/Treco Pronto-01.png" Stretch="Fill" Canvas.Left="988" Canvas.Top="450" Tag="Enemy" RenderTransformOrigin="0.5,0.5"/>
             <Image x:Name="Enemy_Copy3" HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="64" Source="/MagnusDreams;component/Images/Treco Pronto-01.png" Stretch="Fill" Canvas.Left="988" Canvas.Top="550" Tag="Enemy" RenderTransformOrigin="0.5,0.5"/>
-            <Image x:Name="Rosto" Height="212" Canvas.Top="498" Width="269" Source="/MagnusDreams;component/Images/puto.png"/>
+            <Image x:Name="Rosto" Height="212" Canvas.Top="522" Width="269" Source="/MagnusDreams;component/Images/puto.png" Canvas.Left="-72"/>
         </Canvas>
         <Label x:Name="Log" Content="testsadf" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="69" VerticalAlignment="Top" Width="1270" Margin="0,48,0,0" FontSize="20"/>
         <Image x:Name="EnemyBullet" HorizontalAlignment="Left" Height="30" Margin="1210,300,0,0" VerticalAlignment="Top" Width="30" Source="/MagnusDreams;component/Images/olhoo.png" Tag="EnemyBullet"/>
+        <Button x:Name="btnPause" Content="" HorizontalAlignment="Left" Margin="1217,0,0,0" VerticalAlignment="Top" Width="63" Height="60" BorderBrush="{x:Null}" Click="OpenGamePause" Foreground="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/MagnusDreams;component/Images/pause.png"/>
+            </Button.Background>
+        </Button>
+        <Label x:Name="txtHighScore" Content="HighScore:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="txtPlayerScore" Content="Score:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,26,0,0" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="txtGlobalScore" Content="Global:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,52.4,0,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="1.594,0.61"/>
     </Grid>
 </UserControl>

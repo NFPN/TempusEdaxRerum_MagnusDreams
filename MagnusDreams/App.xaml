@@ -200,8 +200,8 @@
                     <Setter Property="BorderBrush" TargetName="border" Value="#00707070"/>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="#FF2C628B"/>
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
                 </Trigger>
                 <Trigger Property="ToggleButton.IsChecked" Value="True">
                     <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>

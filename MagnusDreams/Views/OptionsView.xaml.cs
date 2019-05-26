@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MagnusDreams.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static MagnusDreams.Util.Audio;
 
 namespace MagnusDreams.Views
 {
@@ -33,9 +35,8 @@ namespace MagnusDreams.Views
         {
             if(main != null)
             {
-                //main.audios[0].Volume = 0.5;
+                PlayMusic(Musicas.bgSoundsss);
             }
-            
         }
 
         private void sfxOn(object sender, System.EventArgs e)
@@ -45,13 +46,13 @@ namespace MagnusDreams.Views
 
         private void musicOff(object sender, System.EventArgs e)
         {
-           // main.audios[0].Volume = 0;
+            PlayMusic(Musicas.bgSoundsss);
         }
 
         private void ReturnButtonOp_Clicked(object sender, RoutedEventArgs e)
         {
-            //Teste de som
-            //main.AudioGame("click.wav");
+            
+            PlayMusic(Efeitos.shineselect);
 
             contentControl.Content = new MenuView();
             backgroundFundo.Visibility = Visibility.Hidden;

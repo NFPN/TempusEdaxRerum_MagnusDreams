@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MagnusDreams.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,12 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static MagnusDreams.Util.Audio;
 
 namespace MagnusDreams.Views
 {
-    /// <summary>
-    /// Interação lógica para GameOverView.xam
-    /// </summary>
     public partial class GameOverView : UserControl
     {
         MainWindow main = (MainWindow)Application.Current.MainWindow;
@@ -29,6 +28,7 @@ namespace MagnusDreams.Views
 
         private void ReturnMainMenuClicked(object sender, RoutedEventArgs e)
         {
+            PlayMusic(Efeitos.select);
             contentControlGameOver.Visibility = Visibility.Hidden;
             contentControlGameOver.Content = new MainWindow();
 

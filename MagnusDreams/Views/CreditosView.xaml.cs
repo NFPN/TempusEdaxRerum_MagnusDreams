@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MagnusDreams.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,12 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static MagnusDreams.Util.Audio;
 
 namespace MagnusDreams.Views
 {
-    /// <summary>
-    /// Interaction logic for CreditosView.xaml
-    /// </summary>
     public partial class CreditosView : UserControl
     {
         MainWindow main = (MainWindow)Application.Current.MainWindow;
@@ -29,9 +28,8 @@ namespace MagnusDreams.Views
 
         private void ReturnButton_Clicked(object sender, RoutedEventArgs e)
         {
-            //Teste de som
-            //main.AudioGame("click.wav");
-            
+            PlayMusic(Efeitos.click);
+
             contentControlCredits.Content = new MenuView();
             backgroundFundo.Visibility = Visibility.Hidden;
             
@@ -48,17 +46,6 @@ namespace MagnusDreams.Views
                 textNamesProgrammers
                 
             }, false);
-        }
-
-        private void OpenGamePause(object sender, RoutedEventArgs e)
-        {
-            //contentControlCredits.Content = new InGamePauseView();
-            main.ChangeVisibility(new Control[] {
-                btnPause
-            }, false);
-
-            //Teste de som
-            //main.AudioGame("select.wav");
         }
     }
 }

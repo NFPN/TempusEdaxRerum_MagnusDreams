@@ -6,18 +6,22 @@ using System.Windows.Controls;
 using System.Windows.Threading;
 using System.Collections.Generic;
 using System.Windows.Media.Imaging;
-
 using MagnusDreams.Util;
 using System.Windows.Media;
 using System.Windows.Shapes;
+
+using static MagnusDreams.Util.Audio;
+using MagnusDrems.DAO;
 
 namespace MagnusDreams.Views
 {
     public partial class Gameplay : UserControl
     {
+        
         #region Global Variables
         //MainWindow reference audios list
         MainWindow main = (MainWindow)Application.Current.MainWindow;
+        ComandosSQL comandos = new ComandosSQL();
 
         //The hidden position of playerBullet objects, enemy and enemyBullet objects
         double[,] hiddenPos = new double[2, 2]
@@ -35,20 +39,22 @@ namespace MagnusDreams.Views
         //Enemy Info
         //ImageSource enemySource;
         //double enemyBaseHeight, enemyBaseWidth;
-        List<BaseObject> enemyBulletPool = new List<BaseObject>();
+        List<Bullet> enemyBulletPool = new List<Bullet>();
         bool enemyFlyUp;
         double angle;
 
         //Player Info
-        BaseObject player;
-        List<BaseObject> playerBulletPool = new List<BaseObject>();
+        IObjController player;
+        List<Bullet> playerBulletPool = new List<Bullet>();
         bool shouldMakeNewBullet, canMove;
         double playerInitialLeftPosition, playerInitialTopPosition, playerSpeed, timeToShootPlayerBullets;
 
-        List<BaseObject> allObjects = new List<BaseObject>();
+        //List<BaseObject> allObjects = new List<BaseObject>();
 
         int frames;
         Random random = new Random();
+        List<IObjController> allObjs = new List<IObjController>();
+        dynamic modList;
 
         #endregion
 
@@ -111,10 +117,10 @@ namespace MagnusDreams.Views
             {
                 if (img.Tag != null && img.Tag.ToString() == "Enemy")
                 {
-                    allObjects.Add(new BaseObject(3, img, ObjType.Enemy));
+                    allObjs.Add(new Enemy(3, 3, img, ObjType.Enemy));
                 }
             }
-            allObjects.Add(player);
+            allObjs.Add(new Player(10, 3, PlayerImage, ObjType.Player));
 
             //Initializing timers
             elapsedMiliSeconds = 0;
@@ -123,16 +129,13 @@ namespace MagnusDreams.Views
             //Player Setup
             playerInitialLeftPosition = Canvas.GetLeft(PlayerImage);
             playerInitialTopPosition = Canvas.GetTop(PlayerImage);
-            player = new BaseObject(3, PlayerImage, ObjType.Player);
-            playerSpeed = 10;
             canMove = true;
 
-            //Enemy Setup
+            //Enemy Spawner Setup
 
             //Scene Cleanup
             PlayerBullet.Visibility = Visibility.Hidden;
             GameCanvas.Children.Remove(PlayerBullet);
-
 
         }
 
@@ -171,140 +174,107 @@ namespace MagnusDreams.Views
 
         private void FastUpdate()
         {
-            CollisionUpdate(player);
+            RectUpdate(player);
             CheckCollision();
 
-            //Bullet pooling and collision
-            if (playerBulletPool.Count > 0)
-            {
-                for (int i = 0; i < playerBulletPool.Count; i++)
-                {
-                    if (playerBulletPool[i].Image.Visibility == Visibility.Visible && !CheckOutOfBounds(playerBulletPool[i].Image))
-                    {
-                        Canvas.SetLeft(playerBulletPool[i].Image, Canvas.GetLeft(playerBulletPool[i].Image) + 15);
-                        playerBulletPool[i].Rect = new Rect(
-                            Canvas.GetLeft(playerBulletPool[i].Image),
-                            Canvas.GetTop(playerBulletPool[i].Image),
-                            playerBulletPool[i].Image.Width,
-                            playerBulletPool[i].Image.Height);
-                        CollisionUpdate(playerBulletPool[i]);
-                    }
-                    else
-                    {
-                        if (allObjects.Contains(playerBulletPool[i]))
-                            allObjects.Remove(playerBulletPool[i]);
-                        Canvas.SetLeft(playerBulletPool[i].Image, hiddenPos[0, 0]);
-                        Canvas.SetTop(playerBulletPool[i].Image, hiddenPos[0, 1]);
-                    }
-                }
-            }
-
+            //Player Bullet pooling and collision            
+            MoveObjects(ref allObjs, ObjType.PlayerBullet);
             //enemy bullet pooling and collision
-            if (enemyBulletPool.Count > 0)
-            {
-                for (int i = 0; i < enemyBulletPool.Count; i++)
-                {
-                    if (enemyBulletPool[i].Image.Visibility == Visibility.Visible && !CheckOutOfBounds(enemyBulletPool[i].Image))
-                    {
-                        Canvas.SetLeft(enemyBulletPool[i].Image, Canvas.GetLeft(enemyBulletPool[i].Image) - 15);
-                        enemyBulletPool[i].Rect = new Rect(
-                            Canvas.GetLeft(enemyBulletPool[i].Image),
-                            Canvas.GetTop(enemyBulletPool[i].Image),
-                            enemyBulletPool[i].Image.Width,
-                            enemyBulletPool[i].Image.Height);
-                        CollisionUpdate(enemyBulletPool[i]);
-                    }
-                    else
-                    {
-                        if (allObjects.Contains(enemyBulletPool[i]))
-                            allObjects.Remove(enemyBulletPool[i]);
-                        Canvas.SetLeft(enemyBulletPool[i].Image, hiddenPos[0, 0]);
-                        Canvas.SetTop(enemyBulletPool[i].Image, hiddenPos[0, 1]);
-                    }
-                }
-            }
+            MoveObjects(ref allObjs, ObjType.EnemyBullet);
 
-            for (int i = 0; i < allObjects.Count; i++)
-            {
-                if (allObjects[i] == null)
-                    continue;
-
-                if (allObjects[i].Type == ObjType.Enemy || allObjects[i].Type == ObjType.EnemyBullet)
-                {
-                    if (allObjects[i].Image.Visibility == Visibility.Hidden)
-                    {
-                        Canvas.SetLeft(allObjects[i].Image, hiddenPos[1, 0]);
-                        Canvas.SetTop(allObjects[i].Image, hiddenPos[1, 1]);
-                    }
-                    else
-                    {
-                        if (allObjects[i].Type == ObjType.Enemy)
-                        {
-                            var randNum = random.Next(0, 1001);
-
-                            if (randNum < 10)
-                                NewEnemyBullet(allObjects[i]);
-                            
-                            EnemyCircleMovement(allObjects[i]);
-                            CollisionUpdate(allObjects[i]);
-                        }
-                    }
-                }
-            }
+            //Enemy Movement
+           for (int i = 0; i < allObjs.Count; i++)
+           {
+               if (allObjs[i] == null)
+                   continue;
+           
+               if (allObjs[i].Type == ObjType.Enemy || allObjs[i].Type == ObjType.EnemyBullet)
+               {
+                   if (allObjs[i].Image.Visibility == Visibility.Hidden)
+                   {
+                       Canvas.SetLeft(allObjs[i].Image, hiddenPos[1, 0]);
+                       Canvas.SetTop(allObjs[i].Image, hiddenPos[1, 1]);
+                   }
+                   else
+                   {
+                       if (allObjs[i].Type == ObjType.Enemy)
+                       {
+                           var randNum = random.Next(0, 1001);
+           
+                           if (randNum < 10)
+                               NewEnemyBullet(allObjs[i]);
+                           
+                           EnemyCircleMovement(allObjs[i]);
+                           RectUpdate(allObjs[i]);
+                       }
+                   }
+               }
+           }
         }
         private void Update()
         {
             angle += 0.1;
-            angle = angle % 360;
-            if (!allObjects.Contains(player))
-                allObjects.Add(player);
+            angle %= 360;
+            if (!allObjs.Contains(player))
+                allObjs.Add(player);
         }
-        public void CollisionUpdate(BaseObject obj)
+        public void RectUpdate(IObjController obj)
         {
+            if (obj == null)
+                return;
             obj.Rect = new Rect(Canvas.GetLeft(obj.Image), Canvas.GetTop(obj.Image), obj.Image.ActualWidth, obj.Image.ActualHeight);
         }
 
 
         public void CheckCollision()
         {
-            for (int obj1index = 0; obj1index < allObjects.Count; obj1index++)
+            for (int obj1index = 0; obj1index < allObjs.Count; obj1index++)
             {
-                for (int obj2index = 0; obj2index < allObjects.Count; obj2index++)
+                for (int obj2index = 0; obj2index < allObjs.Count; obj2index++)
                 {
-                    if (allObjects[obj1index] == null || allObjects[obj2index] == null ||
-                        allObjects[obj1index].Type == allObjects[obj2index].Type)
+                    if (allObjs[obj1index] == null || allObjs[obj2index] == null ||
+                        allObjs[obj1index].Type == allObjs[obj2index].Type)
                         continue;
-
-                    if (allObjects[obj1index].Rect.IntersectsWith(allObjects[obj2index].Rect))
+            
+                    if (allObjs[obj1index].Rect.IntersectsWith(allObjs[obj2index].Rect))
                     {
                         //PlayerCollided with enemy or enemy bullet
-                        if (allObjects[obj1index].Type == ObjType.Player && (allObjects[obj2index].Type == ObjType.Enemy ||
-                            allObjects[obj2index].Type == ObjType.EnemyBullet))
+                        if (allObjs[obj1index].Type == ObjType.Player && (allObjs[obj2index].Type == ObjType.Enemy ||
+                            allObjs[obj2index].Type == ObjType.EnemyBullet))
                         {
+                            PlayMusic(Efeitos.PlayerHit);
+                            Rosto.IsEnabled = false;
+                            //Rosto.Resources = new Uri("smiley_stackpanel.PNG", UriKind.Relative);
+
                             //obj1.Life--;
-                            if (allObjects[obj1index].Life <= 0)
+                            if (allObjs[obj1index].Life <= 0)
                             {
-                                //gameover here
+                                //comandos.InsertData();
+                                contentControlGamePlay.Content = new GameOverView();
                             }
 
                             //clear remaining bullets here
-
+                            for (int i = 0; i < allObjs.Count; i++)
+                            {
+                                if (allObjs[i].Type != ObjType.Player)
+                                    ClearFromScreen(allObjs[i]);
+                            }
                             //Reset Player position
-                            Canvas.SetLeft(allObjects[obj1index].Image, playerInitialLeftPosition);
-                            Canvas.SetTop(allObjects[obj1index].Image, playerInitialTopPosition);
+                            Canvas.SetLeft(allObjs[obj1index].Image, playerInitialLeftPosition);
+                            Canvas.SetTop(allObjs[obj1index].Image, playerInitialTopPosition);
                             continue;
                         }
                         //playerBullet collided with Enemy
-                        else if (allObjects[obj1index].Type == ObjType.PlayerBullet && allObjects[obj2index].Type == ObjType.Enemy)
+                        else if (allObjs[obj1index].Type == ObjType.PlayerBullet && allObjs[obj2index].Type == ObjType.Enemy)
                         {
-                            Log.Content = $"{allObjects[obj1index].Image.Name} with {allObjects[obj2index].Image.Name}";
+                            Log.Content = $"{allObjs[obj1index].Image.Name} with {allObjs[obj2index].Image.Name}";
 
-                            allObjects[obj2index].Life--;
-
-                            ClearFromScreen(allObjects[obj1index]);
-                            if (allObjects[obj2index].Life <= 0)
+                            allObjs[obj2index].Life--;
+            
+                            ClearFromScreen(allObjs[obj1index]);
+                            if (allObjs[obj2index].Life <= 0)
                             {
-                                ClearFromScreen(allObjects[obj2index]);
+                                ClearFromScreen(allObjs[obj2index]);
                             }
                         }
                     }
@@ -318,11 +288,11 @@ namespace MagnusDreams.Views
             return false;
         }
 
-        // hide and remove obj from the interaction area
-        public void ClearFromScreen(BaseObject entity)
+        // Remove obj from the interaction area
+        public void ClearFromScreen(IObjController entity)
         {
             bool check;
-            //entity.Image.Visibility = Visibility.Hidden;
+            
             if (entity.Type == ObjType.Player || entity.Type == ObjType.PlayerBullet)
             {
                 check = entity.Type == ObjType.PlayerBullet ?
@@ -346,17 +316,139 @@ namespace MagnusDreams.Views
             return hide;
         }
 
+        /// <summary>
+        /// Move objects on the list or Hide them
+        /// </summary>
+        public void MoveObjects(ref List<IObjController> list, ObjType type)
+        {
+            if (list.Count > 0)
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i].Image.Visibility == Visibility.Visible && !CheckOutOfBounds(list[i].Image))
+                    {
+                        Canvas.SetLeft(modList[i].Image, Canvas.GetLeft(list[i].Image) + 15);
+                        list[i].Rect = new Rect(
+                            Canvas.GetLeft(list[i].Image),
+                            Canvas.GetTop(list[i].Image),
+                            list[i].Image.Width,
+                            list[i].Image.Height);
+                        RectUpdate(playerBulletPool[i]);
+                    }
+                    else
+                    {
+                        if (allObjs.Contains(list[i]))
+                            allObjs.Remove(list[i]);
 
 
-        public void EnemyCircleMovement(BaseObject obj)
+                        Canvas.SetLeft(list[i].Image, hiddenPos[0, 0]);
+                        Canvas.SetTop(list[i].Image, hiddenPos[0, 1]);
+                    }
+                }
+
+                return;
+
+                
+
+                /*if (type == ObjType.PlayerBullet)
+                {
+                    modList = list.Cast<Bullet>()
+                        .Select(b =>
+                        {
+                            try
+                            {
+                                return new Bullet(
+                                    b.Speed,
+                                    b.Life,
+                                    b.Image,
+                                    b.Type
+                                );
+                            }
+                            catch (Exception e)
+                            {
+                                return null;
+                            }
+                        }
+                    )
+                        .ToList();
+
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        if (modList[i].Image.Visibility == Visibility.Visible && !CheckOutOfBounds(modList[i].Image))
+                        {
+                            Canvas.SetLeft(modList[i].Image, Canvas.GetLeft(modList[i].Image) + 15);
+                            modList[i].Rect = new Rect(
+                                Canvas.GetLeft(modList[i].Image),
+                                Canvas.GetTop(modList[i].Image),
+                                modList[i].Image.Width,
+                                modList[i].Image.Height);
+                            RectUpdate(playerBulletPool[i]);
+                        }
+                        else
+                        {
+                            if (allObjs.Contains(modList[i]))
+                                allObjs.Remove(modList[i]);
+                            Canvas.SetLeft(modList[i].Image, hiddenPos[0, 0]);
+                            Canvas.SetTop(modList[i].Image, hiddenPos[0, 1]);
+                        }
+                    }
+                }
+                else if(type == ObjType.EnemyBullet)
+                {
+                    modList = list.Cast<Bullet>()
+                       .Select(b =>
+                       {
+                           try
+                           {
+                               return new Bullet(
+                                   b.Speed,
+                                   b.Life,
+                                   b.Image,                                  
+                                   b.Type
+                               );
+                           }
+                           catch (Exception e)
+                           {
+                               return null;
+                           }
+                       }
+                   )
+                       .ToList();
+
+                    for (int i = 0; i < modList.Count; i++)
+                    {
+                        if (modList[i].Image.Visibility == Visibility.Visible && !CheckOutOfBounds(enemyBulletPool[i].Image))
+                        {
+                            Canvas.SetLeft(modList[i].Image, Canvas.GetLeft(enemyBulletPool[i].Image) - 15);
+                            modList[i].Rect = new Rect(
+                                Canvas.GetLeft(modList[i].Image),
+                                Canvas.GetTop(modList[i].Image),
+                                modList[i].Image.Width,
+                                modList[i].Image.Height);
+                            RectUpdate(enemyBulletPool[i]);
+                        }
+                        else
+                        {
+                            if (allObjs.Contains(modList[i]))
+                                allObjs.Remove(modList[i]);
+                            Canvas.SetLeft(modList[i].Image, hiddenPos[1, 0]);
+                            Canvas.SetTop(modList[i].Image, hiddenPos[1, 1]);
+
+                        }
+                    }
+                }*/
+            }
+        }
+
+        public void EnemyCircleMovement(IObjController obj)
         {
             Canvas.SetLeft(obj.Image, Canvas.GetLeft(obj.Image) - 1 );//988 - Math.Cos(angle) * 10);
             //Canvas.SetTop(obj.Image, Canvas.GetLeft(obj.Image) + 1);//150 - Math.Sin(angle) * 10);
         }
 
-        public void NewEnemyBullet(BaseObject enemyWhoShot)
+        public void NewEnemyBullet(IObjController enemyWhoShot)
         {
-            enemyBulletPool.Add(new BaseObject(1, new Image()
+            enemyBulletPool.Add(new Bullet(15,1, new Image()
             {
                 Height = EnemyBullet.Height,
                 Width = EnemyBullet.Width,
@@ -367,15 +459,15 @@ namespace MagnusDreams.Views
                 Tag = EnemyBullet.Tag
             }, ObjType.EnemyBullet));
 
-            allObjects.Add(enemyBulletPool.LastOrDefault());
+            allObjs.Add(enemyBulletPool.LastOrDefault());
             SetBulletPosition(enemyBulletPool.LastOrDefault(), enemyWhoShot);
         }
 
         #region Player Bullet Methods
         public void NewBullet()
         {
-            //main.AudioGame("Shoot.wav");
-            playerBulletPool.Add(new BaseObject(1, new Image()
+            PlayMusic(Efeitos.Shoot);
+            playerBulletPool.Add(new Bullet(15,1, new Image()
             {
                 Height = PlayerBullet.Height,
                 Width = PlayerBullet.Width,
@@ -386,7 +478,7 @@ namespace MagnusDreams.Views
                 Tag = "PlayerBullet"
             }, ObjType.PlayerBullet));
 
-            allObjects.Add(playerBulletPool.LastOrDefault());
+            allObjs.Add(playerBulletPool.LastOrDefault());
             SetBulletPosition(playerBulletPool.LastOrDefault());
         }
 
@@ -407,7 +499,7 @@ namespace MagnusDreams.Views
         }
         #endregion
 
-        public void SetBulletPosition(BaseObject bullet, BaseObject whoShot = null)
+        public void SetBulletPosition(IObjController bullet, IObjController whoShot = null)
         {
             if (!GameCanvas.Children.Contains(bullet.Image))
                 GameCanvas.Children.Add(bullet.Image);
@@ -427,6 +519,17 @@ namespace MagnusDreams.Views
             }
             bullet.Image.Refresh();
         }
-        
+
+
+    private void OpenGamePause(object sender, RoutedEventArgs e)
+    {
+        contentControlGamePlay.Content = new InGamePauseView();
+
+        main.ChangeVisibility(new Control[] {
+                btnPause
+            }, false);
+
+         PlayMusic(Efeitos.click);
     }
+}
 }
