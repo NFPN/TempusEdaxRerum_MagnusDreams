@@ -63,7 +63,7 @@
             <Image x:Name="Enemy_Copy3" HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="64" Source="/MagnusDreams;component/Images/Treco Pronto-01.png" Stretch="Fill" Canvas.Left="988" Canvas.Top="550" Tag="Enemy" RenderTransformOrigin="0.5,0.5"/>
             <Image x:Name="Rosto" Height="212" Canvas.Top="522" Width="269" Source="/MagnusDreams;component/Images/puto.png" Canvas.Left="-72"/>
             <Image x:Name="EnemyBullet" HorizontalAlignment="Left" Height="30" Margin="1210,300,0,0" VerticalAlignment="Top" Width="30" Source="/MagnusDreams;component/Images/olhoo.png" Tag="EnemyBullet"/>
-            <Image x:Name="Rosto_Copy" Height="212" Canvas.Top="550" Width="269" Source="/MagnusDreams;component/Images/pause.png" Canvas.Left="475">
+            <Image x:Name="PauseInPause" Height="212" Canvas.Top="550" Width="269" Source="/MagnusDreams;component/Images/pause.png" Canvas.Left="475">
                 <Image.OpacityMask>
                     <ImageBrush ImageSource="/MagnusDreams;component/Images/pause.png"/>
                 </Image.OpacityMask>
