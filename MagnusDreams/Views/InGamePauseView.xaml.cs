@@ -28,9 +28,14 @@ namespace MagnusDreams.Views
 
         private void ReturnMainMenuClicked(object sender, RoutedEventArgs e)
         {
+            //-----para voltar pro jogo------
+            contentControlPaused.Content = Gameplay.thiscontentControl;
+            //------------------------------
+
             PlayMusic(Efeitos.select);
 
-            contentControlPaused.Content = new MenuView();
+            //contentControlPaused.Visibility = Visibility.Collapsed;
+            //contentControlPaused.Content = new MenuView();
 
             bgPauseGame.Visibility = Visibility.Hidden;
             ImgPause.Visibility = Visibility.Hidden;

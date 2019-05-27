@@ -17,7 +17,7 @@ namespace MagnusDreams.Views
 {
     public partial class Gameplay : UserControl
     {
-        
+
         #region Global Variables
         //MainWindow reference audios list
         MainWindow main = (MainWindow)Application.Current.MainWindow;
@@ -47,13 +47,14 @@ namespace MagnusDreams.Views
         IObjController player;
         List<Bullet> playerBulletPool = new List<Bullet>();
         bool shouldMakeNewBullet, canMove;
-        double playerInitialLeftPosition, playerInitialTopPosition, playerSpeed, timeToShootPlayerBullets;
+        double playerInitialLeftPosition, playerInitialTopPosition, timeToShootPlayerBullets;
 
         //List<BaseObject> allObjects = new List<BaseObject>();
 
         int frames;
         Random random = new Random();
         List<IObjController> allObjs = new List<IObjController>();
+        public static ContentControl thiscontentControl = new ContentControl();
 
         #endregion
 
@@ -63,7 +64,7 @@ namespace MagnusDreams.Views
         {
             InitializeComponent();
 
-            CompositionTarget.Rendering += (s, a) =>
+            /*CompositionTarget.Rendering += (s, a) =>
             {
                 ++frames;
             };
@@ -75,7 +76,7 @@ namespace MagnusDreams.Views
                 Log.Content = string.Format("FPS:{0}", frames);
                 frames = 0;
             };
-            fpsTimer.Start();
+            fpsTimer.Start();*/
 
             KeyboardController kbcontrol = new KeyboardController(MainWindow.appWindow);
             kbcontrol.timer.Interval = TimeSpan.FromMilliseconds(1);
@@ -121,10 +122,10 @@ namespace MagnusDreams.Views
             }
 
             player = new Player(10, 3, PlayerImage, ObjType.Player);
-            
+
             allObjs.Add(player);
             //GameCanvas.Children.Add(player.Image);
-            
+
             //Initializing timers
             elapsedMiliSeconds = 0;
             timeToShootPlayerBullets = 0;
@@ -153,24 +154,28 @@ namespace MagnusDreams.Views
                     if (playerBulletPool.Count > 0) GetExistingBullet();
                     else NewBullet();
 
-            //Movement Logic
+            //Movement Logic Down Up Left Right
             if (canMove)
             {
                 if (Keyboard.IsKeyDown(Key.Down) && Canvas.GetTop(player.Image) < 720 - player.Image.ActualHeight)
                 {
-                    Canvas.SetTop(player.Image, Canvas.GetTop(player.Image) + playerSpeed);
+                    Log.Content = "down";
+                    Canvas.SetTop(player.Image, Canvas.GetTop(player.Image) + player.Speed);
                 }
                 if (Keyboard.IsKeyDown(Key.Up) && Canvas.GetTop(player.Image) > 0)
                 {
-                    Canvas.SetTop(player.Image, Canvas.GetTop(player.Image) - playerSpeed);
+                    Log.Content = "up";
+                    Canvas.SetTop(player.Image, Canvas.GetTop(player.Image) - player.Speed);
                 }
                 if (Keyboard.IsKeyDown(Key.Left) && Canvas.GetLeft(player.Image) > 0)
                 {
-                    Canvas.SetLeft(player.Image, Canvas.GetLeft(player.Image) - playerSpeed);
+                    Log.Content = "left";
+                    Canvas.SetLeft(player.Image, Canvas.GetLeft(player.Image) - player.Speed);
                 }
                 if (Keyboard.IsKeyDown(Key.Right) && Canvas.GetLeft(player.Image) < 1280 - player.Image.ActualWidth)
                 {
-                    Canvas.SetLeft(player.Image, Canvas.GetLeft(player.Image) + playerSpeed);
+                    Log.Content = "right";
+                    Canvas.SetLeft(player.Image, Canvas.GetLeft(player.Image) + player.Speed);
                 }
             }
         }
@@ -186,33 +191,33 @@ namespace MagnusDreams.Views
             MoveObjects(ref allObjs, ObjType.EnemyBullet);
 
             //Enemy Movement
-           for (int i = 0; i < allObjs.Count; i++)
-           {
-               if (allObjs[i] == null)
-                   continue;
-           
-               if (allObjs[i].Type == ObjType.Enemy || allObjs[i].Type == ObjType.EnemyBullet)
-               {
-                   if (allObjs[i].Image.Visibility == Visibility.Hidden)
-                   {
-                       Canvas.SetLeft(allObjs[i].Image, hiddenPos[1, 0]);
-                       Canvas.SetTop(allObjs[i].Image, hiddenPos[1, 1]);
-                   }
-                   else
-                   {
-                       if (allObjs[i].Type == ObjType.Enemy)
-                       {
-                           var randNum = random.Next(0, 1001);
-           
-                           if (randNum < 10)
-                               NewEnemyBullet(allObjs[i]);
-                           
-                           EnemyCircleMovement(allObjs[i]);
-                           RectUpdate(allObjs[i]);
-                       }
-                   }
-               }
-           }
+            for (int i = 0; i < allObjs.Count; i++)
+            {
+                if (allObjs[i] == null)
+                    continue;
+
+                if (allObjs[i].Type == ObjType.Enemy || allObjs[i].Type == ObjType.EnemyBullet)
+                {
+                    if (allObjs[i].Image.Visibility == Visibility.Hidden)
+                    {
+                        Canvas.SetLeft(allObjs[i].Image, hiddenPos[1, 0]);
+                        Canvas.SetTop(allObjs[i].Image, hiddenPos[1, 1]);
+                    }
+                    else
+                    {
+                        if (allObjs[i].Type == ObjType.Enemy)
+                        {
+                            //var randNum = random.Next(0, 1001);
+                            //
+                            //if (randNum < 10)
+                            //    NewEnemyBullet(allObjs[i]);
+
+                            EnemyCircleMovement(allObjs[i]);
+                            RectUpdate(allObjs[i]);
+                        }
+                    }
+                }
+            }
         }
         private void Update()
         {
@@ -238,7 +243,7 @@ namespace MagnusDreams.Views
                     if (allObjs[obj1index] == null || allObjs[obj2index] == null ||
                         allObjs[obj1index].Type == allObjs[obj2index].Type)
                         continue;
-            
+
                     if (allObjs[obj1index].Rect.IntersectsWith(allObjs[obj2index].Rect))
                     {
                         //PlayerCollided with enemy or enemy bullet
@@ -247,7 +252,7 @@ namespace MagnusDreams.Views
                         {
                             PlayMusic(Efeitos.PlayerHit);
                             Rosto.IsEnabled = false;
-                           
+
                             //Rosto.Resources = new Uri("smiley_stackpanel.PNG", UriKind.Relative);
 
                             //obj1.Life--;
@@ -274,7 +279,7 @@ namespace MagnusDreams.Views
                             Log.Content = $"{allObjs[obj1index].Image.Name} with {allObjs[obj2index].Image.Name}";
 
                             allObjs[obj2index].Life--;
-            
+
                             ClearFromScreen(allObjs[obj1index]);
                             if (allObjs[obj2index].Life <= 0)
                             {
@@ -296,7 +301,7 @@ namespace MagnusDreams.Views
         public void ClearFromScreen(IObjController entity)
         {
             bool check;
-            
+
             if (entity.Type == ObjType.Player || entity.Type == ObjType.PlayerBullet)
             {
                 check = entity.Type == ObjType.PlayerBullet ?
@@ -353,7 +358,7 @@ namespace MagnusDreams.Views
 
                 return;
 
-                
+
 
                 /*if (type == ObjType.PlayerBullet)
                 {
@@ -447,13 +452,13 @@ namespace MagnusDreams.Views
 
         public void EnemyCircleMovement(IObjController obj)
         {
-            Canvas.SetLeft(obj.Image, Canvas.GetLeft(obj.Image) - 1 );//988 - Math.Cos(angle) * 10);
+            Canvas.SetLeft(obj.Image, Canvas.GetLeft(obj.Image) - 1);//988 - Math.Cos(angle) * 10);
             //Canvas.SetTop(obj.Image, Canvas.GetLeft(obj.Image) + 1);//150 - Math.Sin(angle) * 10);
         }
 
         public void NewEnemyBullet(IObjController enemyWhoShot)
         {
-            enemyBulletPool.Add(new Bullet(15,1, new Image()
+            enemyBulletPool.Add(new Bullet(15, 1, new Image()
             {
                 Height = EnemyBullet.Height,
                 Width = EnemyBullet.Width,
@@ -472,7 +477,7 @@ namespace MagnusDreams.Views
         public void NewBullet()
         {
             PlayMusic(Efeitos.Shoot);
-            playerBulletPool.Add(new Bullet(15,1, new Image()
+            playerBulletPool.Add(new Bullet(15, 1, new Image()
             {
                 Height = PlayerBullet.Height,
                 Width = PlayerBullet.Width,
@@ -517,7 +522,7 @@ namespace MagnusDreams.Views
                 Canvas.SetLeft(bullet.Image, Canvas.GetLeft(PlayerImage) + PlayerImage.ActualWidth);
                 Canvas.SetTop(bullet.Image, Canvas.GetTop(PlayerImage) + PlayerImage.ActualHeight - (bullet.Image.ActualHeight * 2));
             }
-            else if(bullet.Type == ObjType.EnemyBullet && whoShot != null)
+            else if (bullet.Type == ObjType.EnemyBullet && whoShot != null)
             {
                 Canvas.SetLeft(bullet.Image, Canvas.GetLeft(whoShot.Image) + whoShot.Image.ActualWidth);
                 Canvas.SetTop(bullet.Image, Canvas.GetTop(whoShot.Image) + whoShot.Image.ActualHeight - (bullet.Image.ActualHeight));
@@ -525,16 +530,23 @@ namespace MagnusDreams.Views
             bullet.Image.Refresh();
         }
 
+        
 
-    private void OpenGamePause(object sender, RoutedEventArgs e)
-    {
-        contentControlGamePlay.Content = new InGamePauseView();
+        private void OpenGamePause(object sender, RoutedEventArgs e)
+        {
+           
+            thiscontentControl.Content = contentControlGamePlay.Content;
+            contentControlGamePlay.Content = new InGamePauseView();
 
-        main.ChangeVisibility(new Control[] {
-                btnPause
-            }, false);
+            main.ChangeVisibility(new Control[] { btnPause }, false);
 
-         PlayMusic(Efeitos.click);
+            PlayMusic(Efeitos.click);
+
+        }
+
+        public void ClearGrid()
+        {
+            GameGrid.Children.Clear();
+        }
     }
-}
 }
