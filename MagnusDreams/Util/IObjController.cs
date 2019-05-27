@@ -20,7 +20,8 @@ namespace MagnusDreams.Util
 
     class Enemy : BaseObject, IObjController
     {
-        
+        //int initialTop, rotatePoint, waveLimit;
+        //bool isGoingUp;
         public Enemy() { }
         public Enemy(int speed, int life, Image image, ObjType type)
         {
@@ -29,12 +30,38 @@ namespace MagnusDreams.Util
             this.Speed = speed; 
             this.Image = image;
             this.SetRect();
+            
+            //isGoingUp = true;
+            //waveLimit = Random.Next(10,21);
+            //rotatePoint = Canvas.GetLeft(this.Image);
+            //initialTop = Canvas.GetTop(this.Image);
+            
         }
+        
         
         public void WaveMovement()
         {
             Canvas.SetLeft(this.Image, Canvas.GetLeft(this.Image) - this.Speed);
+            /*
+            if(isGoingUp)
+            {
+                Canvas.SetTop(this.Image, Canvas.GetTop(this.Image) - (this.Speed/2));
+                if(Canvas.GetTop(this.Image) >= (waveLimit+initialTop))
+                    isGoingUp = false;
+            }
+            else if(!isGoingUp)
+            {
+                Canvas.SetTop(this.Image, Canvas.GetTop(this.Image) + (this.Speed/2));
+                    if(Canvas.GetTop(this.Image) <= -(waveLimit+initialTop))
+                       isGoingUp = true;
+            {
+            */
         }
+    }
+    
+    class Boss : Enemy
+    {
+        //constructor and extra atk patterns
     }
 
     class Bullet : BaseObject, IObjController
