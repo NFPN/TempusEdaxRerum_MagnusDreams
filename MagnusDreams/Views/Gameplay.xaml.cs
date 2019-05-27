@@ -545,7 +545,6 @@ namespace MagnusDreams.Views
 
         private void OpenGamePause(object sender, RoutedEventArgs e)
         {
-           
             thiscontentControl.Content = contentControlGamePlay.Content;
             contentControlGamePlay.Content = new InGamePauseView();
 
@@ -562,7 +561,6 @@ namespace MagnusDreams.Views
           
             PlayMusic(Efeitos.click);
             InitialStateGameplay();
-
         }
 
         public void ClearGrid()
@@ -572,16 +570,20 @@ namespace MagnusDreams.Views
 
         private void ReturnMainMenuClicked(object sender, RoutedEventArgs e)
         {
-            //-----para voltar pro jogo------
-            contentControlPaused.Content = Gameplay.thiscontentControl;
-            //------------------------------
+            thiscontentControl.Content = contentControlGamePlay.Content;
 
             PlayMusic(Efeitos.select);
 
-            contentControlPaused.Visibility = Visibility.Collapsed;
-            contentControlGamePlay.Visibility = Visibility.Collapsed;
-            contentControlPaused.Content = new MenuView();
+            //contentControlPaused.Visibility = Visibility.Collapsed;
+            //contentControlGamePlay.Visibility = Visibility.Collapsed;
+            //contentControlPaused.Content = new MenuView();
 
+            InitialStateGameplay();
+            GameGrid.Children.Clear();
+            MenuView menu = new MenuView();
+            contentControlGamePlay = menu;
+            menu.ShowMenu();
+            main.ChangeBG(Backgrounds.MENUPrancheta);
         }
 
         private void musicOn(object sender, RoutedEventArgs e)

@@ -28,7 +28,6 @@ namespace MagnusDreams.Views
         {                     
             InitializeComponent();
             ShowMenu();
-
         }
 
         private void CreditsButton_Clicked(object sender, RoutedEventArgs e)
@@ -63,11 +62,11 @@ namespace MagnusDreams.Views
         {
             PlayMusic(Efeitos.shineselect);
             main.ChangeBG(Backgrounds.fundo);
+
             //---- For testing -----
             contentControl.Content = new Gameplay();
             //----------------------
             HiddenMenu();
-           
         }
 
         public void HiddenMenu()
