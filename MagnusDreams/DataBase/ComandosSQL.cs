@@ -84,7 +84,7 @@ namespace MagnusDrems.DAO
             {
                 qLComand.Connection = connection.connect();
                 qLComand.ExecuteNonQuery();
-                this.mensagem = "Jogador criado com sucesso!!";
+                this.mensagem = "Jogador mudado com sucesso!!";
             }
             catch (SqlException e)
             {

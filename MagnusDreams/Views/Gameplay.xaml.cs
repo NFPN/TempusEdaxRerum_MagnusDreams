@@ -54,7 +54,6 @@ namespace MagnusDreams.Views
         int frames;
         Random random = new Random();
         List<IObjController> allObjs = new List<IObjController>();
-        dynamic modList;
 
         #endregion
 
@@ -120,8 +119,12 @@ namespace MagnusDreams.Views
                     allObjs.Add(new Enemy(3, 3, img, ObjType.Enemy));
                 }
             }
-            allObjs.Add(new Player(10, 3, PlayerImage, ObjType.Player));
 
+            player = new Player(10, 3, PlayerImage, ObjType.Player);
+            
+            allObjs.Add(player);
+            //GameCanvas.Children.Add(player.Image);
+            
             //Initializing timers
             elapsedMiliSeconds = 0;
             timeToShootPlayerBullets = 0;
@@ -244,6 +247,7 @@ namespace MagnusDreams.Views
                         {
                             PlayMusic(Efeitos.PlayerHit);
                             Rosto.IsEnabled = false;
+                           
                             //Rosto.Resources = new Uri("smiley_stackpanel.PNG", UriKind.Relative);
 
                             //obj1.Life--;
@@ -323,11 +327,12 @@ namespace MagnusDreams.Views
         {
             if (list.Count > 0)
             {
+                return;
                 for (int i = 0; i < list.Count; i++)
                 {
                     if (list[i].Image.Visibility == Visibility.Visible && !CheckOutOfBounds(list[i].Image))
                     {
-                        Canvas.SetLeft(modList[i].Image, Canvas.GetLeft(list[i].Image) + 15);
+                        Canvas.SetLeft(list[i].Image, Canvas.GetLeft(list[i].Image) + 15);
                         list[i].Rect = new Rect(
                             Canvas.GetLeft(list[i].Image),
                             Canvas.GetTop(list[i].Image),
