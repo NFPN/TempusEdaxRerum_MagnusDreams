@@ -20,7 +20,7 @@ namespace MagnusDreams.Views
 
         #region Global Variables
         //MainWindow reference audios list
-        MainWindow main = (MainWindow)Application.Current.MainWindow;
+        public MainWindow main = (MainWindow)Application.Current.MainWindow;
         ComandosSQL comandos = new ComandosSQL();
 
         //The hidden position of playerBullet objects, enemy and enemyBullet objects
@@ -572,15 +572,24 @@ namespace MagnusDreams.Views
 
         private void ReturnMainMenuClicked(object sender, RoutedEventArgs e)
         {
-            //-----para voltar pro jogo------
-            contentControlPaused.Content = Gameplay.thiscontentControl;
-            //------------------------------
+            ////-----para voltar pro jogo------
+            //contentControlPaused.Content = Gameplay.thiscontentControl;
+            ////------------------------------
 
             PlayMusic(Efeitos.select);
 
-            contentControlPaused.Visibility = Visibility.Collapsed;
-            contentControlGamePlay.Visibility = Visibility.Collapsed;
+            //contentControlPaused.Visibility = Visibility.Collapsed;
+            //contentControlGamePlay.Visibility = Visibility.Collapsed;
+            //contentControlPaused.Visibility = Visibility.Hidden;
+            
+            main.ChangeBG(Backgrounds.MENUPrancheta);
+            InitialStateGameplay();
             contentControlPaused.Content = new MenuView();
+            GameGrid.Children.RemoveRange(1,19);
+
+            //Show all itens um the grid , has 19
+            //int j = GameGrid.Children.Capacity;
+            //MessageBox.Show(j.ToString());
 
         }
 
