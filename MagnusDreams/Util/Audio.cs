@@ -38,8 +38,7 @@ namespace MagnusDreams.Util
             }
             else if (gameplay.musicIsChecked.IsChecked == false || op.musicIsChecked.IsChecked == false){
                 MuteMusic(p1);
-            }
-            
+            }            
         }
 
         public static void PlayMusic(Efeitos efeitos)
