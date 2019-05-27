@@ -12,9 +12,9 @@
 
     <Grid x:Name="GridMenu">
         
-        <Grid.Background>
-            <ImageBrush ImageSource="Images/MENU FINAL_Prancheta 1.jpg"/>
-        </Grid.Background>
+        <!--<Grid.Background>
+            <ImageBrush ImageSource="Images/MENUPrancheta.jpg"/>
+        </Grid.Background>-->
         <!-- Content control pra controlar qual usercontrol aparece em main-->
         <!-- Content control pra controlar qual usercontrol aparece em main-->
         <ContentControl x:Name="contentControl" Grid.Row="1">

@@ -26,40 +26,5 @@ namespace MagnusDreams.Views
             InitializeComponent();
         }
 
-        private void ReturnMainMenuClicked(object sender, RoutedEventArgs e)
-        {
-            //-----para voltar pro jogo------
-            contentControlPaused.Content = Gameplay.thiscontentControl;
-            //------------------------------
-
-            PlayMusic(Efeitos.select);
-
-            //contentControlPaused.Visibility = Visibility.Collapsed;
-            //contentControlPaused.Content = new MenuView();
-
-            bgPauseGame.Visibility = Visibility.Hidden;
-            ImgPause.Visibility = Visibility.Hidden;
-
-            main.ChangeVisibility(new Control[]
-            {
-                txtmusicVolume,
-                txtSfxVolume,
-                musicIsChecked,
-                sfxIsChecked,
-                btnReturnMenu,
-                btnReturnToGame
-
-            }, false);
-        }
-
-        private void musicOn(object sender, RoutedEventArgs e)
-        {
-            PlayMusic(Efeitos.select);
-        }
-
-        private void musicOff(object sender, System.EventArgs e)
-        {
-            //main.audios[0].Volume = 0;
-        }
     }
 }

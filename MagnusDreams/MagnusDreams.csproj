@@ -61,6 +61,7 @@
     <Compile Include="DataBase\Connection.cs" />
     <Compile Include="Util\Audio.cs" />
     <Compile Include="Util\BaseObject.cs" />
+    <Compile Include="Util\ChangeBg.cs" />
     <Compile Include="Util\ExtensionMethods.cs" />
     <Compile Include="Util\GlobalEnumerators.cs" />
     <Compile Include="Util\IObjController.cs" />
@@ -184,7 +185,7 @@
     <Resource Include="Images\fogo.gif" />
     <Resource Include="Images\Game Derrota_Prancheta 1.jpg" />
     <Resource Include="Images\Game Win_Prancheta 1.jpg" />
-    <Resource Include="Images\MENU FINAL_Prancheta 1.jpg" />
+    <Resource Include="Images\MENUPrancheta.jpg" />
     <Resource Include="Images\olhoo.png" />
     <Resource Include="Images\Treco Pronto-01.png" />
     <Resource Include="Images\Botao Iniciar Com Borda.png" />
@@ -193,7 +194,7 @@
     <Resource Include="Images\configsemborda.png" />
     <Resource Include="Images\creditosborder.png" />
     <Resource Include="Images\creditossemborda.png" />
-    <Resource Include="Images\Escrever Nome.jpg" />
+    <Resource Include="Images\EscreverNome.jpg" />
     <Resource Include="Images\jnborder.png" />
     <Resource Include="Images\jnsemborda.png" />
     <Resource Include="Images\menuborder.png" />
@@ -205,7 +206,7 @@
     <Resource Include="Images\DarkBg.jpg" />
     <Resource Include="Images\MontainBg.jpg" />
     <Resource Include="Images\MoonBg.jpg" />
-    <Resource Include="Images\Livro creditos_Prancheta 1.jpg" />
+    <Resource Include="Images\LivroCreditosPrancheta.jpg" />
     <Resource Include="Images\TER Magnus rosto_Prancheta 1.png" />
     <Content Include="Sounds\bgSoundsss.wav" />
     <Content Include="Sounds\click.wav" />

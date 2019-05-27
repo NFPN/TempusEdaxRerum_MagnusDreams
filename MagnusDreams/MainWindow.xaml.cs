@@ -23,11 +23,12 @@ namespace MagnusDreams
     {
         static public Window appWindow;
         OptionsView op = new OptionsView();
-
+        static string startupPath = Environment.CurrentDirectory;
 
         public MainWindow()
         {          
-            InitializeComponent();          
+            InitializeComponent();
+            ChangeBG(Backgrounds.MENUPrancheta);
             contentControl.Content = new MenuView();
             //Chama a classe Audio criada recentemente
             PlayMusic(Musicas.bgSoundsss);
@@ -41,9 +42,13 @@ namespace MagnusDreams
             contentControl.Content = new CreditosView();
             
         }
-        public void ChangeBG()
+        public void ChangeBG(Backgrounds backgrounds)
         {
-            Fundo.Source = new BitmapImage(new Uri("Images\\Sky.jpg", UriKind.Relative));
+                DirectoryInfo directoryInfo = Directory.GetParent(Directory.GetParent(startupPath).FullName);
+
+                Directory.GetDirectories(directoryInfo.FullName);
+                
+                Fundo.Source = new BitmapImage(new Uri(directoryInfo.FullName + @"\Images\" + backgrounds + ".jpg", UriKind.Relative));
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
