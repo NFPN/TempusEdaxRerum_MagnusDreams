@@ -29,9 +29,9 @@ namespace MagnusDreams.Views
         private void ReturnButton_Clicked(object sender, RoutedEventArgs e)
         {
             PlayMusic(Efeitos.click);
-
+            main.ChangeBG(Backgrounds.MENUPrancheta);
             contentControlCredits.Content = new MenuView();
-            backgroundFundo.Visibility = Visibility.Hidden;
+            //backgroundFundo.Visibility = Visibility.Hidden;
             
 
             main.ChangeVisibility(new Control[]{

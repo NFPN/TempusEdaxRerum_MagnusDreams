@@ -55,7 +55,7 @@ namespace MagnusDreams.Views
             PlayMusic(Efeitos.shineselect);
 
             contentControl.Content = new MenuView();
-            backgroundFundo.Visibility = Visibility.Hidden;
+            main.ChangeBG(Backgrounds.MENUPrancheta);
             main.ChangeVisibility(new Control[]{
                 txtmusicVolume,
                 txtSfxVolume,

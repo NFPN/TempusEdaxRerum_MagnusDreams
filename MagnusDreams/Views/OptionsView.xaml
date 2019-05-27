@@ -10,8 +10,8 @@
     <Grid>
         <ContentControl x:Name="contentControl" Grid.Row="1"/>
 
-        <Image x:Name="backgroundFundo" HorizontalAlignment="Left" Height="720" VerticalAlignment="Top" Width="1280" Source="/MagnusDreams;component/Images/MontainBg.jpg" Stretch="Fill" Cursor="None"/>
-        <Label x:Name="txtmusicVolume" Content="Music Volume :" HorizontalAlignment="Left" Height="66" Margin="252,219,0,0" VerticalAlignment="Top" Width="364" FontSize="48" FontFamily="Showcard Gothic"/>
+        <!--<Image x:Name="backgroundFundo" HorizontalAlignment="Left" Height="720" VerticalAlignment="Top" Width="1280" Source="/MagnusDreams;component/Images/MontainBg.jpg" Stretch="Fill" Cursor="None"/>
+      -->  <Label x:Name="txtmusicVolume" Content="Music Volume :" HorizontalAlignment="Left" Height="66" Margin="252,219,0,0" VerticalAlignment="Top" Width="364" FontSize="48" FontFamily="Showcard Gothic"/>
         <Label x:Name="txtSfxVolume" Content="SFX Volume :" HorizontalAlignment="Left" Height="81" Margin="252,375,0,0" VerticalAlignment="Top" Width="364" FontFamily="Showcard Gothic" FontSize="48" RenderTransformOrigin="1.166,0.323"/>
         <Button x:Name="btnReturn"  HorizontalAlignment="Left" Height="141" Margin="72,569,0,0" VerticalAlignment="Top" Width="294" FontSize="20" Click="ReturnButtonOp_Clicked"  BorderBrush="{x:Null}"  Style="{DynamicResource  ButtonReturn }"  Foreground="{x:Null}">
             <Button.Background>

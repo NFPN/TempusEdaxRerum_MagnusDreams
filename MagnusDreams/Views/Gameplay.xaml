@@ -9,9 +9,7 @@
     <Grid x:Name="GameGrid">
         <ContentControl x:Name="contentControlPaused"/>
         <Image x:Name="bgPauseGame"  Height="2676.04" Width="2488.2" Margin="-579.4,-903.8,-628.8,-1052.24" VerticalAlignment="Top" HorizontalAlignment="Right" Source="/MagnusDreams;component/Images/TER Magnus rosto_Prancheta 1.png" Stretch="Fill" Cursor="None">
-            <Image.OpacityMask>
-                <ImageBrush ImageSource="/MagnusDreams;component/Images/Sky.jpg"/>
-            </Image.OpacityMask>
+
         </Image>
         <Label x:Name="txtmusicVolume" Content="Volume  Musica:" HorizontalAlignment="Left" Height="89" Margin="275.4,132,0,0" VerticalAlignment="Top" Width="428" FontSize="40" FontFamily="Showcard Gothic"/>
         <Label x:Name="txtSfxVolume" Content="Volume Efeitos :" HorizontalAlignment="Left" Height="75" Margin="296.2,221,0,0" VerticalAlignment="Top" Width="428" FontFamily="Showcard Gothic" FontSize="40" RenderTransformOrigin="1.166,0.323"/>
@@ -35,26 +33,27 @@
                 </TransformGroup>
             </CheckBox.RenderTransform>
         </CheckBox>
-        <Button x:Name="btnReturnMenu" Content="Menu" HorizontalAlignment="Left" Margin="275.4,390.2,0,0" VerticalAlignment="Top" Width="296" Height="105" Click="ReturnMainMenuClicked" BorderBrush="{x:Null}" Style="{DynamicResource ButtonBackMenu}">
+        <Button x:Name="btnReturnMenu"  HorizontalAlignment="Left" Margin="275.4,390.2,0,0" VerticalAlignment="Top" Width="296" Height="105" Click="ReturnMainMenuClicked" BorderBrush="{x:Null}" Style="{DynamicResource ButtonBackMenu}">
             <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/menusemborda.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnReturnToGame"  HorizontalAlignment="Left" Margin="639,390.2,0,0" VerticalAlignment="Top" Width="297" Height="105" BorderBrush="{x:Null}" Style="{DynamicResource ButtonReturn}">
+        <Button x:Name="btnReturnToGame"  HorizontalAlignment="Left" Margin="639,390.2,0,0" VerticalAlignment="Top" Width="297" Height="105" BorderBrush="{x:Null}" Style="{DynamicResource ButtonReturn}" Click="CloseGamePause">
             <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/voltarsemborda.png"/>
             </Button.Background>
 
         </Button>
-        <Label Content="Botão volta ao menu não ao jogo " HorizontalAlignment="Left" Margin="655.76,497.383,0,0" VerticalAlignment="Top"/>
-        <Image x:Name="ImgPause" HorizontalAlignment="Left" Height="224.8" Margin="505.2,532,0,-36.8" VerticalAlignment="Top" Width="219" Source="/MagnusDreams;component/Images/pause.png"/>
-
+        <!--<Label Content="Botão volta ao menu não ao jogo " HorizontalAlignment="Left" Margin="655.76,497.383,0,0" VerticalAlignment="Top"/>
+     -->
+        <!--<Image x:Name="ImgPause" HorizontalAlignment="Left" Height="224.8" Margin="505.2,532,0,-36.8" VerticalAlignment="Top" Width="219" Source="/MagnusDreams;component/Images/pause.png"/>
+-->
         <ContentControl x:Name="contentControlGamePlay" Grid.Row="1"/>
         <!--<Image x:Name="FundoGame" VerticalAlignment="Top" Source="/MagnusDreams;component/Images/fundo.jpg" Stretch="Fill"/>
 -->
-        
+
         <Canvas Name="GameCanvas" RenderTransformOrigin="0.5,0.5">
-            
+
             <Image x:Name="PlayerImage" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="120" Source="/MagnusDreams;component/Images/jogavel.png" Canvas.Left="77" Canvas.Top="316" Tag="Player"/>
             <Image x:Name="PlayerBullet" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="37" Canvas.Left="23" Canvas.Top="351" Source="/MagnusDreams;component/Images/fogo.gif"/>
             <Image x:Name="EnemyImage" HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="64" Source="/MagnusDreams;component/Images/Treco Pronto-01.png" Stretch="Fill" Canvas.Left="988" Canvas.Top="150" Tag="Enemy" RenderTransformOrigin="0.5,0.5"/>
@@ -64,9 +63,14 @@
             <Image x:Name="Enemy_Copy3" HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="64" Source="/MagnusDreams;component/Images/Treco Pronto-01.png" Stretch="Fill" Canvas.Left="988" Canvas.Top="550" Tag="Enemy" RenderTransformOrigin="0.5,0.5"/>
             <Image x:Name="Rosto" Height="212" Canvas.Top="522" Width="269" Source="/MagnusDreams;component/Images/puto.png" Canvas.Left="-72"/>
             <Image x:Name="EnemyBullet" HorizontalAlignment="Left" Height="30" Margin="1210,300,0,0" VerticalAlignment="Top" Width="30" Source="/MagnusDreams;component/Images/olhoo.png" Tag="EnemyBullet"/>
-            
+            <Image x:Name="Rosto_Copy" Height="212" Canvas.Top="550" Width="269" Source="/MagnusDreams;component/Images/pause.png" Canvas.Left="475">
+                <Image.OpacityMask>
+                    <ImageBrush ImageSource="/MagnusDreams;component/Images/pause.png"/>
+                </Image.OpacityMask>
+            </Image>
+
         </Canvas>
-        
+
         <Label x:Name="Log" Content="testsadf" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="69" VerticalAlignment="Top" Width="1270" Margin="0,48,0,0" FontSize="20"/>
         <Label x:Name="txtHighScore" Content="HighScore:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
         <Label x:Name="txtPlayerScore" Content="Score:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,26,0,0" FontSize="18" FontWeight="Bold"/>
@@ -77,5 +81,11 @@
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/pause.png"/>
             </Button.Background>
         </Button>
-        </Grid>
+        <Image>
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/MagnusDreams;component/Images/pause.png"/>
+            </Image.OpacityMask>
+
+        </Image>
+    </Grid>
 </UserControl>

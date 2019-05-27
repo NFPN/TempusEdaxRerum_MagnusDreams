@@ -33,10 +33,12 @@ namespace MagnusDreams.Views
 
         private void CreditsButton_Clicked(object sender, RoutedEventArgs e)
         {
+            PlayMusic(Efeitos.shineselect);
+            main.ChangeBG(Backgrounds.LivroCreditosPrancheta);
             contentControl.Content = new CreditosView();
             HiddenMenu();
             
-            PlayMusic(Efeitos.shineselect);
+            
         }
 
         private void ExitButton_Clicked(object sender, RoutedEventArgs e)
@@ -48,17 +50,19 @@ namespace MagnusDreams.Views
 
         private void OptionsButton_Clicked(object sender, RoutedEventArgs e)
         {
+            PlayMusic(Efeitos.shineselect);
+            main.ChangeBG(Backgrounds.MontainBg);
             //Cast app window for proper acess (new MainWindow doesn't work)
             contentControl.Content = new OptionsView();
             HiddenMenu();
 
-            PlayMusic(Efeitos.shineselect);
+            
         }
 
         private void NewGame_Clicked(object sender, RoutedEventArgs e)
         {
             PlayMusic(Efeitos.shineselect);
-
+            main.ChangeBG(Backgrounds.fundo);
             //---- For testing -----
             contentControl.Content = new Gameplay();
             //----------------------

@@ -63,7 +63,9 @@ namespace MagnusDreams.Views
         public Gameplay()
         {
             InitializeComponent();
-
+            //Test of btn Pause
+            InitialStateGameplay();
+            
             /*CompositionTarget.Rendering += (s, a) =>
             {
                 ++frames;
@@ -92,6 +94,8 @@ namespace MagnusDreams.Views
             mainTime.Start();
             fastTimer.Start();
         }
+
+       
 
         private void SlowTimeTick(object sender, EventArgs e)
         {
@@ -530,7 +534,13 @@ namespace MagnusDreams.Views
             bullet.Image.Refresh();
         }
 
-        
+        private void InitialStateGameplay()
+        {
+            bgPauseGame.Visibility = Visibility.Hidden;
+            btnPause.Visibility = Visibility.Visible;
+            main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnMenu, btnPauseInPause, btnReturnToGame, musicIsChecked, sfxIsChecked, }, false);
+
+        }
 
         private void OpenGamePause(object sender, RoutedEventArgs e)
         {
@@ -538,9 +548,18 @@ namespace MagnusDreams.Views
             thiscontentControl.Content = contentControlGamePlay.Content;
             contentControlGamePlay.Content = new InGamePauseView();
 
-            main.ChangeVisibility(new Control[] { btnPause }, false);
+            main.ChangeVisibility(new Control[] { btnPause }, false);           
+            bgPauseGame.Visibility = Visibility.Visible;
+            main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnPauseInPause, btnReturnMenu, btnReturnToGame, musicIsChecked, sfxIsChecked, }, true);
 
             PlayMusic(Efeitos.click);
+
+        }
+        private void CloseGamePause(object sender, RoutedEventArgs e)
+        {
+          
+            PlayMusic(Efeitos.click);
+            InitialStateGameplay();
 
         }
 
@@ -557,22 +576,9 @@ namespace MagnusDreams.Views
 
             PlayMusic(Efeitos.select);
 
-            //contentControlPaused.Visibility = Visibility.Collapsed;
-            //contentControlPaused.Content = new MenuView();
+            contentControlPaused.Visibility = Visibility.Collapsed;
+            contentControlPaused.Content = new MenuView();
 
-            bgPauseGame.Visibility = Visibility.Hidden;
-            ImgPause.Visibility = Visibility.Hidden;
-
-            main.ChangeVisibility(new Control[]
-            {
-                txtmusicVolume,
-                txtSfxVolume,
-                musicIsChecked,
-                sfxIsChecked,
-                btnReturnMenu,
-                btnReturnToGame
-
-            }, false);
         }
 
         private void musicOn(object sender, RoutedEventArgs e)
