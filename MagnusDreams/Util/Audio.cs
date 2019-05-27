@@ -8,13 +8,16 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using static MagnusDreams.Views.OptionsView;
+using System.Media;
+
 
 namespace MagnusDreams.Util
 {
     public class Audio
     {
         static string  startupPath = Environment.CurrentDirectory;
-        Gameplay gameplay = new Gameplay();
+        static Gameplay gameplay = new Gameplay();
+        static OptionsView op = new OptionsView();
 
 
         public static void PlayMusic(Musicas musica)
@@ -27,17 +30,16 @@ namespace MagnusDreams.Util
             var p1 = new MediaPlayer();
 
             p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + musica + ".wav", UriKind.Relative));
-            //if (gameplay.musicIsChecked.IsChecked == true)
-            //{
-            //    p1.Volume = 0.5;
-            //}
-            //else
-            //    p1.Volume = 0;
-            p1.Volume = 0.5f;
-                
-
-                              
-            p1.Play();
+            if (gameplay.musicIsChecked.IsChecked == true || op.musicIsChecked.IsChecked == true)
+            {  
+                if (!p1.IsMuted)
+                p1.Volume = 0.5;
+                p1.Play();
+            }
+            else if (gameplay.musicIsChecked.IsChecked == false || op.musicIsChecked.IsChecked == false){
+                MuteMusic(p1);
+            }
+            
         }
 
         public static void PlayMusic(Efeitos efeitos)
@@ -56,9 +58,11 @@ namespace MagnusDreams.Util
 
 
         }
-        public static void MuteMusic(Musicas music)
+        //acho que n precisa se o codigo acima funcionar
+        public static void MuteMusic(MediaPlayer music)
         {
-            
+            music.Volume = 0;
+            music.IsMuted = true;
         }
     }
 }

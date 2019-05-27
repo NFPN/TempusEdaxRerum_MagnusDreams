@@ -35,7 +35,7 @@ namespace MagnusDreams.Views
         {
             if(main != null)
             {
-                PlayMusic(Musicas.bgSoundsss);
+                //PlayMusic(Musicas.bgSoundsss);
             }
         }
 
@@ -46,6 +46,7 @@ namespace MagnusDreams.Views
 
         private void musicOff(object sender, System.EventArgs e)
         {
+            musicIsChecked.IsChecked = false;
             PlayMusic(Musicas.bgSoundsss);
         }
 

@@ -29,7 +29,7 @@ namespace MagnusDreams
         {
             
             InitializeComponent();
-            PlayMusic(Musicas.bgSoundsss);
+            
             ChangeBG(Backgrounds.MENUPrancheta);
             contentControl.Content = new MenuView();
             //Chama a classe Audio criada recentemente
@@ -37,6 +37,7 @@ namespace MagnusDreams
             //MenuOptions();
 
             appWindow = GetWindow(this);
+            PlayMusic(Musicas.bgSoundsss);
         }
 
         private void ButtonClick(object sender, RoutedEventArgs e)
