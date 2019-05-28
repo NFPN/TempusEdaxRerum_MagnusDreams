@@ -1,9 +1,8 @@
-﻿<Window x:Class="MagnusDreams.Views.SelectNameView"
+﻿<UserControl x:Class="MagnusDreams.Views.SelectNameView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MagnusDreams.Views"
         mc:Ignorable="d"
         d:DesignHeight="720" d:DesignWidth="1280">
 
@@ -21,4 +20,4 @@
         <Label x:Name="textDescription" Content="Escreva seu nome para começar" HorizontalAlignment="Left" Margin="79.736,52,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Grid.Column="1"/>
 
     </Grid>
-</Window>
+</UserControl>

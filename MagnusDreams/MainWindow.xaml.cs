@@ -35,7 +35,7 @@ namespace MagnusDreams
             //Chama a classe Audio criada recentemente
             
             //MenuOptions();
-
+           
             appWindow = GetWindow(this);
             bgMusic();
         }
@@ -72,6 +72,10 @@ namespace MagnusDreams
             {
                 obj.Visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
             }
+        }
+        public static void ShowBdIsCorrect(string mensagem)
+        {
+            MessageBox.Show(mensagem);
         }
     }
 }

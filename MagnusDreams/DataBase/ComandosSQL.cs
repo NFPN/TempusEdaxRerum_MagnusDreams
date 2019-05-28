@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MagnusDreams;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -38,6 +39,7 @@ namespace MagnusDrems.DAO
                 qLComand.Connection = connection.connect();
                 qLComand.ExecuteNonQuery();
                 this.mensagem = "Jogador criado com sucesso!!";
+                    MainWindow.ShowBdIsCorrect(mensagem);
             }
             catch (SqlException e)
             {
