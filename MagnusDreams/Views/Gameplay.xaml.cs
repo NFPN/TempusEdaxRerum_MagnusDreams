@@ -2,16 +2,17 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Shapes;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using System.Collections.Generic;
 using System.Windows.Media.Imaging;
-using MagnusDreams.Util;
-using System.Windows.Media;
-using System.Windows.Shapes;
 
 using static MagnusDreams.Util.Audio;
+using MagnusDreams.Util;
 using MagnusDrems.DAO;
+
 
 namespace MagnusDreams.Views
 {
@@ -34,7 +35,10 @@ namespace MagnusDreams.Views
         double elapsedMiliSeconds;
         TimeSpan deltaTime = new TimeSpan();
         DateTime startingTime = DateTime.Now;
-        DispatcherTimer mainTime = new DispatcherTimer(), fastTimer = new DispatcherTimer();
+        DispatcherTimer mainTime = new DispatcherTimer(), 
+            fastTimer = new DispatcherTimer(),
+            secondsTimer = new DispatcherTimer();
+
 
         //Enemy Info
         //ImageSource enemySource;
@@ -84,6 +88,9 @@ namespace MagnusDreams.Views
             kbcontrol.timer.Interval = TimeSpan.FromMilliseconds(1);
             kbcontrol.KeyboardTick += InputUpdate;
 
+            secondsTimer.Tick += SecondsTick;
+            secondsTimer.Interval = TimeSpan.FromSeconds(0.5);
+
             fastTimer.Tick += GlobalTick;
             fastTimer.Interval = TimeSpan.FromMilliseconds(1);
 
@@ -94,8 +101,6 @@ namespace MagnusDreams.Views
             mainTime.Start();
             fastTimer.Start();
         }
-
-       
 
         private void SlowTimeTick(object sender, EventArgs e)
         {
@@ -111,6 +116,11 @@ namespace MagnusDreams.Views
 
             //Loop Methods
             FastUpdate();
+        }
+
+        private void SecondsTick(object sender, EventArgs e)
+        {
+
         }
 
         // Executes once when the game scene is loaded
