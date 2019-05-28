@@ -37,7 +37,7 @@ namespace MagnusDreams
             //MenuOptions();
 
             appWindow = GetWindow(this);
-            PlayMusic(Musicas.bgSoundsss);
+            bgMusic();
         }
 
         private void ButtonClick(object sender, RoutedEventArgs e)

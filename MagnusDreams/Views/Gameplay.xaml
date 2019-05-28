@@ -52,7 +52,7 @@
         </Image>
         <Label x:Name="txtmusicVolume" Content="Volume  Musica:" HorizontalAlignment="Left" Height="89" Margin="275.4,132,0,0" VerticalAlignment="Top" Width="428" FontSize="40" FontFamily="Showcard Gothic"/>
         <Label x:Name="txtSfxVolume" Content="Volume Efeitos :" HorizontalAlignment="Left" Height="75" Margin="296.2,221,0,0" VerticalAlignment="Top" Width="428" FontFamily="Showcard Gothic" FontSize="40" RenderTransformOrigin="1.166,0.323"/>
-        <CheckBox x:Name="musicIsChecked" Content="" HorizontalAlignment="Left" Height="16" Margin="807.6,169.2,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" IsChecked="True" VerticalContentAlignment="Center" Padding="15,-1,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" Checked="musicOn" >
+        <CheckBox x:Name="musicIsChecked" Content="" HorizontalAlignment="Left" Height="16" Margin="807.6,169.2,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" IsChecked="True" VerticalContentAlignment="Center" Padding="15,-1,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" Checked="musicOn" Unchecked="musicOff" >
             <CheckBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
@@ -62,7 +62,7 @@
                 </TransformGroup>
             </CheckBox.RenderTransform>
         </CheckBox>
-        <CheckBox x:Name="sfxIsChecked" Content="." HorizontalAlignment="Left" Height="15" Margin="816.2,255,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" VerticalContentAlignment="Center" Padding="15,-1,0,0" IsChecked="True" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+        <CheckBox x:Name="sfxIsChecked" Content="." HorizontalAlignment="Left" Height="15" Margin="816.2,255,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" VerticalContentAlignment="Center" Padding="15,-1,0,0" IsChecked="True" BorderBrush="{x:Null}" Foreground="{x:Null}" Unchecked="sfxOff" Checked="sfxOn" >
             <CheckBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
@@ -72,11 +72,6 @@
                 </TransformGroup>
             </CheckBox.RenderTransform>
         </CheckBox>
-        <Button x:Name="btnReturnMenu"  HorizontalAlignment="Left" Margin="275.4,390.2,0,0" VerticalAlignment="Top" Width="296" Height="105" Click="ReturnMainMenuClicked" BorderBrush="{x:Null}" Style="{DynamicResource ButtonBackMenu}">
-            <Button.Background>
-                <ImageBrush ImageSource="/MagnusDreams;component/Images/menusemborda.png"/>
-            </Button.Background>
-        </Button>
         <Button x:Name="btnReturnToGame"  HorizontalAlignment="Left" Margin="639,390.2,0,0" VerticalAlignment="Top" Width="297" Height="105" BorderBrush="{x:Null}" Style="{DynamicResource ButtonReturn}" Click="CloseGamePause">
             <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/voltarsemborda.png"/>

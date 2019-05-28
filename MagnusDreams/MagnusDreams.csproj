@@ -75,9 +75,6 @@
     <Compile Include="Views\Gameplay.xaml.cs">
       <DependentUpon>Gameplay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\InGamePauseView.xaml.cs">
-      <DependentUpon>InGamePauseView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
@@ -110,10 +107,6 @@
     <Page Include="Views\Gameplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\InGamePauseView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MenuView.xaml">
       <SubType>Designer</SubType>
