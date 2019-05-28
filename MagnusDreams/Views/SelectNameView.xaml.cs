@@ -17,22 +17,24 @@ using static MagnusDreams.Util.Audio;
 
 namespace MagnusDreams.Views
 {
-    public partial class SelectName : Window
+    /// <summary>
+    /// Interação lógica para SelectNameView.xam
+    /// </summary>
+    public partial class SelectNameView : UserControl
     {
         ComandosSQL comandos = new ComandosSQL();
 
-        public SelectName()
+        public SelectNameView()
         {
             InitializeComponent();
         }
-
         private void StartGame_Clicked(object sender, RoutedEventArgs e)
         {
             sfxAudio();
             //Insere o texto inserido do player no Banco de dados
             string NomeJogador = lbTextNamePlayer.Text;
-            comandos.InsertData(NomeJogador);
-            contentControl.Content = new Gameplay();
+           comandos.InsertData(NomeJogador);
+           contentControl.Content = new Gameplay();
             //((Gameplay)contentControl.Content).gamePlayClass = (Gameplay)contentControl.Content;
         }
     }
