@@ -33,10 +33,7 @@ namespace MagnusDreams.Views
 
         private void musicOn(object sender, System.EventArgs e)
         {
-            if(main != null)
-            {
-                //PlayMusic(Musicas.bgSoundsss);
-            }
+            
         }
 
         private void sfxOn(object sender, System.EventArgs e)
@@ -46,14 +43,15 @@ namespace MagnusDreams.Views
 
         private void musicOff(object sender, System.EventArgs e)
         {
-            musicIsChecked.IsChecked = false;
-            PlayMusic(Musicas.bgSoundsss);
+            //musicIsChecked.IsChecked = false;
+            //PlayMusic(Musicas.bgSoundsss);
+            MuteBgMusic();
         }
 
         private void ReturnButtonOp_Clicked(object sender, RoutedEventArgs e)
         {
-            
-            PlayMusic(Efeitos.shineselect);
+
+            sfxAudio();
 
             contentControl.Content = new MenuView();
             main.ChangeBG(Backgrounds.MENUPrancheta);

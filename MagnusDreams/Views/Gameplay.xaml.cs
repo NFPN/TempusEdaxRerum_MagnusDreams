@@ -539,23 +539,28 @@ namespace MagnusDreams.Views
             bgPauseGame.Visibility = Visibility.Hidden;
             btnPause.Visibility = Visibility.Visible;
             PauseInPause.Visibility = Visibility.Hidden;
-            main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnMenu, btnReturnToGame, musicIsChecked, sfxIsChecked, }, false);
+            main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnToGame, musicIsChecked, sfxIsChecked, }, false);
 
         }
+
+        
 
         private void OpenGamePause(object sender, RoutedEventArgs e)
         {
             thiscontentControl.Content = contentControlGamePlay.Content;
-            contentControlGamePlay.Content = new InGamePauseView();
+            //contentControlGamePlay.Content = new InGamePauseView();
 
             main.ChangeVisibility(new Control[] { btnPause }, false);           
             bgPauseGame.Visibility = Visibility.Visible;
             PauseInPause.Visibility = Visibility.Visible;
-            main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnMenu, btnReturnToGame, musicIsChecked, sfxIsChecked, }, true);
+            main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnToGame, musicIsChecked, sfxIsChecked, }, true);
 
             PlayMusic(Efeitos.click);
 
         }
+
+       
+
         private void CloseGamePause(object sender, RoutedEventArgs e)
         {
           
@@ -568,32 +573,41 @@ namespace MagnusDreams.Views
             GameGrid.Children.Clear();
         }
 
-        private void ReturnMainMenuClicked(object sender, RoutedEventArgs e)
-        {
-            thiscontentControl.Content = contentControlGamePlay.Content;
-
-            PlayMusic(Efeitos.select);
-
-            //contentControlPaused.Visibility = Visibility.Collapsed;
-            //contentControlGamePlay.Visibility = Visibility.Collapsed;
-            //contentControlPaused.Content = new MenuView();
-
-            InitialStateGameplay();
-            GameGrid.Children.Clear();
-            MenuView menu = new MenuView();
-            contentControlGamePlay = menu;
-            menu.ShowMenu();
-            main.ChangeBG(Backgrounds.MENUPrancheta);
-        }
+        //private void ReturnMainMenuClicked(object sender, RoutedEventArgs e)
+        //{
+        //    thiscontentControl.Content = contentControlGamePlay.Content;
+        //
+        //    PlayMusic(Efeitos.select);
+        //
+        //    //contentControlPaused.Visibility = Visibility.Collapsed;
+        //    //contentControlGamePlay.Visibility = Visibility.Collapsed;
+        //    //contentControlPaused.Content = new MenuView();
+        //
+        //    InitialStateGameplay();
+        //    GameGrid.Children.Clear();
+        //    MenuView menu = new MenuView();
+        //    contentControlGamePlay = menu;
+        //    menu.ShowMenu();
+        //    main.ChangeBG(Backgrounds.MENUPrancheta);
+        //}
 
         private void musicOn(object sender, RoutedEventArgs e)
         {
-            PlayMusic(Efeitos.select);
+            DesmuteBgMusic();
         }
 
-        private void musicOff(object sender, System.EventArgs e)
+        private void musicOff(object sender, RoutedEventArgs e)
         {
-            //main.audios[0].Volume = 0;
+            MuteBgMusic();
+        }
+        private void sfxOff(object sender, RoutedEventArgs e)
+        {
+            MuteSfx();
+        }
+
+        private void sfxOn(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

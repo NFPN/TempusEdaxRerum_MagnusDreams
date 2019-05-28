@@ -17,10 +17,6 @@ using static MagnusDreams.Util.Audio;
 
 namespace MagnusDreams.Views
 {
-    /// <summary>
-    /// Lógica interna para SelectName.xaml
-    /// </summary>
-
     public partial class SelectName : Window
     {
         ComandosSQL comandos = new ComandosSQL();
@@ -32,7 +28,7 @@ namespace MagnusDreams.Views
 
         private void StartGame_Clicked(object sender, RoutedEventArgs e)
         {
-            PlayMusic(Efeitos.select);
+            sfxAudio();
             //Insere o texto inserido do player no Banco de dados
             string NomeJogador = lbTextNamePlayer.Text;
             comandos.InsertData(NomeJogador);

@@ -18,50 +18,97 @@ namespace MagnusDreams.Util
         static string  startupPath = Environment.CurrentDirectory;
         static Gameplay gameplay = new Gameplay();
         static OptionsView op = new OptionsView();
+        public static List<MediaPlayer> InitializeAudios = new List<MediaPlayer>();
 
-
-        public static void PlayMusic(Musicas musica)
+        public static void bgMusic()
         {
-            
             DirectoryInfo directoryInfo = Directory.GetParent(Directory.GetParent(startupPath).FullName);
 
             Directory.GetDirectories(directoryInfo.FullName);
 
             var p1 = new MediaPlayer();
 
-            p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + musica + ".wav", UriKind.Relative));
-            if (gameplay.musicIsChecked.IsChecked == true || op.musicIsChecked.IsChecked == true)
-            {  
-                if (!p1.IsMuted)
-                p1.Volume = 0.5;
-                p1.Play();
-            }
-            else if (gameplay.musicIsChecked.IsChecked == false || op.musicIsChecked.IsChecked == false){
-                MuteMusic(p1);
-            }            
-        }
-
-        public static void PlayMusic(Efeitos efeitos)
-        {
+            p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + Musicas.bgSoundsss + ".wav", UriKind.Relative));
            
+            p1.Volume = 0.05;
+            p1.Play();
+            InitializeAudios.Add(p1);
+            
+        }
+        public static void sfxAudio()
+        {
             DirectoryInfo directoryInfo = Directory.GetParent(Directory.GetParent(startupPath).FullName);
 
             Directory.GetDirectories(directoryInfo.FullName);
 
             var p1 = new MediaPlayer();
 
-            p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + efeitos + ".wav", UriKind.Relative));
-            p1.Volume = 0.25;
-            
+            p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + Efeitos.shineselect + ".wav", UriKind.Relative));
+
+            p1.Volume = 0.01;
             p1.Play();
-
+            InitializeAudios.Add(p1);
 
         }
-        //acho que n precisa se o codigo acima funcionar
-        public static void MuteMusic(MediaPlayer music)
+
+        public static void MuteBgMusic()
         {
-            music.Volume = 0;
-            music.IsMuted = true;
+            InitializeAudios[0].Volume = 0.0;
         }
+
+        public static void DesmuteBgMusic()
+        {
+            //InitializeAudios[0].Volume = 0.5;
+        }
+
+        public static void MuteSfx()
+        {
+            InitializeAudios[1].Volume = 0.0;
+        }
+
+        public static void DesmuteSfx()
+        {
+            //InitializeAudios[0].Volume = 0.5;
+        }
+
+
+
+
+
+        //public static void PlayMusic(Musicas musica)
+        //{
+        //    
+        //    DirectoryInfo directoryInfo = Directory.GetParent(Directory.GetParent(startupPath).FullName);
+        //
+        //    Directory.GetDirectories(directoryInfo.FullName);
+        //
+        //    var p1 = new MediaPlayer();
+        //
+        //    p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + musica + ".wav", UriKind.Relative));
+        //    
+        //        
+        //        p1.Volume = 0.25;
+        //        p1.Play();
+        //    
+        //              
+        //}
+        //
+        //public static void PlayMusic(Efeitos efeitos)
+        //{
+        //   
+        //    DirectoryInfo directoryInfo = Directory.GetParent(Directory.GetParent(startupPath).FullName);
+        //
+        //    Directory.GetDirectories(directoryInfo.FullName);
+        //
+        //    var p1 = new MediaPlayer();
+        //
+        //    p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + efeitos + ".wav", UriKind.Relative));
+        //    p1.Volume = 0.01;
+        //    
+        //    p1.Play();
+        //
+        //
+        //}
+        
     }
 }
