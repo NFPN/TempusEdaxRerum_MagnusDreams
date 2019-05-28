@@ -33,6 +33,7 @@ namespace MagnusDreams.Views
             string NomeJogador = lbTextNamePlayer.Text;
             comandos.InsertData(NomeJogador);
             contentControl.Content = new Gameplay();
+            //((Gameplay)contentControl.Content).gamePlayClass = (Gameplay)contentControl.Content;
         }
     }
 }

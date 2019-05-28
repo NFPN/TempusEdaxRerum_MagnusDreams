@@ -28,7 +28,7 @@ namespace MagnusDreams.Views
 
         private void ReturnMainMenuClicked(object sender, RoutedEventArgs e)
         {
-            PlayMusic(Efeitos.select);
+            bgMusic();
             contentControlGameOver.Visibility = Visibility.Hidden;
             contentControlGameOver.Content = new MainWindow();
 

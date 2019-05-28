@@ -55,6 +55,7 @@ namespace MagnusDreams.Views
         Random random = new Random();
         List<IObjController> allObjs = new List<IObjController>();
         public static ContentControl thiscontentControl = new ContentControl();
+        //public Gameplay gamePlayClass = new Gameplay();
 
         #endregion
 
@@ -215,12 +216,12 @@ namespace MagnusDreams.Views
                     {
                         if (allObjs[i].Type == ObjType.Enemy)
                         {
-                            //var randNum = random.Next(0, 1001);
-                            //
-                            //if (randNum < 10)
-                            //    NewEnemyBullet(allObjs[i]);
+                            var randNum = random.Next(0, 1001);
+                            
+                            if (randNum < 10)
+                                NewEnemyBullet(allObjs[i]);
 
-                            EnemyCircleMovement(allObjs[i]);
+                            EnemyLeftMovement(allObjs[i]);
                             RectUpdate(allObjs[i]);
                         }
                     }
@@ -256,7 +257,7 @@ namespace MagnusDreams.Views
                         if (allObjs[obj1index].Type == ObjType.Player && (allObjs[obj2index].Type == ObjType.Enemy ||
                             allObjs[obj2index].Type == ObjType.EnemyBullet))
                         {
-                            PlayMusic(Efeitos.PlayerHit);
+                            sfxAudio();
                             Rosto.IsEnabled = false;
 
                             //Rosto.Resources = new Uri("smiley_stackpanel.PNG", UriKind.Relative);
@@ -353,6 +354,8 @@ namespace MagnusDreams.Views
                             ((Enemy)list[i]).WaveMovement();
                             //Canvas.SetLeft(list[i].Image, Canvas.GetLeft(list[i].Image) - list[i].Speed);
                         }
+                        else if(list[i].Type == ObjType.EnemyBullet)
+                            Canvas.SetLeft(list[i].Image, Canvas.GetLeft(list[i].Image) - list[i].Speed);
                         else
                             Canvas.SetLeft(list[i].Image, Canvas.GetLeft(list[i].Image) + list[i].Speed);
 
@@ -383,7 +386,7 @@ namespace MagnusDreams.Views
             }
         }
 
-        public void EnemyCircleMovement(IObjController obj)
+        public void EnemyLeftMovement(IObjController obj)
         {
             Canvas.SetLeft(obj.Image, Canvas.GetLeft(obj.Image) - 1);//988 - Math.Cos(angle) * 10);
             //Canvas.SetTop(obj.Image, Canvas.GetLeft(obj.Image) + 1);//150 - Math.Sin(angle) * 10);
@@ -410,7 +413,7 @@ namespace MagnusDreams.Views
         #region Player Bullet Methods
         public void NewBullet()
         {
-            PlayMusic(Efeitos.Shoot);
+            sfxAudio(); 
             playerBulletPool.Add(new Bullet(15, 1, new Image()
             {
                 Height = PlayerBullet.Height,
@@ -485,7 +488,7 @@ namespace MagnusDreams.Views
             PauseInPause.Visibility = Visibility.Visible;
             main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnToGame, musicIsChecked, sfxIsChecked, }, true);
 
-            PlayMusic(Efeitos.click);
+            sfxAudio();
 
         }
 
@@ -494,7 +497,7 @@ namespace MagnusDreams.Views
         private void CloseGamePause(object sender, RoutedEventArgs e)
         {
           
-            PlayMusic(Efeitos.click);
+            sfxAudio();
             InitialStateGameplay();
         }
 

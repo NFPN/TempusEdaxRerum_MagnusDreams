@@ -42,7 +42,7 @@ namespace MagnusDreams.Views
 
         private void ExitButton_Clicked(object sender, RoutedEventArgs e)
         {
-            sfxAudio(); PlayMusic(Efeitos.shineselect);
+            sfxAudio();
             Environment.Exit(0);
             
         }
