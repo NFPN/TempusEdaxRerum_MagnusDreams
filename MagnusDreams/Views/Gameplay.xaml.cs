@@ -20,7 +20,7 @@ namespace MagnusDreams.Views
 
         #region Global Variables
         //MainWindow reference audios list
-        MainWindow main = (MainWindow)Application.Current.MainWindow;
+        public MainWindow main = (MainWindow)Application.Current.MainWindow;
         ComandosSQL comandos = new ComandosSQL();
 
         //The hidden position of playerBullet objects, enemy and enemyBullet objects
