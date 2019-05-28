@@ -70,26 +70,27 @@ namespace MagnusDreams.Views
             //Test of btn Pause
             InitialStateGameplay();
             
-            /*CompositionTarget.Rendering += (s, a) =>
+            CompositionTarget.Rendering += (s, a) =>
             {
                 ++frames;
             };
 
             DispatcherTimer fpsTimer = new DispatcherTimer();
-            fpsTimer.Interval = TimeSpan.FromSeconds(0.5);
+            fpsTimer.Interval = TimeSpan.FromSeconds(0.1);
             fpsTimer.Tick += (s, a) =>
             {
-                Log.Content = string.Format("FPS:{0}", frames);
+                //Log.Content = string.Format("FPS:{0}", frames);
+               
                 frames = 0;
             };
-            fpsTimer.Start();*/
+            fpsTimer.Start();
 
             KeyboardController kbcontrol = new KeyboardController(MainWindow.appWindow);
             kbcontrol.timer.Interval = TimeSpan.FromMilliseconds(1);
             kbcontrol.KeyboardTick += InputUpdate;
 
             secondsTimer.Tick += SecondsTick;
-            secondsTimer.Interval = TimeSpan.FromSeconds(0.5);
+            secondsTimer.Interval = TimeSpan.FromSeconds(1);
 
             fastTimer.Tick += GlobalTick;
             fastTimer.Interval = TimeSpan.FromMilliseconds(1);
@@ -100,6 +101,7 @@ namespace MagnusDreams.Views
             Start();
             mainTime.Start();
             fastTimer.Start();
+            secondsTimer.Start();
         }
 
         private void SlowTimeTick(object sender, EventArgs e)
@@ -120,22 +122,23 @@ namespace MagnusDreams.Views
 
         private void SecondsTick(object sender, EventArgs e)
         {
-
+            EnemySpawner();
         }
 
         // Executes once when the game scene is loaded
         private void Start()
         {
             score = 0;
-            //Test purpose only
-            foreach (var img in GameCanvas.Children.OfType<Image>())
-            {
-                if (img.Tag != null && img.Tag.ToString() == "Enemy")
-                {
-                    allObjs.Add(new Enemy(3, 3, img, ObjType.Enemy));
-                }
-            }
 
+            //Test purpose only
+            //foreach (var img in GameCanvas.Children.OfType<Image>())
+            //{
+            //    if (img.Tag != null && img.Tag.ToString() == "Enemy")
+            //    {
+            //        allObjs.Add(new Enemy(3, 3, img, ObjType.Enemy));
+            //    }
+            //}
+            
             player = new Player(10, 3, PlayerImage, ObjType.Player);
 
             allObjs.Add(player);
@@ -310,7 +313,7 @@ namespace MagnusDreams.Views
         }
         public bool CheckOutOfBounds(Image imgObj)
         {
-            if (Canvas.GetTop(imgObj) > 720 || Canvas.GetTop(imgObj) < 0 || Canvas.GetLeft(imgObj) > 1280 || Canvas.GetLeft(imgObj) < 0)
+            if (Canvas.GetTop(imgObj) > 770 || Canvas.GetTop(imgObj) < -50 || Canvas.GetLeft(imgObj) > 1330 || Canvas.GetLeft(imgObj) < -50)
                 return true;
             return false;
         }
@@ -360,11 +363,16 @@ namespace MagnusDreams.Views
                     {
                         if (list[i].Type == ObjType.Enemy)
                         {
-                            ((Enemy)list[i]).WaveMovement();
+
+                            ((Enemy)list[i]).WaveMovement(angle);
                             //Canvas.SetLeft(list[i].Image, Canvas.GetLeft(list[i].Image) - list[i].Speed);
                         }
-                        else if(list[i].Type == ObjType.EnemyBullet)
+                        else if (list[i].Type == ObjType.EnemyBullet)
                             Canvas.SetLeft(list[i].Image, Canvas.GetLeft(list[i].Image) - list[i].Speed);
+                        else if (list[i].Type == ObjType.Enemy)
+                        {
+                                Canvas.SetLeft(list[i].Image, Canvas.GetLeft(list[i].Image) - list[i].Speed);
+                        }
                         else
                             Canvas.SetLeft(list[i].Image, Canvas.GetLeft(list[i].Image) + list[i].Speed);
 
@@ -382,7 +390,7 @@ namespace MagnusDreams.Views
                             Canvas.SetLeft(list[i].Image, hiddenPos[1, 0]);
                             Canvas.SetTop(list[i].Image, hiddenPos[1, 1]);
                         }
-                        else if(list[i].Type == ObjType.PlayerBullet)
+                        else if (list[i].Type == ObjType.PlayerBullet)
                         {
                             Canvas.SetLeft(list[i].Image, hiddenPos[0, 0]);
                             Canvas.SetTop(list[i].Image, hiddenPos[0, 1]);
@@ -401,9 +409,13 @@ namespace MagnusDreams.Views
             //Canvas.SetTop(obj.Image, Canvas.GetLeft(obj.Image) + 1);//150 - Math.Sin(angle) * 10);
         }
 
+        public void EnemySpawner()
+        {
+            Log.Content = score;
+        }
+
         public void NewEnemyBullet(IObjController enemyWhoShot)
         {
-            
             enemyBulletPool.Add(new Bullet(15, 1, new Image()
             {
                 Height = EnemyBullet.Height,

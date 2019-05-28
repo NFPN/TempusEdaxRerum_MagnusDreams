@@ -16,7 +16,7 @@
         <ContentControl x:Name="contentControl" Grid.ColumnSpan="2" Margin="0,0,-0.4,0.4"/>
 
         <Button x:Name="btnBegin" Content="COMEÇAR" HorizontalAlignment="Left" Height="75" Margin="139.469,495.4,0,0" VerticalAlignment="Top" Width="250" FontSize="20" FontWeight="Bold" Click="StartGame_Clicked" Grid.Column="1" BorderBrush="#00707070" Background="#00707070" RenderTransformOrigin="0.509,0.755"/>
-        <TextBox x:Name="lbTextNamePlayer" HorizontalAlignment="Left" Height="32" Margin="61.069,175,0,0" TextWrapping="Wrap" Text="Name..." VerticalAlignment="Top" Width="436" FontSize="24" FontFamily="Square721 BT" Background="Transparent" BorderBrush="#00ABADB3" SelectionBrush="#33D70000" Grid.Column="1"/>
+        <TextBox x:Name="lbTextNamePlayer" HorizontalAlignment="Left" Height="32" Margin="61.069,175,0,0" TextWrapping="Wrap" Text="Name..." VerticalAlignment="Top" Width="436" FontSize="24" FontFamily="CHILLER" Background="Transparent" BorderBrush="#00ABADB3" SelectionBrush="#33D70000" Grid.Column="1"  GotFocus="CleanLabel"/>
         <Label x:Name="textDescription" Content="Escreva seu nome para começar" HorizontalAlignment="Left" Margin="79.736,52,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Grid.Column="1"/>
 
     </Grid>

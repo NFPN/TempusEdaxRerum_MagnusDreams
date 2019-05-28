@@ -37,5 +37,10 @@ namespace MagnusDreams.Views
            contentControl.Content = new Gameplay();
             //((Gameplay)contentControl.Content).gamePlayClass = (Gameplay)contentControl.Content;
         }
+
+        private void CleanLabel(object sender, RoutedEventArgs e)
+        {
+            lbTextNamePlayer.Text = string.Empty;
+        }
     }
 }

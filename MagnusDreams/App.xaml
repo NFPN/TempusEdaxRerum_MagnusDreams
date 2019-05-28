@@ -6,7 +6,7 @@
     <Application.Resources>
         <!--#region  Configuration Button-->
         <Style x:Name="config" TargetType="Label">
-            <Setter Property="FontFamily" Value="Century Gothic"/>
+            <Setter Property="FontFamily" Value="CHILLER"/>
             <Setter Property="FontSize" Value="16"/>
         </Style>
         <Style x:Key="ConfigurationControl" TargetType="{x:Type Button}">
