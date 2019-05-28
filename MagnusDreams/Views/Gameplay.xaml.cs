@@ -55,7 +55,6 @@ namespace MagnusDreams.Views
         Random random = new Random();
         List<IObjController> allObjs = new List<IObjController>();
         public static ContentControl thiscontentControl = new ContentControl();
-        //public Gameplay gamePlayClass = new Gameplay();
 
         #endregion
 
@@ -496,7 +495,6 @@ namespace MagnusDreams.Views
 
         private void CloseGamePause(object sender, RoutedEventArgs e)
         {
-          
             sfxAudio();
             InitialStateGameplay();
         }
