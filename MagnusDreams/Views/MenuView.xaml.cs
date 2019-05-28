@@ -61,10 +61,11 @@ namespace MagnusDreams.Views
         private void NewGame_Clicked(object sender, RoutedEventArgs e)
         {
             sfxAudio();
-            main.ChangeBG(Backgrounds.fundo);
+            //main.ChangeBG(Backgrounds.fundo);
+            main.ChangeBG(Backgrounds.EscreverNome);
 
             //---- For testing -----
-            contentControl.Content = new Gameplay();
+            contentControl.Content = new SelectNameView();
             //----------------------
             HiddenMenu();
         }
