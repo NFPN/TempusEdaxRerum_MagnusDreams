@@ -485,7 +485,7 @@ namespace MagnusDreams.Views
             PauseInPause.Visibility = Visibility.Visible;
             main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnToGame, musicIsChecked, sfxIsChecked, }, true);
 
-            PlayMusic(Efeitos.click);
+            sfxAudio();
 
         }
 
@@ -493,8 +493,7 @@ namespace MagnusDreams.Views
 
         private void CloseGamePause(object sender, RoutedEventArgs e)
         {
-          
-            PlayMusic(Efeitos.click);
+            sfxAudio();
             InitialStateGameplay();
         }
 

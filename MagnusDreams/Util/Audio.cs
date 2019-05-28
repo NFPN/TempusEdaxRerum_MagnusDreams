@@ -93,22 +93,22 @@ namespace MagnusDreams.Util
         //              
         //}
         //
-        //public static void PlayMusic(Efeitos efeitos)
-        //{
-        //   
-        //    DirectoryInfo directoryInfo = Directory.GetParent(Directory.GetParent(startupPath).FullName);
-        //
-        //    Directory.GetDirectories(directoryInfo.FullName);
-        //
-        //    var p1 = new MediaPlayer();
-        //
-        //    p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + efeitos + ".wav", UriKind.Relative));
-        //    p1.Volume = 0.01;
-        //    
-        //    p1.Play();
-        //
-        //
-        //}
+        public static void PlayMusic(Efeitos efeitos)
+        {
+           
+            DirectoryInfo directoryInfo = Directory.GetParent(Directory.GetParent(startupPath).FullName);
+        
+            Directory.GetDirectories(directoryInfo.FullName);
+        
+            var p1 = new MediaPlayer();
+        
+            p1.Open(new Uri(directoryInfo.FullName + @"\Sounds\" + efeitos + ".wav", UriKind.Relative));
+            p1.Volume = 0.01;
+            
+            p1.Play();
+        
+        
+        }
         
     }
 }
