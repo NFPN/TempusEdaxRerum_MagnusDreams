@@ -40,7 +40,6 @@ namespace MagnusDreams.Views
         //ImageSource enemySource;
         //double enemyBaseHeight, enemyBaseWidth;
         List<Bullet> enemyBulletPool = new List<Bullet>();
-        bool enemyFlyUp;
         double angle;
 
         //Player Info
@@ -48,6 +47,7 @@ namespace MagnusDreams.Views
         List<Bullet> playerBulletPool = new List<Bullet>();
         bool shouldMakeNewBullet, canMove;
         double playerInitialLeftPosition, playerInitialTopPosition, timeToShootPlayerBullets;
+        long score;
 
         //List<BaseObject> allObjects = new List<BaseObject>();
 
@@ -116,6 +116,7 @@ namespace MagnusDreams.Views
         // Executes once when the game scene is loaded
         private void Start()
         {
+            score = 0;
             //Test purpose only
             foreach (var img in GameCanvas.Children.OfType<Image>())
             {
@@ -155,30 +156,33 @@ namespace MagnusDreams.Views
             //Shooting Logic
             if (((KeyboardController)sender).KeyDown(Key.A) || ((KeyboardController)sender).KeyDown(Key.Space))
                 if (timeToShootPlayerBullets >= 85)
-                    if (playerBulletPool.Count > 0) GetExistingBullet();
-                    else NewBullet();
+                {
+                    score++;
+                    txtPlayerScore.Content = $"Score: {score.ToString()}";
+
+                    if (playerBulletPool.Count > 0)
+                        GetExistingBullet();
+                    else
+                        NewBullet();
+                }
 
             //Movement Logic Down Up Left Right
             if (canMove)
             {
                 if (Keyboard.IsKeyDown(Key.Down) && Canvas.GetTop(player.Image) < 720 - player.Image.ActualHeight)
                 {
-                    Log.Content = "down";
                     Canvas.SetTop(player.Image, Canvas.GetTop(player.Image) + player.Speed);
                 }
                 if (Keyboard.IsKeyDown(Key.Up) && Canvas.GetTop(player.Image) > 0)
                 {
-                    Log.Content = "up";
                     Canvas.SetTop(player.Image, Canvas.GetTop(player.Image) - player.Speed);
                 }
                 if (Keyboard.IsKeyDown(Key.Left) && Canvas.GetLeft(player.Image) > 0)
                 {
-                    Log.Content = "left";
                     Canvas.SetLeft(player.Image, Canvas.GetLeft(player.Image) - player.Speed);
                 }
                 if (Keyboard.IsKeyDown(Key.Right) && Canvas.GetLeft(player.Image) < 1280 - player.Image.ActualWidth)
                 {
-                    Log.Content = "right";
                     Canvas.SetLeft(player.Image, Canvas.GetLeft(player.Image) + player.Speed);
                 }
             }
@@ -190,9 +194,9 @@ namespace MagnusDreams.Views
             CheckCollision();
 
             //Player Bullet pooling and collision            
-            MoveObjects(ref allObjs, ObjType.PlayerBullet);
+            MoveObjects(ref allObjs);
             //enemy bullet pooling and collision
-            MoveObjects(ref allObjs, ObjType.EnemyBullet);
+            //MoveObjects(ref allObjs, ObjType.EnemyBullet);
 
             //Enemy Movement
             for (int i = 0; i < allObjs.Count; i++)
@@ -232,8 +236,6 @@ namespace MagnusDreams.Views
         }
         public void RectUpdate(IObjController obj)
         {
-            if (obj == null)
-                return;
             obj.Rect = new Rect(Canvas.GetLeft(obj.Image), Canvas.GetTop(obj.Image), obj.Image.ActualWidth, obj.Image.ActualHeight);
         }
 
@@ -280,7 +282,9 @@ namespace MagnusDreams.Views
                         //playerBullet collided with Enemy
                         else if (allObjs[obj1index].Type == ObjType.PlayerBullet && allObjs[obj2index].Type == ObjType.Enemy)
                         {
-                            Log.Content = $"{allObjs[obj1index].Image.Name} with {allObjs[obj2index].Image.Name}";
+                            score += 10;
+                            score = (long)(score * 1.1);
+                            txtPlayerScore.Content = $"Score: {score.ToString()}";
 
                             allObjs[obj2index].Life--;
 
@@ -332,125 +336,50 @@ namespace MagnusDreams.Views
         /// <summary>
         /// Move objects on the list or Hide them
         /// </summary>
-        public void MoveObjects(ref List<IObjController> list, ObjType type)
+        public void MoveObjects(ref List<IObjController> list)
         {
             if (list.Count > 0)
             {
-                return;
+                
                 for (int i = 0; i < list.Count; i++)
                 {
+                    if (list[i].GetType().ToString().Contains("Player") || list[i] == null)
+                        continue;
+
                     if (list[i].Image.Visibility == Visibility.Visible && !CheckOutOfBounds(list[i].Image))
                     {
-                        Canvas.SetLeft(list[i].Image, Canvas.GetLeft(list[i].Image) + 15);
+                        if (list[i].Type == ObjType.Enemy)
+                        {
+                            ((Enemy)list[i]).WaveMovement();
+                            //Canvas.SetLeft(list[i].Image, Canvas.GetLeft(list[i].Image) - list[i].Speed);
+                        }
+                        else
+                            Canvas.SetLeft(list[i].Image, Canvas.GetLeft(list[i].Image) + list[i].Speed);
+
                         list[i].Rect = new Rect(
                             Canvas.GetLeft(list[i].Image),
                             Canvas.GetTop(list[i].Image),
                             list[i].Image.Width,
                             list[i].Image.Height);
-                        RectUpdate(playerBulletPool[i]);
+                        RectUpdate(list[i]);
                     }
                     else
                     {
+                        if (list[i].Type == ObjType.Enemy || list[i].Type == ObjType.EnemyBullet)
+                        {
+                            Canvas.SetLeft(list[i].Image, hiddenPos[1, 0]);
+                            Canvas.SetTop(list[i].Image, hiddenPos[1, 1]);
+                        }
+                        else if(list[i].Type == ObjType.PlayerBullet)
+                        {
+                            Canvas.SetLeft(list[i].Image, hiddenPos[0, 0]);
+                            Canvas.SetTop(list[i].Image, hiddenPos[0, 1]);
+                        }
+
                         if (allObjs.Contains(list[i]))
                             allObjs.Remove(list[i]);
-
-
-                        Canvas.SetLeft(list[i].Image, hiddenPos[0, 0]);
-                        Canvas.SetTop(list[i].Image, hiddenPos[0, 1]);
                     }
                 }
-
-                return;
-
-
-
-                /*if (type == ObjType.PlayerBullet)
-                {
-                    modList = list.Cast<Bullet>()
-                        .Select(b =>
-                        {
-                            try
-                            {
-                                return new Bullet(
-                                    b.Speed,
-                                    b.Life,
-                                    b.Image,
-                                    b.Type
-                                );
-                            }
-                            catch (Exception e)
-                            {
-                                return null;
-                            }
-                        }
-                    )
-                        .ToList();
-
-                    for (int i = 0; i < list.Count; i++)
-                    {
-                        if (modList[i].Image.Visibility == Visibility.Visible && !CheckOutOfBounds(modList[i].Image))
-                        {
-                            Canvas.SetLeft(modList[i].Image, Canvas.GetLeft(modList[i].Image) + 15);
-                            modList[i].Rect = new Rect(
-                                Canvas.GetLeft(modList[i].Image),
-                                Canvas.GetTop(modList[i].Image),
-                                modList[i].Image.Width,
-                                modList[i].Image.Height);
-                            RectUpdate(playerBulletPool[i]);
-                        }
-                        else
-                        {
-                            if (allObjs.Contains(modList[i]))
-                                allObjs.Remove(modList[i]);
-                            Canvas.SetLeft(modList[i].Image, hiddenPos[0, 0]);
-                            Canvas.SetTop(modList[i].Image, hiddenPos[0, 1]);
-                        }
-                    }
-                }
-                else if(type == ObjType.EnemyBullet)
-                {
-                    modList = list.Cast<Bullet>()
-                       .Select(b =>
-                       {
-                           try
-                           {
-                               return new Bullet(
-                                   b.Speed,
-                                   b.Life,
-                                   b.Image,                                  
-                                   b.Type
-                               );
-                           }
-                           catch (Exception e)
-                           {
-                               return null;
-                           }
-                       }
-                   )
-                       .ToList();
-
-                    for (int i = 0; i < modList.Count; i++)
-                    {
-                        if (modList[i].Image.Visibility == Visibility.Visible && !CheckOutOfBounds(enemyBulletPool[i].Image))
-                        {
-                            Canvas.SetLeft(modList[i].Image, Canvas.GetLeft(enemyBulletPool[i].Image) - 15);
-                            modList[i].Rect = new Rect(
-                                Canvas.GetLeft(modList[i].Image),
-                                Canvas.GetTop(modList[i].Image),
-                                modList[i].Image.Width,
-                                modList[i].Image.Height);
-                            RectUpdate(enemyBulletPool[i]);
-                        }
-                        else
-                        {
-                            if (allObjs.Contains(modList[i]))
-                                allObjs.Remove(modList[i]);
-                            Canvas.SetLeft(modList[i].Image, hiddenPos[1, 0]);
-                            Canvas.SetTop(modList[i].Image, hiddenPos[1, 1]);
-
-                        }
-                    }
-                }*/
             }
         }
 
@@ -462,6 +391,7 @@ namespace MagnusDreams.Views
 
         public void NewEnemyBullet(IObjController enemyWhoShot)
         {
+            
             enemyBulletPool.Add(new Bullet(15, 1, new Image()
             {
                 Height = EnemyBullet.Height,

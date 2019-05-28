@@ -20,42 +20,42 @@ namespace MagnusDreams.Util
 
     class Enemy : BaseObject, IObjController
     {
-        //int initialTop, rotatePoint, waveLimit;
-        //bool isGoingUp;
+        Random thisRand = new Random();
+        public int initialTop, rotatePoint, waveLimit, difficultFactor;
+        public bool isGoingUp;
         public Enemy() { }
         public Enemy(int speed, int life, Image image, ObjType type)
         {
-            this.Type = type;
-            this.Life = life;
-            this.Speed = speed; 
-            this.Image = image;
-            this.SetRect();
-            
-            //isGoingUp = true;
-            //waveLimit = Random.Next(10,21);
-            //rotatePoint = Canvas.GetLeft(this.Image);
-            //initialTop = Canvas.GetTop(this.Image);
-            
+            Type = type;
+            Life = life;
+            Speed = speed;
+            Image = image;
+            SetRect();
+
+            isGoingUp = true;
+            waveLimit = 1;
+            rotatePoint = (int)Canvas.GetLeft(Image);
+            initialTop = (int)Canvas.GetTop(Image);
+            difficultFactor = thisRand.Next(4, 16);
         }
-        
-        
+
+
         public void WaveMovement()
         {
-            Canvas.SetLeft(this.Image, Canvas.GetLeft(this.Image) - this.Speed);
-            /*
-            if(isGoingUp)
+            //Canvas.SetLeft(this.Image, Canvas.GetLeft(this.Image) - this.Speed);
+
+            if (isGoingUp)
             {
-                Canvas.SetTop(this.Image, Canvas.GetTop(this.Image) - (this.Speed/2));
-                if(Canvas.GetTop(this.Image) >= (waveLimit+initialTop))
+                Canvas.SetTop(Image, Canvas.GetTop(Image) + (Speed * 0.5));
+                if (Canvas.GetTop(Image) >= waveLimit + initialTop)
                     isGoingUp = false;
             }
-            else if(!isGoingUp)
+            else if (!isGoingUp)
             {
-                Canvas.SetTop(this.Image, Canvas.GetTop(this.Image) + (this.Speed/2));
-                    if(Canvas.GetTop(this.Image) <= -(waveLimit+initialTop))
-                       isGoingUp = true;
-            {
-            */
+                Canvas.SetTop(Image, Canvas.GetTop(Image) - (Speed * 0.5));
+                if (Canvas.GetTop(Image) <= difficultFactor)
+                    isGoingUp = true;
+            }
         }
     }
     
