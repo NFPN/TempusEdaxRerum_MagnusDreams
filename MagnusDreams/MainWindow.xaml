@@ -11,16 +11,10 @@
     
 
     <Grid x:Name="GridMenu">
-        
-        <!--<Grid.Background>
-            <ImageBrush ImageSource="Images/MENUPrancheta.jpg"/>
-        </Grid.Background>-->
-        <!-- Content control pra controlar qual usercontrol aparece em main-->
-        <!-- Content control pra controlar qual usercontrol aparece em main-->
+       
         <ContentControl x:Name="contentControl" Grid.Row="1">
-            <Image x:Name="Fundo" HorizontalAlignment="Left" Height="728" VerticalAlignment="Top" Width="1280" Source="Images/Frame.png" Stretch="Fill" Margin="0,0,0,-8"/>
+            <Image x:Name="Fundo" HorizontalAlignment="Left" Height="728" VerticalAlignment="Top" Width="1280"  Stretch="Fill" Margin="0,0,0,-8"/>
         </ContentControl>
-        <Image />
 
     </Grid>
 

@@ -8,7 +8,8 @@
              d:DesignHeight="720" d:DesignWidth="1280">
     <Grid >
         <!--<Image x:Name="backgroundFundo" HorizontalAlignment="Left" Height="720" VerticalAlignment="Top" Width="1280" Source="/MagnusDreams;component/Images/Livro creditos_Prancheta 1.jpg" Stretch="Fill" Cursor="None"/>
-       --> <ContentControl x:Name="contentControlCredits" Grid.Row="1"/>
+       -->
+        <ContentControl x:Name="contentControlCredits" Grid.Row="1"/>
         <Button x:Name="btnReturn"  HorizontalAlignment="Left" Height="106" Margin="680.326,466.287,0,0" VerticalAlignment="Top" Width="288" FontSize="20" Click="ReturnButton_Clicked" BorderBrush="{x:Null}" Style="{DynamicResource ButtonReturn}" Foreground="{x:Null}" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
@@ -27,12 +28,12 @@
                 <DropShadowEffect Color="White" ShadowDepth="4" BlurRadius="8"/>
             </Label.Effect>
         </Label>
-        <Label x:Name="textDescriptionProgrammers" Content="Programadores" HorizontalAlignment="Left" Margin="638.898,160.524,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" Foreground="Black" Height="69.47" Width="394.467"/>
-        <Label x:Name="textDescriptionDesigners" Content="Designers" HorizontalAlignment="Left" Margin="319.357,160.524,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" Foreground="Black" Height="69.469" Width="211.679" RenderTransformOrigin="0.443,1.023"/>
-        <Label x:Name="textDescriptionAudio" Content="Audio / Efeitos" HorizontalAlignment="Left" Margin="214.745,400.956,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="Black" Height="69.468" Width="419.153"/>
-        <Label x:Name="textNamesProgrammers" Content="Natanael (MadWalker)&#xD;&#xA;Nicolas Soares (Keyblase)" HorizontalAlignment="Left" Margin="633.898,213.284,0,0" VerticalAlignment="Top" FontSize="30" VerticalContentAlignment="Center" Width="415.098" Height="187.672" Foreground="Black"/>
-        <Label x:Name="textNamesDesingners" Content="Andriel(KooriKage)&#xA;João de Castro" HorizontalAlignment="Left" Margin="233.552,213.284,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="357.243" Height="187.672" Foreground="Black"/>
-        <Label x:Name="textNamesAudio" Content="Rafael Donato" HorizontalAlignment="Left" Margin="264.224,475.424,0,0" VerticalAlignment="Top" FontSize="36" VerticalContentAlignment="Center" Width="326.571" Height="96.863" Foreground="Black"/>
+        <Label x:Name="textDescriptionProgrammers" Content="Programadores" HorizontalAlignment="Left" Margin="680,160,0,0" VerticalAlignment="Top" FontSize="72" FontWeight="Bold" VerticalContentAlignment="Center" Foreground="Black" Height="93" Width="399"/>
+        <Label x:Name="textDescriptionDesigners" Content="Designers" HorizontalAlignment="Left" Margin="298,160,0,0" VerticalAlignment="Top" FontSize="72" FontWeight="Bold" VerticalContentAlignment="Center" Foreground="Black" Height="94" Width="242" RenderTransformOrigin="0.443,1.023"/>
+        <Label x:Name="textDescriptionAudio" Content="Audio / Efeitos" HorizontalAlignment="Left" Margin="215,401,0,0" VerticalAlignment="Top" FontSize="72" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="Black" Height="87" Width="429"/>
+        <Label x:Name="textNamesProgrammers" Content="Natanael (MadWalker)&#xD;&#xA;Nicolas Soares (Keyblase)" HorizontalAlignment="Left" Margin="644,240,0,0" VerticalAlignment="Top" FontSize="48" VerticalContentAlignment="Center" Width="415" Height="188" Foreground="Black"/>
+        <Label x:Name="textNamesDesingners" Content="Andriel(KooriKage)&#xA;João de Castro" HorizontalAlignment="Left" Margin="287,240,0,0" VerticalAlignment="Top" FontSize="48" VerticalContentAlignment="Center" Width="357" Height="188" Foreground="Black"/>
+        <Label x:Name="textNamesAudio" Content="Rafael Donato" HorizontalAlignment="Left" Margin="310,493,0,0" VerticalAlignment="Top" FontSize="48" VerticalContentAlignment="Center" Width="327" Height="97" Foreground="Black"/>
     </Grid>
 
 </UserControl>

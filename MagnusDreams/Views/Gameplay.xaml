@@ -46,8 +46,8 @@
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/pause.png"/>
             </Image.OpacityMask>
         </Image>
-        <Label x:Name="txtmusicVolume" Content="Volume  Musica:" HorizontalAlignment="Left" Height="89" Margin="275.4,132,0,0" VerticalAlignment="Top" Width="428" FontSize="40" FontFamily="Showcard Gothic" Opacity="0.65"/>
-        <Label x:Name="txtSfxVolume" Content="Volume Efeitos :" HorizontalAlignment="Left" Height="75" Margin="296.2,221,0,0" VerticalAlignment="Top" Width="428" FontFamily="Showcard Gothic" FontSize="40" RenderTransformOrigin="1.166,0.323" Opacity="0.65"/>
+        <Label x:Name="txtmusicVolume" Content="Volume  Musica:" HorizontalAlignment="Left" Height="89" Margin="275.4,132,0,0" VerticalAlignment="Top" Width="428" FontSize="72" FontFamily="Chiller" Opacity="0.65"/>
+        <Label x:Name="txtSfxVolume" Content="Volume Efeitos :" HorizontalAlignment="Left" Height="75" Margin="296.2,221,0,0" VerticalAlignment="Top" Width="428" FontFamily="Chiller" FontSize="72" RenderTransformOrigin="1.166,0.323" Opacity="0.65"/>
         <CheckBox x:Name="musicIsChecked" Content="" HorizontalAlignment="Left" Height="16" Margin="807.6,169.2,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" IsChecked="True" VerticalContentAlignment="Center" Padding="15,-1,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" Checked="musicOn" Unchecked="musicOff" >
             <CheckBox.RenderTransform>
                 <TransformGroup>
