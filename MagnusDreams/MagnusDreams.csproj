@@ -150,13 +150,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Frame.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Sky.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\placeHolder.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\fundo.jpg" />
@@ -198,7 +192,6 @@
     <Resource Include="Images\sairsemborda.png" />
     <Resource Include="Images\voltarborder.png" />
     <Resource Include="Images\voltarsemborda.png" />
-    <Resource Include="Images\DarkBg.jpg" />
     <Resource Include="Images\MontainBg.jpg" />
     <Resource Include="Images\MoonBg.jpg" />
     <Resource Include="Images\LivroCreditosPrancheta.jpg" />
