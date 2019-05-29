@@ -22,6 +22,7 @@ namespace MagnusDreams.Views
     /// </summary>
     public partial class SelectNameView : UserControl
     {
+        MainWindow main = (MainWindow)Application.Current.MainWindow;
         ComandosSQL comandos = new ComandosSQL();
 
         public SelectNameView()
@@ -34,6 +35,10 @@ namespace MagnusDreams.Views
             //Insere o texto inserido do player no Banco de dados
             string NomeJogador = lbTextNamePlayer.Text;
            comandos.InsertData(NomeJogador);
+           main.ChangeBG(Backgrounds.fundo);
+
+            main.ChangeVisibility(new Control[]{lbTextNamePlayer,btnBegin,textDescription
+            },false);
            contentControl.Content = new Gameplay();
             //((Gameplay)contentControl.Content).gamePlayClass = (Gameplay)contentControl.Content;
         }
