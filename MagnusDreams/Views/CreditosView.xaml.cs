@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static MagnusDreams.Util.Audio;
+//using static MagnusDreams.Util.Audio;
 
 namespace MagnusDreams.Views
 {
@@ -28,7 +28,7 @@ namespace MagnusDreams.Views
 
         private void ReturnButton_Clicked(object sender, RoutedEventArgs e)
         {
-            sfxAudio();
+            //sfxAudio();
             main.ChangeBG(Backgrounds.MENUPrancheta);
             contentControlCredits.Content = new MenuView();
             //backgroundFundo.Visibility = Visibility.Hidden;

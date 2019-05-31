@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static MagnusDreams.Util.Audio;
+//using static MagnusDreams.Util.Audio;
 
 namespace MagnusDreams.Views
 {
@@ -28,7 +28,7 @@ namespace MagnusDreams.Views
 
         private void ReturnMainMenuClicked(object sender, RoutedEventArgs e)
         {
-            bgMusic();
+            //bgMusic();
             contentControlGameOver.Visibility = Visibility.Hidden;
             contentControlGameOver.Content = new MainWindow();
 

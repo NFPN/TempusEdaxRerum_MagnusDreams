@@ -48,7 +48,6 @@ namespace MagnusDreams.Util
             p1.Volume = 0.01;
             p1.Play();
             InitializeAudios.Add(p1);
-
         }
 
         public static void MuteBgMusic()
@@ -106,9 +105,6 @@ namespace MagnusDreams.Util
             p1.Volume = 0.01;
             
             p1.Play();
-        
-        
         }
-        
     }
 }

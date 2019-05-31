@@ -16,7 +16,7 @@ using System.IO;
 using MagnusDreams;
 using Microsoft.Win32;
 using MagnusDreams.Util;
-using static MagnusDreams.Util.Audio;
+//using static MagnusDreams.Util.Audio;
 
 namespace MagnusDreams.Views
 {
@@ -32,24 +32,22 @@ namespace MagnusDreams.Views
 
         private void CreditsButton_Clicked(object sender, RoutedEventArgs e)
         {
-            sfxAudio();
+            //sfxAudio();
             main.ChangeBG(Backgrounds.LivroCreditosPrancheta);
             contentControl.Content = new CreditosView();
             HiddenMenu();
-            
-            
         }
 
         private void ExitButton_Clicked(object sender, RoutedEventArgs e)
         {
-            sfxAudio();
+            //sfxAudio();
             Environment.Exit(0);
             
         }
 
         private void OptionsButton_Clicked(object sender, RoutedEventArgs e)
         {
-            sfxAudio();
+            //sfxAudio();
             main.ChangeBG(Backgrounds.MontainBg);
             //Cast app window for proper acess (new MainWindow doesn't work)
             contentControl.Content = new OptionsView();
@@ -60,7 +58,7 @@ namespace MagnusDreams.Views
 
         private void NewGame_Clicked(object sender, RoutedEventArgs e)
         {
-            sfxAudio();
+            //sfxAudio();
             //main.ChangeBG(Backgrounds.fundo);
             main.ChangeBG(Backgrounds.EscreverNome);
 
