@@ -29,9 +29,10 @@
         </Canvas>
 
         <Label x:Name="Log" Content="testsadf" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="69" VerticalAlignment="Top" Width="1270" Margin="0,48,0,0" FontSize="20"/>
-        <Label x:Name="txtHighScore" Content="HighScore:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-        <Label x:Name="txtPlayerScore" Content="Score:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,26,0,0" FontSize="18" FontWeight="Bold"/>
-        <Label x:Name="txtGlobalScore" Content="Global:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,52.4,0,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="1.594,0.61"/>
+        <Label x:Name="txtHighScore" Content="HighScore:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Foreground="White"/>
+        <Label x:Name="txtPlayerScore" Content="Score:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,26,0,0" FontSize="22" FontWeight="Bold" Foreground="White"/>
+        <Label x:Name="lbLifePlayer" Content="Vidas :   3" HorizontalAlignment="Left" Margin="123,632,0,0" VerticalAlignment="Top" Height="78" Width="180" Foreground="White" FontSize="48"/>
+        <Label x:Name="txtGlobalScore" Content="Global:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,52.4,0,0" FontSize="22" FontWeight="Bold" RenderTransformOrigin="1.594,0.61" Foreground="White"/>
         <Button x:Name="btnPause" Content="" HorizontalAlignment="Left" Margin="1217,0,0,0" VerticalAlignment="Top" Width="63" Height="60" BorderBrush="{x:Null}" Click="OpenGamePause" Foreground="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/pause.png"/>
@@ -40,7 +41,7 @@
         <Image x:Name="bgPauseGame"  Height="2676.04" Width="2488.2" Margin="-579.4,-903.8,-628.8,-1052.24" VerticalAlignment="Top" HorizontalAlignment="Right" Source="/MagnusDreams;component/Images/TER Magnus rosto_Prancheta 1.png" Stretch="Fill" Cursor="None" />
         <Label x:Name="txtmusicVolume" Content="Volume  Musica:" HorizontalAlignment="Left" Height="89" Margin="275.4,132,0,0" VerticalAlignment="Top" Width="428" FontSize="72" FontFamily="Chiller" Opacity="0.65"/>
         <Label x:Name="txtSfxVolume" Content="Volume Efeitos :" HorizontalAlignment="Left" Height="75" Margin="296.2,221,0,0" VerticalAlignment="Top" Width="428" FontFamily="Chiller" FontSize="72" RenderTransformOrigin="1.166,0.323" Opacity="0.65"/>
-        <CheckBox x:Name="musicIsChecked" Content="" HorizontalAlignment="Left" Height="16" Margin="807.6,169.2,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" IsChecked="True" VerticalContentAlignment="Center" Padding="15,-1,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" Checked="musicOn" Unchecked="musicOff" >
+        <!--<CheckBox x:Name="musicIsChecked" Content="" HorizontalAlignment="Left" Height="16" Margin="807.6,169.2,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.493,1.167" FontFamily="Showcard Gothic" FontSize="36" BorderThickness="0,1,1,1" ClickMode="Press" Background="White" IsChecked="True" VerticalContentAlignment="Center" Padding="15,-1,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" Checked="musicOn" Unchecked="musicOff" >
             <CheckBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
@@ -59,11 +60,11 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </CheckBox.RenderTransform>
-        </CheckBox>
+        </CheckBox> -->
         <Button x:Name="btnReturnToGame"  HorizontalAlignment="Left" Margin="451,509,0,0" VerticalAlignment="Top" Width="273" Height="211" BorderBrush="{x:Null}" Click="CloseGamePause" Style="{DynamicResource ButtonPause}">
             <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/pause.png"/>
             </Button.Background>
-        </Button>-->
-    </Grid>
+        </Button>
+        </Grid>
 </UserControl>

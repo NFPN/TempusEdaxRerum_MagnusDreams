@@ -50,25 +50,25 @@ namespace MagnusDreams.Util
             InitializeAudios.Add(p1);
         }
 
-        public static void MuteBgMusic()
-        {
-            InitializeAudios[0].Volume = 0.0;
-        }
-
-        public static void DesmuteBgMusic()
-        {
-            //InitializeAudios[0].Volume = 0.5;
-        }
-
-        public static void MuteSfx()
-        {
-            InitializeAudios[1].Volume = 0.0;
-        }
-
-        public static void DesmuteSfx()
-        {
-            //InitializeAudios[0].Volume = 0.5;
-        }
+       //public static void MuteBgMusic()
+       //{
+       //    InitializeAudios[0].Volume = 0.0;
+       //}
+       //
+       //public static void DesmuteBgMusic()
+       //{
+       //    //InitializeAudios[0].Volume = 0.5;
+       //}
+       //
+       //public static void MuteSfx()
+       //{
+       //    InitializeAudios[1].Volume = 0.0;
+       //}
+       //
+       //public static void DesmuteSfx()
+       //{
+       //    //InitializeAudios[0].Volume = 0.5;
+       //}
 
 
 

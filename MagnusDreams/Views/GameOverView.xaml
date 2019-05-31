@@ -19,7 +19,7 @@
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/menusemborda.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnPlayAgain"  HorizontalAlignment="Left" Margin="478,345,0,0" VerticalAlignment="Top" Width="312" Height="105" BorderBrush="{x:Null}" >
+        <Button x:Name="btnPlayAgain"  HorizontalAlignment="Left" Margin="478,345,0,0" VerticalAlignment="Top" Width="312" Height="105" BorderBrush="{x:Null}" Style="{DynamicResource ButtonPlayAgain}" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

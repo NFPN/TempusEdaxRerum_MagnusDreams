@@ -63,7 +63,7 @@ namespace MagnusDreams.Views
         {
             InitializeComponent();
             //Test of btn Pause
-            //InitialStateGameplay();
+            InitialStateGameplay();
 
             CompositionTarget.Rendering += (s, a) =>
             {
@@ -204,7 +204,7 @@ namespace MagnusDreams.Views
         private void FastUpdate()
         {
             RectUpdate(player);
-            //CheckCollision();
+            CheckCollision();
             MoveObjects();
 
 
@@ -358,10 +358,11 @@ namespace MagnusDreams.Views
 
                             //Rosto.Resources = new Uri("smiley_stackpanel.PNG", UriKind.Relative);
 
-                            //obj1.Life--;
+                            allObjs[obj1index].Life--;
                             if (allObjs[obj1index].Life <= 0)
                             {
                                 //comandos.InsertData();
+                                
                                 contentControlGamePlay.Content = new GameOverView();
                             }
 
@@ -523,8 +524,8 @@ namespace MagnusDreams.Views
         {
             bgPauseGame.Visibility = Visibility.Hidden;
             btnPause.Visibility = Visibility.Visible;
-            PauseInPause.Visibility = Visibility.Hidden;
-            main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnToGame, musicIsChecked, sfxIsChecked, }, false);
+            //PauseInPause.Visibility = Visibility.Hidden;
+            main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnToGame, /*musicIsChecked, sfxIsChecked,*/ }, false);
         }
 
 
@@ -536,10 +537,10 @@ namespace MagnusDreams.Views
 
             main.ChangeVisibility(new Control[] { btnPause }, false);
             bgPauseGame.Visibility = Visibility.Visible;
-            PauseInPause.Visibility = Visibility.Visible;
-            main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnToGame, musicIsChecked, sfxIsChecked, }, true);
+            //PauseInPause.Visibility = Visibility.Visible;
+            main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnToGame, /*musicIsChecked, sfxIsChecked,*/ }, true);
 
-            sfxAudio();
+            //sfxAudio();
 
         }
 
@@ -547,9 +548,9 @@ namespace MagnusDreams.Views
 
          private void CloseGamePause(object sender, RoutedEventArgs e)
          {
-             sfxAudio();
+             //sfxAudio();
              InitialStateGameplay();
-         }*/
+         }
 
         public void ClearGrid()
         {
@@ -558,7 +559,7 @@ namespace MagnusDreams.Views
 
         #endregion
 
-        /* audio  
+        /*audio  
            #region Audio Methods
            private void musicOn(object sender, RoutedEventArgs e)
            {

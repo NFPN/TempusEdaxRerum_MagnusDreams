@@ -45,7 +45,7 @@ namespace MagnusDreams.Views
         {
             //musicIsChecked.IsChecked = false;
             //PlayMusic(Musicas.bgSoundsss);
-            MuteBgMusic();
+            //MuteBgMusic();
         }
 
         private void ReturnButtonOp_Clicked(object sender, RoutedEventArgs e)
