@@ -51,7 +51,7 @@ namespace MagnusDreams.Views
         private void ReturnButtonOp_Clicked(object sender, RoutedEventArgs e)
         {
 
-            sfxAudio();
+            //sfxAudio();
 
             contentControl.Content = new MenuView();
             main.ChangeBG(Backgrounds.MENUPrancheta);

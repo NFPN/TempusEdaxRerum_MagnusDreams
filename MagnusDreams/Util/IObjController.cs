@@ -23,6 +23,7 @@ namespace MagnusDreams.Util
     {
         int initialTop, waveLimit;
         bool isGoingUp;
+        float angle = 0;
         public Enemy() { }
         public Enemy(int speed, int life, Image image, ObjType type)
         {
@@ -38,9 +39,11 @@ namespace MagnusDreams.Util
         }
 
 
-        public void WaveMovement(double angle)
+        public void WaveMovement()
         {
-            Canvas.SetLeft(Image, Canvas.GetLeft(Image) - Speed);
+            angle += 0.13f;
+            angle = angle % 360;
+            //Canvas.SetLeft(Image, Canvas.GetLeft(Image) - Speed);
 
             if (isGoingUp)
             {

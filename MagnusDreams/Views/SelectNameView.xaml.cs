@@ -31,7 +31,7 @@ namespace MagnusDreams.Views
         }
         private void StartGame_Clicked(object sender, RoutedEventArgs e)
         {
-            sfxAudio();
+            //sfxAudio();
             //Insere o texto inserido do player no Banco de dados
             string NomeJogador = lbTextNamePlayer.Text;
            comandos.InsertData(NomeJogador);
