@@ -510,7 +510,7 @@ namespace MagnusDreams.Views
         {
             bgPauseGame.Visibility = Visibility.Hidden;
             btnPause.Visibility = Visibility.Visible;
-            PauseInPause.Visibility = Visibility.Hidden;
+            
             main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnToGame, musicIsChecked, sfxIsChecked, }, false);
         }
 
@@ -523,7 +523,7 @@ namespace MagnusDreams.Views
 
             main.ChangeVisibility(new Control[] { btnPause }, false);
             bgPauseGame.Visibility = Visibility.Visible;
-            PauseInPause.Visibility = Visibility.Visible;
+           
             main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnToGame, musicIsChecked, sfxIsChecked, }, true);
 
             sfxAudio();

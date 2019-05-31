@@ -13,7 +13,7 @@ namespace MagnusDrems.DAO
 
         public Connection()
         {
-            sqlConnection.ConnectionString = @"Integrated Security=SSPI;Persist Security Info=True;User ID=NICOLAS-PC;Initial Catalog=MagnusDreams;Data Source=NICOLAS-PC";
+            sqlConnection.ConnectionString = $"Integrated Security=SSPI;Persist Security Info=True;User ID={Environment.MachineName};Initial Catalog=MagnusDreams;Data Source=NICOLAS-PC";
             //sqlConnection.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\nico_\Documents\MagnusDreamsBD.mdf;Integrated Security=True;Connect Timeout=30";
         }
 
