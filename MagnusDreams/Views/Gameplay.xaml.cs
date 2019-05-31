@@ -519,16 +519,13 @@ namespace MagnusDreams.Views
             //sfxAudio();
         }
 
-        #endregion
-
-        #region Extra UI
-        /* private void InitialStateGameplay()
-         {
-             bgPauseGame.Visibility = Visibility.Hidden;
-             btnPause.Visibility = Visibility.Visible;
-             PauseInPause.Visibility = Visibility.Hidden;
-             main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnToGame, musicIsChecked, sfxIsChecked, }, false);
-         }
+        private void InitialStateGameplay()
+        {
+            bgPauseGame.Visibility = Visibility.Hidden;
+            btnPause.Visibility = Visibility.Visible;
+            PauseInPause.Visibility = Visibility.Hidden;
+            main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnToGame, musicIsChecked, sfxIsChecked, }, false);
+        }
 
 
 
@@ -537,12 +534,14 @@ namespace MagnusDreams.Views
              thiscontentControl.Content = contentControlGamePlay.Content;
              //contentControlGamePlay.Content = new InGamePauseView();
 
-             main.ChangeVisibility(new Control[] { btnPause }, false);
-             bgPauseGame.Visibility = Visibility.Visible;
-             PauseInPause.Visibility = Visibility.Visible;
-             main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnToGame, musicIsChecked, sfxIsChecked, }, true);
-             sfxAudio();
-         }
+            main.ChangeVisibility(new Control[] { btnPause }, false);
+            bgPauseGame.Visibility = Visibility.Visible;
+            PauseInPause.Visibility = Visibility.Visible;
+            main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnToGame, musicIsChecked, sfxIsChecked, }, true);
+
+            sfxAudio();
+
+        }
 
 
 
