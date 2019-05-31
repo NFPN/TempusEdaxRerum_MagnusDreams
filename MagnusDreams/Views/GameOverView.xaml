@@ -5,13 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MagnusDreams.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="720" d:DesignWidth="1280">
     <Grid >
         <Grid.Background>
             <ImageBrush ImageSource="/MagnusDreams;component/Images/Game Derrota_Prancheta 1.jpg"/>
         </Grid.Background>
         <ContentControl x:Name="contentControlGameOver" Grid.Row="1"/>
-        <Button x:Name="btnMenu"  HorizontalAlignment="Left" Margin="478,220,0,0" VerticalAlignment="Top" Width="312" Height="120" Click="ReturnMainMenuClicked" BorderBrush="{x:Null}" Style="{StaticResource ButtonBackMenu}">
+        <Button x:Name="btnMenu"  HorizontalAlignment="Left" Margin="650,501,0,0" VerticalAlignment="Top" Width="312" Height="120" Click="ReturnMainMenuClicked" BorderBrush="{x:Null}" Style="{StaticResource ButtonBackMenu}">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -19,7 +19,7 @@
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/menusemborda.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnPlayAgain"  HorizontalAlignment="Left" Margin="478,345,0,0" VerticalAlignment="Top" Width="312" Height="105" BorderBrush="{x:Null}" Style="{DynamicResource ButtonPlayAgain}" >
+        <Button x:Name="btnPlayAgain"  HorizontalAlignment="Left" Margin="650,391,0,0" VerticalAlignment="Top" Width="312" Height="105" BorderBrush="{x:Null}" Style="{DynamicResource ButtonPlayAgain}" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

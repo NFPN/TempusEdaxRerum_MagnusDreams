@@ -30,7 +30,10 @@ namespace MagnusDreams.Views
         {
             //bgMusic();
             contentControlGameOver.Visibility = Visibility.Hidden;
-            contentControlGameOver.Content = new MainWindow();
+            main.ChangeBG(Backgrounds.MENUPrancheta);
+            contentControlGameOver.Content = new MenuView();
+            main.Show();
+            
 
             main.ChangeVisibility(new Control[]
             {

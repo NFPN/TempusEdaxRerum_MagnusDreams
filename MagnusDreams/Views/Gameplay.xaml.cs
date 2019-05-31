@@ -23,6 +23,7 @@ namespace MagnusDreams.Views
 
         //MainWindow reference audios list
         public MainWindow main = (MainWindow)Application.Current.MainWindow;
+        public Audio audio = new Audio();
 
         //Database command
         ComandosSQL comandos = new ComandosSQL();
@@ -85,7 +86,7 @@ namespace MagnusDreams.Views
             kbcontrol.KeyboardTick += InputUpdate;
 
             secondsTimer.Tick += SecondsTick;
-            secondsTimer.Interval = TimeSpan.FromSeconds(5);
+            secondsTimer.Interval = TimeSpan.FromSeconds(1.5);
 
             fastTimer.Tick += GlobalTick;
             fastTimer.Interval = TimeSpan.FromMilliseconds(1);
@@ -134,6 +135,7 @@ namespace MagnusDreams.Views
             }
 
             player = new Player(10, 3, PlayerImage, ObjType.Player);
+            lbLifePlayer.Content = $"Vidas: {player.Life}";
 
             allObjs.Add(player);
 
@@ -166,7 +168,7 @@ namespace MagnusDreams.Views
         private void InputUpdate(object sender, EventArgs e)
         {
             if (Keyboard.IsKeyDown(Key.Escape))
-                Log.Content = "Pause";
+                //Log.Content = "Pause";
 
             //Shooting Logic
             if (((KeyboardController)sender).KeyDown(Key.A) || ((KeyboardController)sender).KeyDown(Key.Space))
@@ -354,16 +356,24 @@ namespace MagnusDreams.Views
                             allObjs[obj2index].Type == ObjType.EnemyBullet))
                         {
                             //sfxAudio();
+                            Audio.InitializeAudios[1].Play();
+
                             Rosto.IsEnabled = false;
 
                             //Rosto.Resources = new Uri("smiley_stackpanel.PNG", UriKind.Relative);
 
                             allObjs[obj1index].Life--;
-                            if (allObjs[obj1index].Life <= 0)
+                            //lbLifePlayer.Content = $"Vidas : {allObjs[obj1index].Life--.ToString()}";
+                            lbLifePlayer.Content = $"Vidas: {player.Life}";
+                            if (allObjs[obj1index].Life < 1)
                             {
+
                                 //comandos.InsertData();
-                                
+                                GameCanvas.Children.Clear();
+                                main.ChangeVisibility(new Control[] { lbLifePlayer },false);
                                 contentControlGamePlay.Content = new GameOverView();
+                                //ClearGrid();
+                                //ClearFromScreen(allObjs[obj1index]);
                             }
 
                             //clear screen
@@ -518,10 +528,12 @@ namespace MagnusDreams.Views
             }
             bullet.Image.Refresh();
             //sfxAudio();
+            Audio.InitializeAudios[1].Play();
         }
 
         private void InitialStateGameplay()
         {
+            //lbLifePlayer.Content = $"Vidas :";
             bgPauseGame.Visibility = Visibility.Hidden;
             btnPause.Visibility = Visibility.Visible;
             //PauseInPause.Visibility = Visibility.Hidden;
@@ -541,15 +553,16 @@ namespace MagnusDreams.Views
             main.ChangeVisibility(new Control[] { txtmusicVolume, txtSfxVolume, btnReturnToGame, /*musicIsChecked, sfxIsChecked,*/ }, true);
 
             //sfxAudio();
-
+            Audio.InitializeAudios[1].Play();
         }
 
 
 
          private void CloseGamePause(object sender, RoutedEventArgs e)
          {
-             //sfxAudio();
-             InitialStateGameplay();
+            //sfxAudio();
+            Audio.InitializeAudios[1].Play();
+            InitialStateGameplay();
          }
 
         public void ClearGrid()

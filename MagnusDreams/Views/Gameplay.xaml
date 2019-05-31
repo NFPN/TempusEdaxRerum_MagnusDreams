@@ -28,11 +28,11 @@
             <Image x:Name="EnemyBullet" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Source="/MagnusDreams;component/Images/olhoo.png" Tag="EnemyBullet" Canvas.Left="1240" Canvas.Top="351"/>
         </Canvas>
 
-        <Label x:Name="Log" Content="testsadf" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="69" VerticalAlignment="Top" Width="1270" Margin="0,48,0,0" FontSize="20"/>
-        <Label x:Name="txtHighScore" Content="HighScore:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Foreground="White"/>
-        <Label x:Name="txtPlayerScore" Content="Score:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,26,0,0" FontSize="22" FontWeight="Bold" Foreground="White"/>
+        <!--<Label x:Name="Log" Content="testsadf" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="69" VerticalAlignment="Top" Width="1270" Margin="0,48,0,0" FontSize="20"/>
+       --> <Label x:Name="txtHighScore" Content="HighScore:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Foreground="White"/>
+        <Label x:Name="txtPlayerScore" Content="Score:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,26,0,0" FontSize="36" FontWeight="Bold" Foreground="White"/>
         <Label x:Name="lbLifePlayer" Content="Vidas :   3" HorizontalAlignment="Left" Margin="123,632,0,0" VerticalAlignment="Top" Height="78" Width="180" Foreground="White" FontSize="48"/>
-        <Label x:Name="txtGlobalScore" Content="Global:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,52.4,0,0" FontSize="22" FontWeight="Bold" RenderTransformOrigin="1.594,0.61" Foreground="White"/>
+        <Label x:Name="txtGlobalScore" Content="Global:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,52.4,0,0" FontSize="36" FontWeight="Bold" RenderTransformOrigin="1.594,0.61" Foreground="White"/>
         <Button x:Name="btnPause" Content="" HorizontalAlignment="Left" Margin="1217,0,0,0" VerticalAlignment="Top" Width="63" Height="60" BorderBrush="{x:Null}" Click="OpenGamePause" Foreground="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/MagnusDreams;component/Images/pause.png"/>

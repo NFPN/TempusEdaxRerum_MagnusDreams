@@ -52,6 +52,7 @@ namespace MagnusDreams.Views
         {
 
             //sfxAudio();
+            Audio.InitializeAudios[1].Play();
 
             contentControl.Content = new MenuView();
             main.ChangeBG(Backgrounds.MENUPrancheta);

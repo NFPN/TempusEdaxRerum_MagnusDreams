@@ -38,6 +38,7 @@ namespace MagnusDreams
            
             appWindow = GetWindow(this);
             bgMusic();
+            sfxAudio();
         }
 
         private void ButtonClick(object sender, RoutedEventArgs e)
